@@ -34,11 +34,33 @@ Widget _buildBankCard({required int rank, required String name, required Color c
             width: 300,
             height: 200,
             child: Card(
+              color: Colors.white,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Center(child: Text(name)),
-                  Icon(Icons.emoji_events, size: 30, color: color),                
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(name)
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Icon(Icons.emoji_events, size: 30, color: color)
+                        ),
+                      ],
+                    ),
+                  ),                
                 ]
               )
             )

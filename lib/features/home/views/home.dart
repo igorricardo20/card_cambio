@@ -1,5 +1,6 @@
 import 'package:card_cambio/features/home/views/dashboard.dart';
 import 'package:card_cambio/features/home/views/info.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -38,8 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onDestinationSelected: changeDestination,
               destinations: [
                 NavigationRailDestination(
-                  icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home),
+                  icon: Icon(CupertinoIcons.square_grid_2x2),
+                  selectedIcon: Icon(CupertinoIcons.square_grid_2x2),
                   label: Text('Dashboard'),
                 ),
                 NavigationRailDestination(
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
+              icon: Icon(CupertinoIcons.square_grid_2x2),
               label: 'Dashboard',
             ),
             BottomNavigationBarItem(
@@ -78,11 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
           currentIndex: _selectedIndex,
           onTap: changeDestination,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => _selectedIndex++),
-        tooltip: 'Change Page',
-        child: const Icon(Icons.add),
       ),
     );
   }
