@@ -1,3 +1,5 @@
+# (work in progress)
+
 # card_cambio
 
 This application is designed to display exchange rates in dollars for credit cards issued by various financial institutions such as banks.
