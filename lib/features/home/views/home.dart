@@ -20,16 +20,17 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (_selectedIndex) {
       case 0:
         page = Dashboard();
-        break;
       case 1:
         page = Info();
-        break;
       default:
         throw UnimplementedError('Invalid index');
     }
 
+    final isWideScreen = MediaQuery.of(context).size.width > 600;
+
     return Scaffold(
-      body: Row(
+      body: isWideScreen 
+        ? Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SafeArea(
@@ -60,6 +61,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           ],
+      )
+      : Scaffold(
+        body: page,
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: 'Dashboard',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.info_outline),
+              label: 'Info',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: changeDestination,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() => _selectedIndex++),
