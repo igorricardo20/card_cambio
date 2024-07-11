@@ -51,7 +51,7 @@ Widget _buildBankCard({required int value, required String name, required String
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                SizedBox(height: 80, child: Image.asset('images/$logo', width: 80)),
+                                SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
                                 Text(name),
                                 Text('R\$ $value,00', style: TextStyle(fontSize: 20, color: color))
                             ]
