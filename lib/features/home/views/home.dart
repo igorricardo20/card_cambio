@@ -23,6 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
         page = Dashboard();
       case 1:
         page = Info();
+      case 2:
+        page = Info();
       default:
         throw UnimplementedError('Invalid index');
     }
@@ -40,13 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
               destinations: [
                 NavigationRailDestination(
                   icon: Icon(CupertinoIcons.square_grid_2x2),
-                  selectedIcon: Icon(CupertinoIcons.square_grid_2x2),
+                  selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
                   label: Text('Dashboard'),
+                ),
+                NavigationRailDestination(
+                  icon: Icon(CupertinoIcons.news),
+                  selectedIcon: Icon(CupertinoIcons.news_solid),
+                  label: Text('Historical'),
                 ),
                 NavigationRailDestination(
                   icon: Icon(Icons.info_outline),
                   selectedIcon: Icon(Icons.info),
-                  label: Text('Info'),
+                  label: Text('About'),
                 ),
               ], 
               selectedIndex: _selectedIndex,
@@ -72,8 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Dashboard',
             ),
             BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.news),
+              label: 'Historical',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.info_outline),
-              label: 'Info',
+              label: 'About',
             ),
           ],
           currentIndex: _selectedIndex,
