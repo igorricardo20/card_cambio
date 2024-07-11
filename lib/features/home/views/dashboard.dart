@@ -5,18 +5,25 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isScreenWide = MediaQuery.of(context).size.width > 600;
+    final isScreenWide = MediaQuery.of(context).size.width > 850;
     
     return Center(
-      child: isScreenWide
-        ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: getBankCards
-        )
-        : Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: getBankCards
-        )
+      child: Column(
+        children: [
+          Title(color: Colors.black, child: Text('Credit Card Ranking', style: TextStyle(fontSize: 30))),
+          Text('For Dollar exchange rates', style: TextStyle(fontSize: 20)),
+          isScreenWide
+            ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: 
+                getBankCards,
+            )
+            : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: getBankCards
+            ),
+        ],
+      )
     );
   }
 
@@ -31,7 +38,7 @@ class Dashboard extends StatelessWidget {
 
 Widget _buildBankCard({required int value, required String name, required String logo, required Color color}) {
   return SizedBox(
-            width: 300,
+            width: 250,
             height: 200,
             child: Card(
               clipBehavior: Clip.hardEdge,
