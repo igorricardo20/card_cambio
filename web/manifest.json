@@ -1,11 +1,11 @@
 {
-    "name": "card_cambio",
-    "short_name": "card_cambio",
+    "name": "CardCambio",
+    "short_name": "CardCambio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Showing exchange rates for BRL currency.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
