@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '960000119642',
     projectId: 'card-cambio',
     storageBucket: 'card-cambio.appspot.com',
-    iosBundleId: 'com.example.cardCambio',
+    iosBundleId: 'com.alveslab.cardCambio',
   );
 
 }
