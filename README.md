@@ -25,9 +25,7 @@ To install and run this application, follow these steps:
 
 ## Usage
 
-1. Open the application in your web browser.
-2. Select your desired financial institution from the dropdown menu.
-3. View the exchange rates for the selected institution.
+1. Open the application in your web browser. Link: https://card-cambio.web.app/
 
 ## Contributing
 
