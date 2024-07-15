@@ -3,6 +3,7 @@ import 'package:card_cambio/features/home/views/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   
@@ -71,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
       )
       : Scaffold(
-        body: page,
+        body: SafeArea(child: page),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
