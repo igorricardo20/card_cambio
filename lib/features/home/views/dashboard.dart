@@ -1,6 +1,6 @@
+import 'package:card_cambio/features/home/widgets/bankcard.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:card_cambio/features/home/widgets/bankcard.dart';
 
 
 class Dashboard extends StatelessWidget {
@@ -8,36 +8,36 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isScreenWide = MediaQuery.of(context).size.width > 850;
+    const Color gold =  Color.fromARGB(255, 255, 176, 7);
+    const Color silver =  Color.fromARGB(255, 85, 85, 85);
+    const Color bronze = Color.fromARGB(255, 121, 60, 60);
     
     return Center(
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Title(color: Colors.black, child: Text('Credit Card Ranking', style: TextStyle(fontSize: 30))),
-          Text('For Dollar exchange rates', style: TextStyle(fontSize: 20)),
-          isScreenWide
-            ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: 
-                _getBankCards,
-            )
-            : Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: _getBankCards
-            ),
+          Column(
+            children: [
+              Title(color: Colors.black, child: Text('Credit Card Ranking', style: TextStyle(fontSize: 30))),
+              MaxGap(30),
+              Text('Best institutions', style: TextStyle(fontSize: 20)),
+              MaxGap(30),
+              Wrap(
+                direction: Axis.horizontal,
+                spacing: 8,
+                runSpacing: 4,
+                children: [
+                  BankCard(value: 5, name: 'bankName', logo: 'nubank_logo.png', color: gold, rankingName: '1st'),
+                  BankCard(value: 6, name: 'bankName', logo: 'itau_logo.png', color: silver, rankingName: '2nd'),
+                  BankCard(value: 7, name: 'bankName', logo: 'btg_logo.png', color: bronze, rankingName: '3rd'),
+                ]
+              ),
+              MaxGap(30),
+            ],
+          ),
         ],
       )
     );
   }
-
-  List<Widget> get _getBankCards {
-    return <Widget>[
-          BankCard(value: 5, name: 'NuBank', logo: 'nubank_logo.png', color: const Color.fromARGB(255, 255, 176, 7)),
-          Gap(10),
-          BankCard(value: 2, name: 'Itaú', logo: 'itau_logo.png', color: const Color.fromARGB(255, 85, 85, 85)),
-          Gap(10),
-          BankCard(value: 3, name: 'Santander', logo: 'btg_logo.png', color: Color.fromARGB(255, 121, 60, 60))
-        ];
-  }
 }
-

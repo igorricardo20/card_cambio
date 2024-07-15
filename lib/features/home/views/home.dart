@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: isWideScreen 
         ? Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           SafeArea(
             child: NavigationRail(
@@ -65,9 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )
           ),
           Expanded(
-            child: Container(
-              child: page,
-            ),
+            child: page
           ),
           ],
       )
