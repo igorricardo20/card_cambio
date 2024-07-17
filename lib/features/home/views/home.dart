@@ -47,8 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: Text('Dashboard'),
                 ),
                 NavigationRailDestination(
-                  icon: Icon(CupertinoIcons.news),
-                  selectedIcon: Icon(CupertinoIcons.news_solid),
+                  icon: Icon(CupertinoIcons.clock),
+                  selectedIcon: Icon(CupertinoIcons.clock_fill),
                   label: Text('Historical'),
                 ),
                 NavigationRailDestination(
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Dashboard',
             ),
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.news),
+              icon: Icon(CupertinoIcons.clock),
               label: 'Historical',
             ),
             BottomNavigationBarItem(

@@ -2,19 +2,23 @@ import 'package:card_cambio/features/home/widgets/trophy.dart';
 import 'package:flutter/material.dart';
 
 class BankCard extends StatelessWidget {
-  const BankCard({super.key, required this.value, required this.name, required this.logo, required this.color, required this.rankingName});
+  const BankCard({super.key, required this.value, required this.name, required this.logo, required this.color, this.trophyPosition=''});
 
   final double value;
   final String name;
   final String logo;
   final Color color;
-  final String rankingName;
+  final String trophyPosition;
 
   @override
   Widget build(BuildContext context) {
+    bool hasTrohpy = trophyPosition.isNotEmpty;
+
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Trophy(text: rankingName, color: color),
+        hasTrohpy ? Trophy(text: trophyPosition, color: color) : Container(),
         SizedBox(
           width: 150,
           height: 150,

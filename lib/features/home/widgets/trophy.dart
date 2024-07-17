@@ -9,15 +9,14 @@ class Trophy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(left: 11),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Align(
             alignment: Alignment.bottomCenter,
-            child: Icon(Icons.emoji_events, size: 30, color: color)
+            child: Icon(Icons.emoji_events, size: 20, color: color)
           ),
-          Text(text, style: TextStyle(fontSize: 16, color: color)),
+          Text(text, style: TextStyle(fontSize: 14, color: color)),
         ],
       ),
     );
