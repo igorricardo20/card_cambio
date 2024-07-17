@@ -1,5 +1,5 @@
 import 'package:card_cambio/features/home/widgets/bankcard.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:card_cambio/features/home/widgets/mainchart.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -56,48 +56,9 @@ class Dashboard extends StatelessWidget {
             ),
           ),
           MaxGap(40),
-          Expanded(
-            child: LineChart(
-              LineChartData(
-                gridData: FlGridData(show: false),
-                titlesData: FlTitlesData(show: false),
-                borderData: FlBorderData(show: false),
-                lineBarsData: [
-                  LineChartBarData(
-                    spots: [
-                      FlSpot(0, 1),
-                      FlSpot(1, 2),
-                      FlSpot(2, 1.5),
-                      FlSpot(3, 3),
-                      FlSpot(4, 2),
-                      FlSpot(5, 2.5),
-                      FlSpot(6, 2.0),
-                    ],
-                    isCurved: true,
-                    barWidth: 5,
-                    isStrokeCapRound: true,
-                    color: gold,
-                    belowBarData: BarAreaData(show: false),
-                  ),
-                  LineChartBarData(
-                    spots: [
-                      FlSpot(0, 2),
-                      FlSpot(1, 3),
-                      FlSpot(2, 1.5),
-                      FlSpot(3, 3),
-                      FlSpot(4, 1),
-                      FlSpot(5, 2),
-                      FlSpot(6, 1),
-                    ],
-                    isCurved: true,
-                    barWidth: 5,
-                    isStrokeCapRound: true,
-                    color: silver,
-                    belowBarData: BarAreaData(show: false),
-                  ),
-                ],
-              ),
-            ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: MainChart(primaryColor: Color.fromARGB(255, 131, 3, 210), secondaryColor: Colors.orange),
           ),
         ],
       ),
