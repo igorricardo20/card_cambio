@@ -37,32 +37,35 @@ class _MyHomePageState extends State<MyHomePage> {
         ? Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          SafeArea(
-            child: NavigationRail(
-              onDestinationSelected: changeDestination,
-              destinations: [
-                NavigationRailDestination(
-                  icon: Icon(CupertinoIcons.square_grid_2x2),
-                  selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
-                  label: Text('Dashboard'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(CupertinoIcons.clock),
-                  selectedIcon: Icon(CupertinoIcons.clock_fill),
-                  label: Text('Historical'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.info_outline),
-                  selectedIcon: Icon(Icons.info),
-                  label: Text('About'),
-                ),
-              ], 
-              selectedIndex: _selectedIndex,
-              labelType: NavigationRailLabelType.all,
-              elevation: 5,
-              backgroundColor: Colors.white,
-              indicatorColor: Colors.transparent,
-              )
+          Container(
+            color: Colors.grey[50],
+            child: SafeArea(
+              child: NavigationRail(
+                onDestinationSelected: changeDestination,
+                destinations: [
+                  NavigationRailDestination(
+                    icon: Icon(CupertinoIcons.square_grid_2x2),
+                    selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
+                    label: Text('Dashboard'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(CupertinoIcons.clock),
+                    selectedIcon: Icon(CupertinoIcons.clock_fill),
+                    label: Text('Historical'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.info_outline),
+                    selectedIcon: Icon(Icons.info),
+                    label: Text('About'),
+                  ),
+                ], 
+                selectedIndex: _selectedIndex,
+                labelType: NavigationRailLabelType.all,
+                elevation: 5,
+                backgroundColor: Colors.white,
+                indicatorColor: Colors.transparent,
+                )
+            ),
           ),
           Expanded(
             child: page
