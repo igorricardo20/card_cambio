@@ -9,8 +9,6 @@ class MainChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isSmallScreen = MediaQuery.of(context).size.height < 800;
-    final bool isVerySmallScreen = MediaQuery.of(context).size.height < 550;
 
     return LineChart(
       LineChartData(
