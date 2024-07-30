@@ -1,5 +1,6 @@
+import 'package:card_cambio/features/historical/views/historical.dart';
 import 'package:card_cambio/features/home/views/dashboard.dart';
-import 'package:card_cambio/features/home/views/info.dart';
+import 'package:card_cambio/features/info/views/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,14 +24,14 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         page = Dashboard();
       case 1:
-        page = Info();
+        page = Historical();
       case 2:
         page = Info();
       default:
         throw UnimplementedError('Invalid index');
     }
 
-    final isWideScreen = MediaQuery.of(context).size.width > 600;
+    final isWideScreen = MediaQuery.sizeOf(context).width > 600;
 
     return Scaffold(
       body: isWideScreen 
