@@ -1,5 +1,6 @@
 import 'package:card_cambio/features/historical/views/historical.dart';
 import 'package:card_cambio/features/home/views/dashboard.dart';
+import 'package:card_cambio/features/info/views/about.dart';
 import 'package:card_cambio/features/info/views/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
         page = Historical();
       case 2:
         page = Info();
+      case 3:
+        page = About();
       default:
         throw UnimplementedError('Invalid index');
     }
@@ -34,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final isWideScreen = MediaQuery.sizeOf(context).width > 600;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: isWideScreen 
         ? Row(
         mainAxisSize: MainAxisSize.max,
@@ -55,15 +59,20 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: Text('Historical'),
                   ),
                   NavigationRailDestination(
-                    icon: Icon(Icons.info_outline),
-                    selectedIcon: Icon(Icons.info),
-                    label: Text('About'),
+                    icon: Icon(CupertinoIcons.cube),
+                    selectedIcon: Icon(CupertinoIcons.cube_fill),
+                    label: Text('Open Data'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(CupertinoIcons.person_2),
+                    selectedIcon: Icon(CupertinoIcons.person_2_fill),
+                    label: Text('About Us'),
                   ),
                 ], 
                 selectedIndex: _selectedIndex,
                 labelType: NavigationRailLabelType.all,
                 elevation: 5,
-                backgroundColor: Colors.white,
+                backgroundColor: BottomNavigationBarTheme.of(context).backgroundColor,
                 indicatorColor: Colors.transparent,
                 )
             ),
@@ -74,8 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
       )
       : Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(child: page),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.square_grid_2x2),
@@ -86,8 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Historical',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.info_outline),
-              label: 'About',
+              icon: Icon(CupertinoIcons.cube),
+              label: 'Open Data',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person_2),
+              label: 'About Us',
             ),
           ],
           currentIndex: _selectedIndex,

@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CardCambio',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
+        primaryColorLight: Color.fromARGB(255, 250, 243, 242),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'CardCambio'),

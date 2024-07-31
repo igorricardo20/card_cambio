@@ -24,7 +24,7 @@ class BankCard extends StatelessWidget {
           height: 150,
           child: Card(
             clipBehavior: Clip.hardEdge,
-            color: Colors.white,
+            color: Color.fromARGB(255, 250, 243, 242),
             child: _getCardBody(logo, name, value, color)
           ),
         ),
