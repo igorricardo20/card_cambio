@@ -41,25 +41,21 @@ class BankCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            child: Animate(
-              effects: [FadeEffect()],
-              delay: Duration(milliseconds: 300),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
-                        Text(name),
-                        Text('R\$ $value', style: TextStyle(fontSize: 20, color: color))
-                      ]
-                    )
-                  ),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
+                      Text(name),
+                      Text('R\$ $value', style: TextStyle(fontSize: 20, color: color))
+                    ]
+                  )
+                ),
+              ],
             ),
           ),
         ]
