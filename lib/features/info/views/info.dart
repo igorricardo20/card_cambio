@@ -51,6 +51,8 @@ class Info extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(height: 30),
+                    Text('Central Brank', style: TextStyle(fontSize: 20)),
                   ],
                 ),
               ]

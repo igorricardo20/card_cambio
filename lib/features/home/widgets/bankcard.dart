@@ -1,5 +1,6 @@
 import 'package:card_cambio/features/home/widgets/trophy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class BankCard extends StatelessWidget {
   const BankCard({super.key, required this.value, required this.name, required this.logo, required this.color, this.trophyPosition=''});
@@ -40,21 +41,25 @@ class BankCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
-                      Text(name),
-                      Text('R\$ $value', style: TextStyle(fontSize: 20, color: color))
-                    ]
-                  )
-                ),
-              ],
+            child: Animate(
+              effects: [FadeEffect()],
+              delay: Duration(milliseconds: 300),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
+                        Text(name),
+                        Text('R\$ $value', style: TextStyle(fontSize: 20, color: color))
+                      ]
+                    )
+                  ),
+                ],
+              ),
             ),
           ),
         ]

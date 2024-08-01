@@ -1,6 +1,7 @@
 import 'package:card_cambio/features/home/widgets/bankcard.dart';
 import 'package:card_cambio/features/home/widgets/mainchart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 
 class Dashboard extends StatelessWidget {
@@ -13,6 +14,14 @@ class Dashboard extends StatelessWidget {
     const Color bronze = Color.fromARGB(255, 121, 60, 60);
 
     final bool isSmallScreen = MediaQuery.sizeOf(context).height < 800;
+
+    final bankCards = [
+      BankCard(value: 5, name: 'bankName', logo: 'nubank_logo.png', color: gold, trophyPosition: '1st'),
+      BankCard(value: 6, name: 'bankName', logo: 'itau_logo.png', color: silver, trophyPosition: '2nd'),
+      BankCard(value: 7, name: 'bankName', logo: 'btg_logo.png', color: bronze, trophyPosition: '3rd'),
+      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
+      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
+    ];
     
     return Padding(
       padding: const EdgeInsets.all(25.0),
@@ -35,17 +44,9 @@ class Dashboard extends StatelessWidget {
               SizedBox(
                 height: 170,
                 child: ListView(
+                  cacheExtent: 1000,
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    BankCard(value: 5, name: 'bankName', logo: 'nubank_logo.png', color: gold, trophyPosition: '1st'),
-                    BankCard(value: 6, name: 'bankName', logo: 'itau_logo.png', color: silver, trophyPosition: '2nd'),
-                    BankCard(value: 7, name: 'bankName', logo: 'btg_logo.png', color: bronze, trophyPosition: '3rd'),
-                    BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-                    BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-                    BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-                    BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-                    BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-                  ]
+                  children: _getAnimatedCards(bankCards)
                 ),
               ),
               SizedBox(height: 50),
@@ -70,5 +71,26 @@ class Dashboard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> _getAnimatedCards(List<BankCard> bankCards) {
+    return [
+      for (int i = 0; i < bankCards.length; i++)
+        Animate(
+          effects: [
+            SlideEffect(
+              begin: Offset(1, 0),
+              end: Offset(0, 0),
+              duration: Duration(milliseconds: 220),
+              delay: Duration(milliseconds: i * 120),
+            ),
+            FadeEffect(
+              duration: Duration(milliseconds: 220),
+              delay: Duration(milliseconds: i * 120),
+            )
+          ],
+          child: bankCards[i]
+      ),
+    ];
   }
 }
