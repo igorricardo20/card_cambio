@@ -23,14 +23,13 @@ jobs:
         run: | 
           flutter config --enable-web
           flutter pub get
-          flutter build web --release
+          flutter build web --web-renderer canvaskit --release
         working-directory: ./
 
       # Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          args: --only hosting
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARD_CAMBIO }}
           channelId: live
