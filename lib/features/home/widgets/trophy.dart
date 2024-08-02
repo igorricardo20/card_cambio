@@ -8,15 +8,17 @@ class Trophy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isTransparent = color == Colors.transparent;
+
     return Padding(
-      padding: const EdgeInsets.only(left: 11),
+      padding: EdgeInsets.only(left: isTransparent ? 0 : 11.0),
       child: Row(
         children: [
           Align(
             alignment: Alignment.bottomCenter,
             child: Icon(Icons.emoji_events, size: 20, color: color)
           ),
-          Text(text, style: TextStyle(fontSize: 14, color: color)),
+          Text(text, style: TextStyle(fontSize: 14, color: isTransparent ? Colors.grey[700] : color)),
         ],
       ),
     );

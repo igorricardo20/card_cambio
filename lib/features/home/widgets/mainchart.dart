@@ -12,7 +12,7 @@ class MainChart extends StatelessWidget {
 
     return LineChart(
       LineChartData(
-        // gridData: FlGridData(show: false),
+        gridData: FlGridData(show: false),
         titlesData: FlTitlesData(
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -29,10 +29,6 @@ class MainChart extends StatelessWidget {
               FlSpot(0, 1),
               FlSpot(1, 2),
               FlSpot(2, 1.5),
-              FlSpot(3, 3),
-              FlSpot(4, 2),
-              FlSpot(5, 2.5),
-              FlSpot(6, 2.0),
             ],
             isCurved: true,
             barWidth: 5,
@@ -44,11 +40,7 @@ class MainChart extends StatelessWidget {
             spots: [
               FlSpot(0, 2),
               FlSpot(1, 3),
-              FlSpot(2, 1.5),
-              FlSpot(3, 3),
-              FlSpot(4, 1),
-              FlSpot(5, 2),
-              FlSpot(6, 1),
+              FlSpot(2, 2),
             ],
             isCurved: true,
             barWidth: 5,

@@ -9,7 +9,7 @@ class Historical extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1200),
+          constraints: BoxConstraints(maxWidth: 1000),
           child: ListView(
             children: [
               Padding(
@@ -18,7 +18,7 @@ class Historical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Historical', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                    Text('Historical data text', style: TextStyle(fontSize: 20)),
+                    Text('Credit card usage rates over time')
                   ],
                 ),
               ),

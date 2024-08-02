@@ -9,7 +9,7 @@ class About extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1200),
+          constraints: BoxConstraints(maxWidth: 1000),
           child: Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: ListView(
@@ -18,16 +18,14 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('About Us', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                    Text('Text', style: TextStyle(fontSize: 20)),
+                    Text('Meet the engineer'),
                   ],
                 ),
                 SizedBox(height: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('More Text', style: TextStyle(fontSize: 20)),
-                    Text('Text 1'),
-                    Text('Text 2'),
+                    Text('Igor Alves', style: TextStyle(fontSize: 20)),
                   ],
                 ),
               ]

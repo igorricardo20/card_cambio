@@ -1,32 +1,36 @@
 import 'package:card_cambio/features/home/widgets/trophy.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 
 class BankCard extends StatelessWidget {
-  const BankCard({super.key, required this.value, required this.name, required this.logo, required this.color, this.trophyPosition=''});
+  const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.type='bank'});
 
   final double value;
   final String name;
   final String logo;
   final Color color;
   final String trophyPosition;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
     bool hasTrohpy = trophyPosition.isNotEmpty;
+    bool isBank = type == 'bank';
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         hasTrohpy ? Trophy(text: trophyPosition, color: color) : Container(),
-        SizedBox(
-          width: 150,
-          height: 150,
-          child: Card(
-            clipBehavior: Clip.hardEdge,
-            color: Color.fromARGB(255, 250, 243, 242),
-            child: _getCardBody(logo, name, value, color)
+        Padding(
+          padding: const EdgeInsets.only(right: 2.0),
+          child: SizedBox(
+            width: 150,
+            height: 150,
+            child: Card(
+              clipBehavior: Clip.hardEdge,
+              color: Color.fromARGB(255, 250, 243, 242),
+              child: isBank ? _getCardBody(logo, name, value, color) : _getSeeMoreBanks()
+            ),
           ),
         ),
       ],
@@ -61,5 +65,19 @@ class BankCard extends StatelessWidget {
         ]
       ),
     );
+  }
+
+  InkWell _getSeeMoreBanks() {
+  return InkWell(
+    splashColor: Colors.blue.withAlpha(30),
+    onTap: () {},
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text('See more', style: TextStyle(fontSize: 16, color: Colors.grey[700])),
+      ],
+    ),
+  );
   }
 }

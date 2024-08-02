@@ -19,15 +19,16 @@ class Dashboard extends StatelessWidget {
       BankCard(value: 5, name: 'bankName', logo: 'nubank_logo.png', color: gold, trophyPosition: '1st'),
       BankCard(value: 6, name: 'bankName', logo: 'itau_logo.png', color: silver, trophyPosition: '2nd'),
       BankCard(value: 7, name: 'bankName', logo: 'btg_logo.png', color: bronze, trophyPosition: '3rd'),
-      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
-      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.black),
+      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.transparent, trophyPosition: '4th'),
+      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.transparent, trophyPosition: '5th'),
+      BankCard(type:'more'),
     ];
     
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1200),
+          constraints: BoxConstraints(maxWidth: 1000),
           child: ListView(
             children: [
               Padding(
@@ -36,7 +37,7 @@ class Dashboard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Ranking', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                    Text('Credit card usage', style: TextStyle(fontSize: 20)),
+                    Text('Credit card usage rates by bank'),
                   ],
                 ),
               ),
@@ -45,6 +46,7 @@ class Dashboard extends StatelessWidget {
                 height: 170,
                 child: ListView(
                   cacheExtent: 1000,
+                  physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   children: _getAnimatedCards(bankCards)
                 ),
@@ -64,7 +66,7 @@ class Dashboard extends StatelessWidget {
                 padding: EdgeInsets.only(left: 12.0),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 1200, maxHeight: isSmallScreen ? 200 : 320),
-                  child: MainChart(primaryColor: Color.fromARGB(255, 131, 3, 210), secondaryColor: Colors.orange)),
+                  child: MainChart(primaryColor: Colors.orange, secondaryColor: Color.fromARGB(255, 131, 3, 210))),
               ),
             ],
           ),
