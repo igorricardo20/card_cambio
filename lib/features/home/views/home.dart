@@ -45,6 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             color: Colors.grey[50],
             child: SafeArea(
+              top: false,
+              bottom: false,
+              right: false,
               child: NavigationRail(
                 onDestinationSelected: changeDestination,
                 destinations: [
@@ -83,30 +86,40 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
       )
       : Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(child: page),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+        body: Container(
+          color: Colors.white,
+          child: SafeArea(
+            top: false,
+            bottom: false,
+            right: false,
+            child: page
+          ),
+        ),
+        bottomNavigationBar: NavigationBar(
+          onDestinationSelected: changeDestination,
+          destinations: [
+            NavigationDestination(
               icon: Icon(CupertinoIcons.square_grid_2x2),
+              selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
               label: 'Dashboard',
             ),
-            BottomNavigationBarItem(
+            NavigationDestination(
               icon: Icon(CupertinoIcons.clock),
+              selectedIcon: Icon(CupertinoIcons.clock_fill),
               label: 'Historical',
             ),
-            BottomNavigationBarItem(
+            NavigationDestination(
               icon: Icon(CupertinoIcons.cube),
+              selectedIcon: Icon(CupertinoIcons.cube_fill),
               label: 'Open Data',
             ),
-            BottomNavigationBarItem(
+            NavigationDestination(
               icon: Icon(CupertinoIcons.person_2),
+              selectedIcon: Icon(CupertinoIcons.person_2_fill),
               label: 'About Us',
             ),
           ],
-          currentIndex: _selectedIndex,
-          onTap: changeDestination,
+          selectedIndex: _selectedIndex,
         ),
       ),
     );
