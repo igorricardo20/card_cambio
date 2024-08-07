@@ -33,17 +33,33 @@
         "destination": "/index.html"
       }
     ],
-    "headers": [ {
-      "source": "**",
-      "headers": [{
-        "key": "Access-Control-Allow-Origin",
-        "value": "*"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "max-age=300"
-        }
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }
+        ]
+      }
+    ]
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
       ]
-    } ]
-  }
+    }
+  ]
 }
