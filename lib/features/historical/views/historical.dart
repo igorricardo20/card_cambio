@@ -2,6 +2,7 @@ import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:card_cambio/features/home/service/exchangerateservice.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Historical extends StatefulWidget {
   const Historical({super.key});
@@ -46,7 +47,18 @@ class _HistoricalState extends State<Historical> {
                   future: futureRates,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[50]!,
+                        highlightColor: Colors.grey[200]!,
+                        child: PaginatedDataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(label: Text('Column 1')),
+                          DataColumn(label: Text('Column 2')),
+                          DataColumn(label: Text('Column 3')),
+                        ],
+                        source: _DataTableSourceLoading(),
+                      ),
+                      );
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     } else if (!snapshot.hasData) {
@@ -69,6 +81,26 @@ class _HistoricalState extends State<Historical> {
       ),
     );
   }
+}
+
+class _DataTableSourceLoading extends DataTableSource {
+  @override
+  DataRow getRow(int index) {
+    return DataRow(cells: [
+      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
+      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
+      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
+    ]);
+  }
+
+  @override
+  bool get isRowCountApproximate => true;
+
+  @override
+  int get rowCount => 10;
+
+  @override
+  int get selectedRowCount => 0;
 }
 
 class RateDataSource extends DataTableSource {

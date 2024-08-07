@@ -14,6 +14,17 @@ const functions = require('firebase-functions');
 const axios = require('axios');
 
 exports.proxyRequest = functions.https.onRequest((req, res) => {
+    // Set CORS headers for preflight requests
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, POST');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+  
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+      res.status(204).send('');
+      return;
+    }
+  
     const url = req.query.url || req.body.url;
   
     if (!url) {
@@ -23,7 +34,6 @@ exports.proxyRequest = functions.https.onRequest((req, res) => {
   
     axios.get(url)
       .then(response => {
-        res.set('Access-Control-Allow-Origin', '*');
         res.json(response.data);
       })
       .catch(error => {
