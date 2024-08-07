@@ -15,7 +15,9 @@ class Rate {
     return Rate(
       taxaTipoGasto: json['taxaTipoGasto'],
       taxaData: json['taxaData'],
-      taxaConversao: json['taxaConversao'],
+      taxaConversao: json['taxaConversao'] is String
+          ? double.parse(json['taxaConversao'])
+          : json['taxaConversao'].toDouble(),
       taxaDivulgacaoDataHora: json['taxaDivulgacaoDataHora'],
     );
   }

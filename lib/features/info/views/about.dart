@@ -11,7 +11,7 @@ class About extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 1000),
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: 1.0),
             child: ListView(
               children: [
                 Column(

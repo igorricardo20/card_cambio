@@ -13,17 +13,54 @@ class ExchangeRateService {
   };
 
   Future<ExchangeRateData> fetchExchangeRates() async {
+    return fetchExchangeRatesForBank('nubank');
+  }
+
+  Future<ExchangeRateData> fetchExchangeRatesForBank(String? value) async {
+    final String bankHost = _getHost(value);
+
     final Uri uri = Uri.https(baseUrl, endpoint, {
-      'url': 'https://dadosabertos.nubank.com.br/taxasCartoes/itens'
+      'url': 'https://${bankHost}'
     });
 
     final response = await http.get(uri, headers: headers);
 
     if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      return ExchangeRateData.fromJson(data);
+      return handleResponse(response.body);
     } else {
       throw Exception('Failed to load exchange rates');
     }
+  }
+}
+
+ExchangeRateData handleResponse(String responseBody) {
+  final dynamic decodedJson = json.decode(responseBody);
+
+  if (decodedJson is List) {
+    // Handle the JSON structure with 'itens'
+    final List<dynamic> dataList = decodedJson;
+    final Map<String, dynamic> firstItem = dataList[0];
+    return ExchangeRateData.fromJson(firstItem);
+  } else if (decodedJson is Map<String, dynamic>) {
+    // Handle the flat JSON structure
+    final Map<String, dynamic> data = decodedJson;
+    return ExchangeRateData.fromJson(data);
+  } else {
+    throw Exception('Unexpected JSON structure');
+  }
+}
+
+String _getHost(String? value) {
+  switch (value) {
+    case 'nubank':
+      return 'dadosabertos.nubank.com.br/taxasCartoes/itens';
+    case 'itau':
+      return 'api.itau.com.br/dadosabertos/taxasCartoes/taxas/itens';
+    case 'bradesco':
+      return 'openapi.bradesco.com.br/bradesco/dadosabertos';
+    case 'c6':
+      return 'dadosabertos-p.c6bank.info/cartao/taxasCartoes/itens';
+    default:
+      return 'dadosabertos.nubank.com.br';
   }
 }

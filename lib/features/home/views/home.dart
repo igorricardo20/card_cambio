@@ -97,6 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: changeDestination,
+          // backgroundColor: Color.fromARGB(255, 250, 243, 242),
+          backgroundColor: Colors.grey[50],
+          indicatorShape: ShapeBorder.lerp(CircleBorder(), CircleBorder(), 1),
+          animationDuration: const Duration(milliseconds: 800),
+          height: 60,
           destinations: [
             NavigationDestination(
               icon: Icon(CupertinoIcons.square_grid_2x2),

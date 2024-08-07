@@ -20,6 +20,12 @@ class _HistoricalState extends State<Historical> {
     futureRates = ExchangeRateService().fetchExchangeRates().then((data) => data.historicoTaxas);
   }
 
+  void fetchExchangeRatesForBank(String? value) {
+    setState(() {
+      futureRates = ExchangeRateService().fetchExchangeRatesForBank(value).then((data) => data.historicoTaxas);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,19 +36,58 @@ class _HistoricalState extends State<Historical> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 1.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Historical', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                     Text('Credit card usage rates over time'),
                     SizedBox(height: 20),
+                    SizedBox(
+                      width: 150,
+                      height: 50,
+                      child: Row(
+                        children: [
+                          Card(
+                            elevation: 0,
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 16.0, bottom: 10),
+                                child: DropdownMenu<String>(
+                                  width: 124,
+                                  initialSelection: 'nubank',
+                                  textStyle: TextStyle(color: Colors.black, fontSize: 15),
+                                  inputDecorationTheme: InputDecorationTheme(
+                                    border: InputBorder.none,
+                                    filled: false,
+                                    constraints: BoxConstraints(maxHeight: 35),
+                                  ),
+                                  menuStyle: MenuStyle(
+                                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                                  ),
+                                  dropdownMenuEntries: [
+                                    DropdownMenuEntry(value: 'nubank', label: 'NuBank'),
+                                    DropdownMenuEntry(value: 'itau', label: 'Itaú'),
+                                    DropdownMenuEntry(value: 'c6', label: 'C6 Bank'),
+                                    // DropdownMenuEntry(value: 'bradesco', label: 'Bradesco'),
+                                    // DropdownMenuEntry(value: 'btg', label: 'BTG'),
+                                  ],
+                                  onSelected: (value) {
+                                    fetchExchangeRatesForBank(value);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0),
+                padding: const EdgeInsets.only(left: 1.0),
                 child: FutureBuilder<List<Rate>>(
                   future: futureRates,
                   builder: (context, snapshot) {
