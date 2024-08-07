@@ -1,7 +1,23 @@
+import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:card_cambio/features/home/service/exchangerateservice.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class Historical extends StatelessWidget {
+class Historical extends StatefulWidget {
   const Historical({super.key});
+
+  @override
+  State<Historical> createState() => _HistoricalState();
+}
+
+class _HistoricalState extends State<Historical> {
+  late Future<List<Rate>> futureRates;
+
+  @override
+  void initState() {
+    super.initState();
+    futureRates = ExchangeRateService().fetchExchangeRates().then((data) => data.historicoTaxas);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,86 +34,66 @@ class Historical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Historical', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                    Text('Credit card usage rates over time')
+                    Text('Credit card usage rates over time'),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
-                child: DataTable(
-                  columns: const <DataColumn>[
-                    DataColumn(label: Text('Date')),
-                    DataColumn(label: Text('Value')),
-                  ],
-                  rows: const <DataRow>[
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/01/2021')),
-                        DataCell(Text('R\$ 100')),
+                child: FutureBuilder<List<Rate>>(
+                  future: futureRates,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    } else if (!snapshot.hasData) {
+                      return Center(child: Text('No data available'));
+                    }
+                    return PaginatedDataTable(
+                      columns: const <DataColumn>[
+                        DataColumn(label: Text('Date')),
+                        DataColumn(label: Text('Rate')),
                       ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/02/2021')),
-                        DataCell(Text('R\$ 200')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/03/2021')),
-                        DataCell(Text('R\$ 300')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/04/2021')),
-                        DataCell(Text('R\$ 400')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/05/2021')),
-                        DataCell(Text('R\$ 500')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/06/2021')),
-                        DataCell(Text('R\$ 600')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/07/2021')),
-                        DataCell(Text('R\$ 700')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/08/2021')),
-                        DataCell(Text('R\$ 800')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/09/2021')),
-                        DataCell(Text('R\$ 900')),
-                      ],
-                    ),
-                    DataRow(
-                      cells: <DataCell>[
-                        DataCell(Text('01/10/2021')),
-                        DataCell(Text('R\$ 1000')),
-                      ],
-                    ),
-                  ],
+                      source: RateDataSource(snapshot.data!),
+                      rowsPerPage: 30,
+                    );
+                  },
                 )
               ),
-            ]
-          )
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+class RateDataSource extends DataTableSource {
+  RateDataSource(this.rates);
+  final List<Rate> rates;
+  final DateFormat formatter = DateFormat('dd/MM/yyyy');
+
+
+  @override
+  DataRow getRow(int index) {
+    final rate = rates[index];
+    final formattedDate = formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora));
+
+    return DataRow(cells: [
+      DataCell(Text(formattedDate)),
+      DataCell(Text('R\$ ${rate.taxaConversao.toStringAsFixed(4)}')),
+    ]);
+  }
+
+  @override
+  bool get isRowCountApproximate => false;
+
+  @override
+  int get rowCount => rates.length;
+
+  @override
+  int get selectedRowCount => 0;
 }

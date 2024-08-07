@@ -16,10 +16,11 @@ class MainChart extends StatelessWidget {
         titlesData: FlTitlesData(
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
         borderData: FlBorderData(show: true, border: Border(
           bottom: BorderSide(color: Colors.grey, width: 1),
-          right: BorderSide(color: Colors.grey, width: 1),
+          right: BorderSide(color: Colors.transparent, width: 1),
           left: BorderSide(color: Colors.transparent, width: 1),
           top: BorderSide(color: Colors.transparent, width: 1),
         )),

@@ -57,7 +57,7 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Over time', style: TextStyle(fontSize: 20)),
+                    Text('Over time', style: TextStyle(fontSize: 18)),
                   ],
                 ),
               ),
