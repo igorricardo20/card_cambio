@@ -7,7 +7,6 @@ class ExchangeRateService {
 
   //add headers to the request
   final Map<String, String> headers = {
-      "Access-Control-Allow-Origin": "*",
       'Content-Type': 'application/json',
       'Accept': '*/*'
   };
