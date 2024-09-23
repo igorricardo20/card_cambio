@@ -63,7 +63,7 @@ class _HistoricalState extends State<Historical> {
                                     constraints: BoxConstraints(maxHeight: 35),
                                   ),
                                   menuStyle: MenuStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                                    backgroundColor: WidgetStateProperty.all(Colors.white),
                                   ),
                                   dropdownMenuEntries: [
                                     DropdownMenuEntry(value: 'nubank', label: 'NuBank'),

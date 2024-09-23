@@ -18,14 +18,13 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('About Us', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                    Text('Meet the engineer'),
                   ],
                 ),
                 SizedBox(height: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Igor Alves', style: TextStyle(fontSize: 20)),
+                    Text('Rockpeach', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
                   ],
                 ),
               ]

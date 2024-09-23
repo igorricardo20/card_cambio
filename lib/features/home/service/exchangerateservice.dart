@@ -20,7 +20,7 @@ class ExchangeRateService {
     final String bankHost = _getHost(value);
 
     final Uri uri = Uri.https(baseUrl, endpoint, {
-      'url': 'https://${bankHost}'
+      'url': 'https://$bankHost'
     });
 
     final response = await http.get(uri, headers: headers);
