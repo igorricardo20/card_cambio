@@ -1,5 +1,6 @@
 import 'package:card_cambio/features/home/model/rate.dart';
-import 'package:card_cambio/features/home/service/exchangerateservice.dart';
+import 'package:provider/provider.dart';
+import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
@@ -12,28 +13,19 @@ class Historical extends StatefulWidget {
 }
 
 class _HistoricalState extends State<Historical> {
-  late Future<List<Rate>> futureRates;
-
-  @override
-  void initState() {
-    super.initState();
-    futureRates = ExchangeRateService().fetchExchangeRates().then((data) => data.historicoTaxas);
-  }
-
-  void fetchExchangeRatesForBank(String? value) {
-    setState(() {
-      futureRates = ExchangeRateService().fetchExchangeRatesForBank(value).then((data) => data.historicoTaxas);
-    });
-  }
+  String? selectedBank = 'nubank';
 
   @override
   Widget build(BuildContext context) {
+    final rateProvider = Provider.of<RateProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 1000),
           child: ListView(
+            cacheExtent: 1000,
+            physics: BouncingScrollPhysics(),
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 1.0),
@@ -73,7 +65,9 @@ class _HistoricalState extends State<Historical> {
                                     // DropdownMenuEntry(value: 'btg', label: 'BTG'),
                                   ],
                                   onSelected: (value) {
-                                    fetchExchangeRatesForBank(value);
+                                    setState(() {
+                                      selectedBank = value;
+                                    });
                                   },
                                 ),
                               ),
@@ -88,37 +82,27 @@ class _HistoricalState extends State<Historical> {
               SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(left: 1.0),
-                child: FutureBuilder<List<Rate>>(
-                  future: futureRates,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Shimmer.fromColors(
+                child: rateProvider.hasData
+                    ? PaginatedDataTable(
+                        columns: const <DataColumn>[
+                          DataColumn(label: Text('Date')),
+                          DataColumn(label: Text('Rate')),
+                        ],
+                        source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
+                        rowsPerPage: 30,
+                      )
+                    : Shimmer.fromColors(
                         baseColor: Colors.grey[50]!,
                         highlightColor: Colors.grey[200]!,
                         child: PaginatedDataTable(
-                        columns: const <DataColumn>[
-                          DataColumn(label: Text('Column 1')),
-                          DataColumn(label: Text('Column 2')),
-                          DataColumn(label: Text('Column 3')),
-                        ],
-                        source: _DataTableSourceLoading(),
+                          columns: const <DataColumn>[
+                            DataColumn(label: Text('Column 1')),
+                            DataColumn(label: Text('Column 2')),
+                            DataColumn(label: Text('Column 3')),
+                          ],
+                          source: _DataTableSourceLoading(),
+                        ),
                       ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
-                    } else if (!snapshot.hasData) {
-                      return Center(child: Text('No data available'));
-                    }
-                    return PaginatedDataTable(
-                      columns: const <DataColumn>[
-                        DataColumn(label: Text('Date')),
-                        DataColumn(label: Text('Rate')),
-                      ],
-                      source: RateDataSource(snapshot.data!),
-                      rowsPerPage: 30,
-                    );
-                  },
-                )
               ),
             ],
           ),
@@ -149,18 +133,18 @@ class _DataTableSourceLoading extends DataTableSource {
 }
 
 class RateDataSource extends DataTableSource {
-  RateDataSource(this.rates);
   final List<Rate> rates;
+  
+  RateDataSource(this.rates);
+  
   final DateFormat formatter = DateFormat('dd/MM/yyyy');
 
-
   @override
-  DataRow getRow(int index) {
+  DataRow? getRow(int index) {
+    if (index >= rates.length) return null;
     final rate = rates[index];
-    final formattedDate = formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora));
-
     return DataRow(cells: [
-      DataCell(Text(formattedDate)),
+      DataCell(Text(formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora)))),
       DataCell(Text('R\$ ${rate.taxaConversao.toStringAsFixed(4)}')),
     ]);
   }
