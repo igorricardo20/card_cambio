@@ -22,7 +22,7 @@ class _HistoricalState extends State<Historical> {
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1000),
+          constraints: BoxConstraints(maxWidth: 913),
           child: ListView(
             cacheExtent: 1000,
             physics: BouncingScrollPhysics(),

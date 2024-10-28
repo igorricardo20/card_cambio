@@ -28,7 +28,7 @@ class Dashboard extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1000),
+          constraints: BoxConstraints(maxWidth: 913),
           child: ListView(
             children: [
               Padding(
@@ -61,7 +61,7 @@ class Dashboard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               Padding(
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
