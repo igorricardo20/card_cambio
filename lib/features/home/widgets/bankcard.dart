@@ -25,11 +25,12 @@ class BankCard extends StatelessWidget {
           padding: const EdgeInsets.only(right: 2.0),
           child: SizedBox(
             width: 150,
-            height: 150,
+            height: 120,
             child: Card(
               clipBehavior: Clip.hardEdge,
-              color: Color.fromARGB(255, 250, 243, 242),
-              child: isBank ? _getCardBody(logo, name, value, color) : _getSeeMoreBanks()
+              elevation: 0,
+              color: Colors.grey[100],
+              child: isBank ? _getCardBody(logo, name, value.toStringAsFixed(2), color) : _getSeeMoreBanks()
             ),
           ),
         ),
@@ -37,7 +38,7 @@ class BankCard extends StatelessWidget {
     );
   }
 
-  InkWell _getCardBody(String logo, String name, double value, Color color) {
+  InkWell _getCardBody(String logo, String name, String value, Color color) {
     return InkWell(
       splashColor: Colors.blue.withAlpha(30),
       onTap: () {},
@@ -53,9 +54,9 @@ class BankCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 80, child: Image.asset('assets/images/$logo', width: 80)),
-                      Text(name),
-                      Text('R\$ $value', style: TextStyle(fontSize: 20, color: color))
+                      SizedBox(height: 60, child: Image.asset('assets/images/$logo', width: 50)),
+                      // Text(name),
+                      Text('R\$ $value', style: TextStyle(fontSize: 18, color: color, fontWeight: FontWeight.bold)),
                     ]
                   )
                 ),

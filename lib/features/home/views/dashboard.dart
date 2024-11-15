@@ -2,6 +2,10 @@ import 'package:card_cambio/features/home/widgets/bankcard.dart';
 import 'package:card_cambio/features/home/widgets/mainchart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
+import 'package:card_cambio/providers/rate_provider.dart';
+import 'package:card_cambio/utils/rate_utils.dart';
+import 'package:card_cambio/features/home/model/rate.dart';
 
 
 class Dashboard extends StatelessWidget {
@@ -9,20 +13,16 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color gold =  Color.fromARGB(255, 255, 176, 7);
-    const Color silver =  Color.fromARGB(255, 85, 85, 85);
-    const Color bronze = Color.fromARGB(255, 121, 60, 60);
-
     final bool isSmallScreen = MediaQuery.sizeOf(context).height < 800;
 
-    final bankCards = [
-      BankCard(value: 5, name: 'bankName', logo: 'nubank_logo.png', color: gold, trophyPosition: '1st'),
-      BankCard(value: 6, name: 'bankName', logo: 'itau_logo.png', color: silver, trophyPosition: '2nd'),
-      BankCard(value: 7, name: 'bankName', logo: 'btg_logo.png', color: bronze, trophyPosition: '3rd'),
-      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.transparent, trophyPosition: '4th'),
-      BankCard(value: 7.5, name: 'bankName', logo: 'btg_logo.png', color: Colors.transparent, trophyPosition: '5th'),
-      BankCard(type:'more'),
-    ];
+    final rates = Provider.of<RateProvider>(context).rates;
+    final recentRates = getRecentRates(rates);
+    final rateList = sortRatesByValue(recentRates);
+
+    // Assign positions based on the sorted order
+    final bankCards = _getBankCards(rateList);
+
+    // bankCards.add(BankCard(type: 'more'));
     
     return Padding(
       padding: const EdgeInsets.all(25.0),
@@ -36,12 +36,11 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Ranking', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('Ranking', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                     Text('Credit card usage rates by bank'),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
               SizedBox(
                 height: 170,
                 child: ListView(
@@ -57,7 +56,7 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Over time', style: TextStyle(fontSize: 18)),
+                    Text('Over time', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -94,5 +93,51 @@ class Dashboard extends StatelessWidget {
           child: bankCards[i]
       ),
     ];
+  }
+
+  List<BankCard> _getBankCards(List<MapEntry<String, Rate>> rateList) {
+    final Map<String, String> bankLogos = {
+      'nubank': 'nubank_logo.png',
+      'itau': 'itau_logo.png',
+      'c6': 'c6_logo.png',
+    };
+
+    final Map<String, String> bankNames = {
+      'nubank': 'NuBank',
+      'itau': 'Itaú',
+      'c6': 'C6 Bank',
+    };
+
+    return rateList.asMap().entries.map((entry) {
+      final position = entry.key + 1;
+      final bankName = entry.value.key;
+      final rate = entry.value.value;
+
+      Color color;
+      String trophyPosition;
+
+      switch (position) {
+        case 1:
+          color = Color.fromARGB(255, 255, 176, 7);;
+          trophyPosition = '1st';
+        case 2:
+          color = Color.fromARGB(255, 85, 85, 85);
+          trophyPosition = '2nd';
+        case 3:
+          color = Color.fromARGB(255, 121, 60, 60);
+          trophyPosition = '3rd';
+        default:
+          color = Colors.transparent;
+          trophyPosition = '${position}th';
+      }
+
+      return BankCard(
+        value: rate.taxaConversao,
+        name: bankNames[bankName]!,
+        logo: bankLogos[bankName]!,
+        color: color,
+        trophyPosition: trophyPosition,
+      );
+    }).toList();
   }
 }

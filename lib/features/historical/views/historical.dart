@@ -32,7 +32,7 @@ class _HistoricalState extends State<Historical> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Historical', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('Historical', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                     Text('Credit card usage rates over time'),
                     SizedBox(height: 20),
                     SizedBox(

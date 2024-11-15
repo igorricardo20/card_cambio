@@ -11,8 +11,9 @@ class MainChart extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Card(
-      clipBehavior: Clip.antiAlias,
-        color: Color(0xFFFCFCFC),
+      clipBehavior: Clip.hardEdge,
+      color: Colors.grey[100],
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.only(left: 32, right: 32, top: 32, bottom: 16),
         child: LineChart(

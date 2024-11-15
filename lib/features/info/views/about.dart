@@ -17,7 +17,7 @@ class About extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('About Us', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('About Us', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                   ],
                 ),
                 SizedBox(height: 20),

@@ -19,7 +19,7 @@ class Info extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Open Data', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('Open Data', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                     SizedBox(height: 20),
                     Text('Definition', style: TextStyle(fontSize: 20)),
                     SizedBox(height: 10),
