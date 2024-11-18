@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:shimmer/shimmer.dart';
+
 
 
 class Dashboard extends StatelessWidget {
@@ -13,23 +15,33 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isSmallScreen = MediaQuery.sizeOf(context).height < 800;
 
-    final rates = Provider.of<RateProvider>(context).rates;
-    final recentRates = getRecentRates(rates);
-    final rateList = sortRatesByValue(recentRates);
+    final provider = Provider.of<RateProvider>(context);
+    final rates = provider.rates;
 
-    // Assign positions based on the sorted order
-    final bankCards = _getBankCards(rateList);
-
-    // bankCards.add(BankCard(type: 'more'));
-    
     return Padding(
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 913),
-          child: ListView(
+          child: provider.hasFetchedEverything
+              ? _getMainListView(rates, context)
+              : _buildShimmer(),
+        ),
+      ),
+    );
+  }
+
+  ListView _getMainListView(Map<String, List<Rate>> rates, BuildContext context) {
+    final bool isSmallScreen = MediaQuery.sizeOf(context).height < 800;
+
+    final recentRates = getRecentRates(rates);
+    final rateList = sortRatesByValue(recentRates);
+
+    // Assign positions based on the sorted order
+    final bankCards = _getBankCards(rateList);
+    
+    return ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 1),
@@ -65,13 +77,11 @@ class Dashboard extends StatelessWidget {
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 1200, maxHeight: isSmallScreen ? 200 : 320),
-                  child: MainChart(primaryColor: Colors.orange, secondaryColor: Color.fromARGB(255, 131, 3, 210))),
+                  child: MainChart(rateList: rateList),
+                ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
+          );
   }
 
   List<Widget> _getAnimatedCards(List<BankCard> bankCards) {
@@ -140,4 +150,49 @@ class Dashboard extends StatelessWidget {
       );
     }).toList();
   }
+
+  Widget _buildShimmer() {
+  return Shimmer.fromColors(
+    baseColor: Colors.grey[300]!,
+    highlightColor: Colors.grey[100]!,
+    child: ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 150,
+                height: 30,
+                color: Colors.white,
+              ),
+              SizedBox(height: 10),
+              Container(
+                width: 250,
+                height: 20,
+                color: Colors.white,
+              ),
+              SizedBox(height: 20),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Container(
+                      height: 150.0,
+                      color: Colors.white,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
 }

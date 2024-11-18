@@ -54,9 +54,9 @@ class BankCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 60, child: Image.asset('assets/images/$logo', width: 50)),
-                      // Text(name),
-                      Text('R\$ $value', style: TextStyle(fontSize: 18, color: color, fontWeight: FontWeight.bold)),
+                      SizedBox(height: 60, child: Image.asset('assets/images/$logo', width: 40)),
+                      SizedBox(height: 10),
+                      Text('R\$ $value', style: TextStyle(fontSize: 16, color: color, fontWeight: FontWeight.bold)),
                     ]
                   )
                 ),

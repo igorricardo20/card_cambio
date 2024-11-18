@@ -7,14 +7,19 @@ class RateProvider with ChangeNotifier {
 
   Map<String, List<Rate>> get rates => _rates;
 
+  List<String> get banks => ['nubank', 'itau', 'c6'];
+
   Future<void> fetchAllRates() async {
-    final banks = ['nubank', 'itau', 'c6'];
-    for (var bank in banks) {
+    final futures = banks.map((bank) async {
       final data = await ExchangeRateService().fetchExchangeRatesForBank(bank);
       _rates[bank] = data.historicoTaxas;
-      notifyListeners();
-    }
+    }).toList();
+
+    await Future.wait(futures);
+    notifyListeners();
   }
 
   bool get hasData => _rates.isNotEmpty;
+
+  bool get hasFetchedEverything => _rates.length == banks.length;
 }
