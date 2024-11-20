@@ -52,9 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 onDestinationSelected: changeDestination,
                 destinations: [
                   NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.square_grid_2x2),
-                    selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
-                    label: Text('Dashboard'),
+                    icon: Icon(CupertinoIcons.house),
+                    selectedIcon: Icon(CupertinoIcons.house_fill),
+                    label: Text('Home'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.clock),
@@ -104,9 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 60,
           destinations: [
             NavigationDestination(
-              icon: Icon(CupertinoIcons.square_grid_2x2),
-              selectedIcon: Icon(CupertinoIcons.square_grid_2x2_fill),
-              label: 'Dashboard',
+              icon: Icon(CupertinoIcons.house),
+              selectedIcon: Icon(CupertinoIcons.house_fill),
+              label: 'Home',
             ),
             NavigationDestination(
               icon: Icon(CupertinoIcons.clock),

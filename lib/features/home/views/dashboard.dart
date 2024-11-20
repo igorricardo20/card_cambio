@@ -76,7 +76,7 @@ class Dashboard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: isSmallScreen ? 200 : 320),
+                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: isSmallScreen ? 280 : 380),
                   child: MainChart(rates: rates),
                 ),
               ),
