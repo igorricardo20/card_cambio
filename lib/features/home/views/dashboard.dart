@@ -78,6 +78,7 @@ class Dashboard extends StatelessWidget {
                   child: MainChart(rates: rates),
                 ),
               ),
+              SizedBox(height: 20),
             ],
           );
   }
