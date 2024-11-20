@@ -75,8 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 selectedIndex: _selectedIndex,
                 labelType: NavigationRailLabelType.all,
                 elevation: 5,
-                backgroundColor: BottomNavigationBarTheme.of(context).backgroundColor,
-                indicatorColor: Colors.transparent,
+                backgroundColor: Colors.grey[50],
+                indicatorColor: Colors.amber[100],
                 )
             ),
           ),
@@ -97,8 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: changeDestination,
-          // backgroundColor: Color.fromARGB(255, 250, 243, 242),
           backgroundColor: Colors.grey[50],
+          indicatorColor: Colors.amber[200],
           indicatorShape: ShapeBorder.lerp(CircleBorder(), CircleBorder(), 1),
           animationDuration: const Duration(milliseconds: 800),
           height: 60,

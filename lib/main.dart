@@ -25,9 +25,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'CardCambio',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
-          primaryColorLight: Color.fromARGB(255, 250, 243, 242),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
           useMaterial3: true,
+          dataTableTheme: DataTableThemeData(
+            // headingRowColor: WidgetStateProperty.all(Colors.grey[100]),
+            dataRowColor: WidgetStateProperty.all(Colors.grey[100]),
+          ),
         ),
         home: const MyHomePage(title: 'CardCambio'),
       ),

@@ -19,7 +19,7 @@ class _HistoricalState extends State<Historical> {
   Widget build(BuildContext context) {
     final rateProvider = Provider.of<RateProvider>(context);
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 913),
@@ -41,6 +41,7 @@ class _HistoricalState extends State<Historical> {
                       child: Row(
                         children: [
                           Card(
+                            color: Colors.grey[100],
                             elevation: 0,
                             child: Center(
                               child: Padding(
@@ -48,7 +49,7 @@ class _HistoricalState extends State<Historical> {
                                 child: DropdownMenu<String>(
                                   width: 124,
                                   initialSelection: 'nubank',
-                                  textStyle: TextStyle(color: Colors.black, fontSize: 15),
+                                  textStyle: TextStyle(color: Colors.black, fontSize: 13),
                                   inputDecorationTheme: InputDecorationTheme(
                                     border: InputBorder.none,
                                     filled: false,
@@ -85,11 +86,11 @@ class _HistoricalState extends State<Historical> {
                 child: rateProvider.hasData
                     ? PaginatedDataTable(
                         columns: const <DataColumn>[
-                          DataColumn(label: Text('Date')),
+                          DataColumn(label: Text('Date',)),
                           DataColumn(label: Text('Rate')),
                         ],
                         source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
-                        rowsPerPage: 30,
+                        rowsPerPage: 11,
                       )
                     : Shimmer.fromColors(
                         baseColor: Colors.grey[50]!,
@@ -143,10 +144,35 @@ class RateDataSource extends DataTableSource {
   DataRow? getRow(int index) {
     if (index >= rates.length) return null;
     final rate = rates[index];
-    return DataRow(cells: [
-      DataCell(Text(formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora)))),
-      DataCell(Text('R\$ ${rate.taxaConversao.toStringAsFixed(4)}')),
-    ]);
+
+    return DataRow(
+      cells: [
+        DataCell(
+          AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) {
+              return ScaleTransition(scale: animation, child: child);
+            },
+            child: Text(
+              formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora)),
+              key: ValueKey('date_${rate.taxaDivulgacaoDataHora}'),
+            ),
+          ),
+        ),
+        DataCell(
+          AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) {
+              return ScaleTransition(scale: animation, child: child);
+            },
+            child: Text(
+              'R\$ ${rate.taxaConversao.toStringAsFixed(4)}',
+              key: ValueKey('rate_${rate.taxaDivulgacaoDataHora}_${rate.taxaConversao}'),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   @override

@@ -25,7 +25,7 @@ class BankCard extends StatelessWidget {
           padding: const EdgeInsets.only(right: 2.0),
           child: SizedBox(
             width: 150,
-            height: 120,
+            height: 100,
             child: Card(
               clipBehavior: Clip.hardEdge,
               elevation: 0,
@@ -54,9 +54,9 @@ class BankCard extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 60, child: Image.asset('assets/images/$logo', width: 40)),
+                      SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
                       SizedBox(height: 10),
-                      Text('R\$ $value', style: TextStyle(fontSize: 16, color: color, fontWeight: FontWeight.bold)),
+                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
                     ]
                   )
                 ),

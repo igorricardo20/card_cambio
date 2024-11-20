@@ -33,8 +33,6 @@ class Dashboard extends StatelessWidget {
   }
 
   ListView _getMainListView(Map<String, List<Rate>> rates, BuildContext context) {
-    final bool isSmallScreen = MediaQuery.sizeOf(context).height < 800;
-
     final recentRates = getRecentRates(rates);
     final rateList = sortRatesByValue(recentRates);
 
@@ -54,7 +52,7 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 170,
+                height: 140,
                 child: ListView(
                   cacheExtent: 1000,
                   physics: BouncingScrollPhysics(),
@@ -62,13 +60,13 @@ class Dashboard extends StatelessWidget {
                   children: _getAnimatedCards(bankCards)
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               Padding(
-                padding: const EdgeInsets.only(left: 1.0),
+                padding: const EdgeInsets.only(left: 6.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Over time', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text('Over time', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -76,7 +74,7 @@ class Dashboard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: isSmallScreen ? 280 : 380),
+                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: 408),
                   child: MainChart(rates: rates),
                 ),
               ),
