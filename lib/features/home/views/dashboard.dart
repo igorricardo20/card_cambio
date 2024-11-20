@@ -20,7 +20,7 @@ class Dashboard extends StatelessWidget {
     final rates = provider.rates;
 
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 913),
