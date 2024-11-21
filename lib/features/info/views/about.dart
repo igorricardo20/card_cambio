@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -70,10 +72,14 @@ class About extends StatelessWidget {
                         fontStyle: FontStyle.italic, 
                         foreground: Paint()..shader = LinearGradient(colors: [Colors.blue, Colors.redAccent]).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0))),
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      'https://www.rockpeach.io/',
-                      style: TextStyle(fontSize: 16, color: Colors.blue),
+                    SizedBox(height: 5),
+                    RichText(
+                      text: TextSpan(
+                            text: 'Visit our Website',
+                            style: TextStyle(color: Colors.blue, fontSize: 14),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => launchUrlString('https://www.rockpeach.io/'),
+                          ),
                     ),
                     SizedBox(height: 5),
                   ],
