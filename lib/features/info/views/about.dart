@@ -24,8 +24,7 @@ class About extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       'This app is a showcase of what we do best: building fast, reliable, and visually stunning software. '
-                      'Designed to highlight our capabilities, it serves as an example of the quality and creativity we bring to every project. '
-                      'From seamless functionality to polished design, this app demonstrates how we turn ideas into impactful digital experiences.',
+                      'It serves as an example of the quality and creativity we bring to every project and how we turn ideas into impactful digital experiences.',
                       style: TextStyle(fontSize: 16, height: 1.5),
                     ),
                   ],
