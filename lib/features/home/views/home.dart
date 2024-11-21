@@ -94,7 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
             top: false,
             bottom: false,
             right: false,
-            child: page
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              child: page
+              ),
           ),
         ),
         bottomNavigationBar: NavigationBar(

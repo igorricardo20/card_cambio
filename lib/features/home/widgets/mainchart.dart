@@ -67,9 +67,8 @@ class MainChartState extends State<MainChart> {
               ),
               primaryYAxis: NumericAxis(
                 isVisible: true,
-                // labelFormat: '\${value}',
                 numberFormat: NumberFormat.currency(
-                  symbol: '\$', // Add your currency symbol
+                  symbol: 'R\$ ', // Add your currency symbol
                   decimalDigits: 2, // Always show 2 decimal places
                 ),
                 majorGridLines: const MajorGridLines(color: Colors.grey, width: 0.5),
