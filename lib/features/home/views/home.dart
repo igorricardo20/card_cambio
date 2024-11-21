@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               right: false,
               child: NavigationRail(
                 onDestinationSelected: changeDestination,
+                groupAlignment: -0.95,
                 destinations: [
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.house),
@@ -74,7 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ], 
                 selectedIndex: _selectedIndex,
                 labelType: NavigationRailLabelType.all,
-                elevation: 5,
+                elevation: 1,
+                minWidth: 200,
                 backgroundColor: Colors.grey[50],
                 indicatorColor: Colors.amber[100],
                 )

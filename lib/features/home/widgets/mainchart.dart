@@ -45,9 +45,11 @@ class MainChartState extends State<MainChart> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _buildToggleButton('8 days', 8),
+              _buildToggleButton('1 week', 8),
               const SizedBox(width: 8),
-              _buildToggleButton('16 days', 16),
+              _buildToggleButton('2 weeks', 16),
+              const SizedBox(width: 8),
+              _buildToggleButton('Max.', 60),
             ],
           ),
         ),
@@ -149,8 +151,13 @@ class MainChartState extends State<MainChart> {
         yValueMapper: (ChartData data, _) => data.y,
         color: seriesColor,
         width: 2,
+        enableTooltip: true,
         animationDuration: showAnimation ? 1000 : 0,
-        markerSettings: const MarkerSettings(isVisible: true),
+        markerSettings: MarkerSettings(
+          isVisible: selectedDays > 0 && selectedDays <= 8,
+          color: seriesColor,
+        ),
+        // markerSettings: const MarkerSettings(isVisible: true),
         dataLabelSettings: const DataLabelSettings(isVisible: false),
       );
     }).toList();

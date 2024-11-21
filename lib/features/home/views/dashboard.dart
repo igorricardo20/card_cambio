@@ -23,7 +23,7 @@ class Dashboard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 913),
+          constraints: BoxConstraints(maxWidth: 600),
           child: provider.hasFetchedEverything
               ? _getMainListView(rates, context)
               : _buildShimmer(),
