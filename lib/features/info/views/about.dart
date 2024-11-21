@@ -49,9 +49,9 @@ class About extends StatelessWidget {
                           ),
                           TextSpan(
                             text: ', we believe technology is more than just code – it’s about crafting experiences that connect people and businesses. '
-                                'We are a software house dedicated to developing agile, reliable, and visually compelling solutions tailored to our clients’ unique needs.\n\n'
+                                'We are a software house dedicated to developing super fast, reliable, and visually compelling solutions to our clients.\n\n'
                                 'We quickly turn concepts into products that drive success. Our mission is to simplify complexity while delivering applications with impeccable design.\n\n'
-                                'Trust us to transform challenges into opportunities and ideas into reality.',
+                                'Get in touch! We’d love to hear from you and discuss your goals.',
                           ),
                         ],
                       ),
@@ -76,10 +76,6 @@ class About extends StatelessWidget {
                       style: TextStyle(fontSize: 16, color: Colors.blue),
                     ),
                     SizedBox(height: 5),
-                    Text(
-                      'Utrecht, Netherlands',
-                      style: TextStyle(fontSize: 16),
-                    ),
                   ],
                 ),
               ],
