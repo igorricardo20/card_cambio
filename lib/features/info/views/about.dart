@@ -56,7 +56,7 @@ class About extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 30),
                     // Text(
                     //   'Rockpeach',
                     //   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, fontStyle: FontStyle.italic),
