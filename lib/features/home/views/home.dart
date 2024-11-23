@@ -102,8 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: changeDestination,
-          backgroundColor: Colors.grey[50],
-          indicatorColor: Colors.amber[200],
+          // backgroundColor: Colors.grey[50],
+          backgroundColor: Colors.white,
+          indicatorColor: Colors.transparent,
+          shadowColor: Colors.grey[50],
           indicatorShape: ShapeBorder.lerp(CircleBorder(), CircleBorder(), 1),
           animationDuration: const Duration(milliseconds: 800),
           height: 60,

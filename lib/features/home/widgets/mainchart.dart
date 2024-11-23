@@ -29,7 +29,7 @@ class MainChartState extends State<MainChart> {
     Future.delayed(const Duration(milliseconds: 1000), () {
       setState(() {
         showAnimation = false;
-      });
+      }); 
     });
   }
 
@@ -106,8 +106,8 @@ class MainChartState extends State<MainChart> {
         label,
         style: TextStyle(
           fontSize: 13,
-          color: Colors.black,
-          fontWeight: FontWeight.w500, // Medium weight for better readability
+          color: isSelected ? Colors.grey[800] : Colors.grey[500],
+          fontWeight: FontWeight.w700, // Medium weight for better readability
         ),
       ),
     ),

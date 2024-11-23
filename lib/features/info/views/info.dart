@@ -11,7 +11,7 @@ class Info extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 1000),
+          constraints: BoxConstraints(maxWidth: 600),
           child: Padding(
             padding: const EdgeInsets.only(left: 1.0),
             child: ListView(

@@ -56,7 +56,7 @@ class BankCard extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
                       SizedBox(height: 10),
-                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold)),
+                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.grey[800], fontWeight: FontWeight.w900)),
                     ]
                   )
                 ),

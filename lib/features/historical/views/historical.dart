@@ -1,6 +1,7 @@
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/rate_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
@@ -22,7 +23,7 @@ class _HistoricalState extends State<Historical> {
       padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 913),
+          constraints: BoxConstraints(maxWidth: 600),
           child: ListView(
             cacheExtent: 1000,
             physics: BouncingScrollPhysics(),
@@ -36,7 +37,7 @@ class _HistoricalState extends State<Historical> {
                     Text('Credit card usage rates over time'),
                     SizedBox(height: 20),
                     SizedBox(
-                      width: 150,
+                      width: 300,
                       height: 50,
                       child: Row(
                         children: [
@@ -74,6 +75,32 @@ class _HistoricalState extends State<Historical> {
                               ),
                             ),
                           ),
+                          SizedBox(width: 6),
+                          Card(
+                            elevation: 0,
+                            color: Colors.grey[100],
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(CupertinoIcons.calendar_today),
+                                    color: Colors.grey,
+                                    onPressed: () {
+                                      // Add your onPressed code here!
+                                    },
+                                  ),
+                                  IconButton(
+                                    isSelected: true,
+                                    icon: Icon(CupertinoIcons.square_list),
+                                    onPressed: () {
+                                      // Add your onPressed code here!
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -90,7 +117,7 @@ class _HistoricalState extends State<Historical> {
                           DataColumn(label: Text('Rate')),
                         ],
                         source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
-                        rowsPerPage: 11,
+                        rowsPerPage: 8,
                       )
                     : Shimmer.fromColors(
                         baseColor: Colors.grey[50]!,
