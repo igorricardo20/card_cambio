@@ -72,8 +72,21 @@ class MainChartState extends State<MainChart> {
                   decimalDigits: 2, // Always show 2 decimal places
                 ),
                 majorGridLines: const MajorGridLines(color: Colors.grey, width: 0.5),
-                interval: 0.05,
               ),
+              onActualRangeChanged: (ActualRangeChangedArgs args) {
+                if (args.orientation == AxisOrientation.vertical) {
+                  double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
+                  double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
+
+                  double range = max - min;
+                  if (range > 0) {
+                    // Decide how many steps you want
+                    // For example, 5 steps between min and max
+                    double interval = range / 5;
+                    args.visibleInterval = interval;
+                  }
+                }
+              },
               tooltipBehavior: TooltipBehavior(enable: true),
               legend: Legend(
                 isVisible: true,
@@ -92,9 +105,11 @@ class MainChartState extends State<MainChart> {
   final bool isSelected = selectedDays == days;
   return GestureDetector(
     onTap: () {
-      setState(() {
-        selectedDays = days;
-      });
+      if (!isSelected) {
+        setState(() {
+          selectedDays = days;
+        });
+      }
     },
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

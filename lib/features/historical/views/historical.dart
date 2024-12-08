@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:card_cambio/features/historical/widgets/calendarview.dart';
 
 class Historical extends StatefulWidget {
   const Historical({super.key});
@@ -15,6 +16,7 @@ class Historical extends StatefulWidget {
 
 class _HistoricalState extends State<Historical> {
   String? selectedBank = 'nubank';
+  bool showCalendar = true; // New state variable
 
   @override
   Widget build(BuildContext context) {
@@ -85,16 +87,20 @@ class _HistoricalState extends State<Historical> {
                                 children: [
                                   IconButton(
                                     icon: Icon(CupertinoIcons.calendar_today),
-                                    color: Colors.grey,
+                                    color: showCalendar ? Colors.blue : Colors.grey,
                                     onPressed: () {
-                                      // Add your onPressed code here!
+                                      setState(() {
+                                        showCalendar = true;
+                                      });
                                     },
                                   ),
                                   IconButton(
-                                    isSelected: true,
                                     icon: Icon(CupertinoIcons.square_list),
+                                    color: !showCalendar ? Colors.blue : Colors.grey,
                                     onPressed: () {
-                                      // Add your onPressed code here!
+                                      setState(() {
+                                        showCalendar = false;
+                                      });
                                     },
                                   ),
                                 ],
@@ -110,33 +116,55 @@ class _HistoricalState extends State<Historical> {
               SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(left: 1.0),
-                child: rateProvider.hasData
-                    ? PaginatedDataTable(
-                        columns: const <DataColumn>[
-                          DataColumn(label: Text('Date',)),
-                          DataColumn(label: Text('Rate')),
-                        ],
-                        source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
-                        rowsPerPage: 8,
+                child: showCalendar
+                    ? FutureBuilder<Widget>(
+                        future: _buildCalendar(rateProvider.rates[selectedBank!] ?? []),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return Shimmer.fromColors(
+                              baseColor: Colors.grey[50]!,
+                              highlightColor: Colors.grey[200]!,
+                              child: CalendarViewPlaceholder(),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else {
+                            return snapshot.data!;
+                          }
+                        },
                       )
-                    : Shimmer.fromColors(
-                        baseColor: Colors.grey[50]!,
-                        highlightColor: Colors.grey[200]!,
-                        child: PaginatedDataTable(
-                          columns: const <DataColumn>[
-                            DataColumn(label: Text('Column 1')),
-                            DataColumn(label: Text('Column 2')),
-                            DataColumn(label: Text('Column 3')),
-                          ],
-                          source: _DataTableSourceLoading(),
-                        ),
-                      ),
+                    : rateProvider.hasData
+                        ? PaginatedDataTable(
+                            columns: const <DataColumn>[
+                              DataColumn(label: Text('Date')),
+                              DataColumn(label: Text('Rate')),
+                            ],
+                            source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
+                            rowsPerPage: 8,
+                          )
+                        : Shimmer.fromColors(
+                            baseColor: Colors.grey[50]!,
+                            highlightColor: Colors.grey[200]!,
+                            child: PaginatedDataTable(
+                              columns: const <DataColumn>[
+                                DataColumn(label: Text('Column 1')),
+                                DataColumn(label: Text('Column 2')),
+                                DataColumn(label: Text('Column 3')),
+                              ],
+                              source: _DataTableSourceLoading(),
+                            ),
+                          ),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<Widget> _buildCalendar(List<Rate> rates) async {
+    await Future.delayed(Duration(milliseconds: 250)); // Simulate delay
+    return CalendarView(rates);
   }
 }
 

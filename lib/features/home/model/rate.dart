@@ -11,6 +11,15 @@ class Rate {
     required this.taxaDivulgacaoDataHora,
   });
 
+  factory Rate.blank() {
+    return Rate(
+      taxaTipoGasto: '',
+      taxaData: '',
+      taxaConversao: 0.0,
+      taxaDivulgacaoDataHora: '',
+    );
+  }
+
   factory Rate.fromJson(Map<String, dynamic> json) {
     return Rate(
       taxaTipoGasto: json['taxaTipoGasto'],

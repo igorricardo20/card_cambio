@@ -56,7 +56,7 @@ class BankCard extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
                       SizedBox(height: 10),
-                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.grey[800], fontWeight: FontWeight.w900)),
+                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.grey[800], fontWeight: FontWeight.w700)),
                     ]
                   )
                 ),
@@ -76,7 +76,9 @@ class BankCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Text('See more', style: TextStyle(fontSize: 16, color: Colors.grey[700])),
+        // Text('See more', style: TextStyle(fontSize: 16, color: Colors.grey[700])),
+        Text('more banks', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
+        Text('soon', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
       ],
     ),
   );

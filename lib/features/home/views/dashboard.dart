@@ -38,6 +38,10 @@ class Dashboard extends StatelessWidget {
 
     // Assign positions based on the sorted order
     final bankCards = _getBankCards(rateList);
+
+    bankCards.add(BankCard(
+      type: 'more banks soon',
+    ));
     
     return ListView(
             children: [
