@@ -65,8 +65,6 @@ class _HistoricalState extends State<Historical> {
                                     DropdownMenuEntry(value: 'nubank', label: 'NuBank'),
                                     DropdownMenuEntry(value: 'itau', label: 'Itaú'),
                                     DropdownMenuEntry(value: 'c6', label: 'C6 Bank'),
-                                    // DropdownMenuEntry(value: 'bradesco', label: 'Bradesco'),
-                                    // DropdownMenuEntry(value: 'btg', label: 'BTG'),
                                   ],
                                   onSelected: (value) {
                                     setState(() {

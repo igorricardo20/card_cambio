@@ -51,3 +51,6 @@ node_modules
 amplify_outputs*
 amplifyconfiguration*
 node_modules
+
+# Ignore npm debug logs
+npm-debug.log
