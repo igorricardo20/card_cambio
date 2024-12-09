@@ -28,7 +28,7 @@ class Info extends StatelessWidget {
                       SizedBox(height: 20),
                       Text('Definition', style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      Text('Open data in Brazil helps promote transparency and innovation by making government data freely available to the public. The government and various institutions provide a wide range of datasets across different areas.')
+                      Text('Open data in Brazil helps promoting transparency and innovation by making government data freely available to the public. The government and various institutions provide a wide range of datasets across different areas.')
                     ],
                   ),
                   SizedBox(height: 20),

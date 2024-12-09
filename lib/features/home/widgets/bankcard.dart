@@ -78,7 +78,7 @@ class BankCard extends StatelessWidget {
       children: <Widget>[
         // Text('See more', style: TextStyle(fontSize: 16, color: Colors.grey[700])),
         Text('more banks', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
-        Text('soon', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
+        Text('coming soon', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
       ],
     ),
   );
