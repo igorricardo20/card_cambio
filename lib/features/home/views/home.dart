@@ -1,7 +1,6 @@
 import 'package:card_cambio/features/historical/views/historical.dart';
 import 'package:card_cambio/features/home/views/dashboard.dart';
-import 'package:card_cambio/features/info/views/about.dart';
-import 'package:card_cambio/features/info/views/info.dart';
+import 'package:card_cambio/features/settings/views/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,10 +25,12 @@ class _MyHomePageState extends State<MyHomePage> {
         page = Dashboard();
       case 1:
         page = Historical();
-      case 2:
-        page = Info();
-      case 3:
-        page = About();
+      case 2: 
+        page = Settings();
+      // case 2:
+      //   page = Info();
+      // case 3:
+      //   page = About();
       default:
         throw UnimplementedError('Invalid index');
     }
@@ -63,14 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     label: Text('Historical'),
                   ),
                   NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.cube),
-                    selectedIcon: Icon(CupertinoIcons.cube_fill),
-                    label: Text('Open Data'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.person_2),
-                    selectedIcon: Icon(CupertinoIcons.person_2_fill),
-                    label: Text('About Us'),
+                    icon: Icon(CupertinoIcons.settings),
+                    selectedIcon: Icon(CupertinoIcons.settings_solid),
+                    label: Text('Settings'),
                   ),
                 ], 
                 selectedIndex: _selectedIndex,
@@ -121,14 +117,9 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Historical',
             ),
             NavigationDestination(
-              icon: Icon(CupertinoIcons.cube),
-              selectedIcon: Icon(CupertinoIcons.cube_fill),
-              label: 'Open Data',
-            ),
-            NavigationDestination(
-              icon: Icon(CupertinoIcons.person_2),
-              selectedIcon: Icon(CupertinoIcons.person_2_fill),
-              label: 'About Us',
+              icon: Icon(CupertinoIcons.settings),
+              selectedIcon: Icon(CupertinoIcons.settings_solid),
+              label: 'Settings',
             ),
           ],
           selectedIndex: _selectedIndex,
