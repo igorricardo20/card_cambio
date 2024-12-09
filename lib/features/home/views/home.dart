@@ -1,8 +1,10 @@
 import 'package:card_cambio/features/historical/views/historical.dart';
 import 'package:card_cambio/features/home/views/dashboard.dart';
 import 'package:card_cambio/features/settings/views/settings.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -27,18 +29,16 @@ class _MyHomePageState extends State<MyHomePage> {
         page = Historical();
       case 2: 
         page = Settings();
-      // case 2:
-      //   page = Info();
-      // case 3:
-      //   page = About();
       default:
         throw UnimplementedError('Invalid index');
     }
 
     final isWideScreen = MediaQuery.sizeOf(context).width > 600;
+    
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: isWideScreen 
         ? Row(
         mainAxisSize: MainAxisSize.max,
@@ -98,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: changeDestination,
-          // backgroundColor: Colors.grey[50],
           backgroundColor: Colors.white,
           indicatorColor: Colors.transparent,
           shadowColor: Colors.grey[50],

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'providers/rate_provider.dart';
+import 'providers/theme_provider.dart';
 import 'features/home/views/home.dart';
 
 void main() async {
@@ -21,18 +22,16 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RateProvider()..fetchAllRates()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()), // Add ThemeProvider
       ],
-      child: MaterialApp(
-        title: 'CardCambio',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-          useMaterial3: true,
-          dataTableTheme: DataTableThemeData(
-            // headingRowColor: WidgetStateProperty.all(Colors.grey[100]),
-            dataRowColor: WidgetStateProperty.all(Colors.grey[100]),
-          ),
-        ),
-        home: const MyHomePage(title: 'CardCambio'),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'CardCambio',
+            theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+            home: const MyHomePage(title: 'CardCambio'),
+          );
+        },
       ),
     );
   }

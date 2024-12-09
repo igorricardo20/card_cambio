@@ -2,6 +2,8 @@ import 'package:card_cambio/features/info/views/about.dart';
 import 'package:card_cambio/features/info/views/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -31,8 +33,10 @@ class Settings extends StatelessWidget {
                     ListTile(
                       title: Text('Dark mode'),
                       trailing: CupertinoSwitch(
-                        value: false,
-                        onChanged: (value) {},
+                        value: context.watch<ThemeProvider>().isDarkMode,
+                        onChanged: (value) {
+                          context.read<ThemeProvider>().toggleTheme();
+                        },
                       ),
                     ),
                     Divider(height: 1, color: Colors.grey[300]),
