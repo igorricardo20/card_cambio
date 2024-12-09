@@ -1,4 +1,5 @@
 import 'package:card_cambio/features/info/views/about.dart';
+import 'package:card_cambio/features/info/views/info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class Settings extends StatelessWidget {
                   children: [
                     ListTile(
                       title: Text('Dark mode'),
-                      trailing: Switch(
+                      trailing: CupertinoSwitch(
                         value: false,
                         onChanged: (value) {},
                       ),
@@ -37,7 +38,7 @@ class Settings extends StatelessWidget {
                     Divider(height: 1, color: Colors.grey[300]),
                     ListTile(
                       title: Text('Language'),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      trailing: Icon(CupertinoIcons.forward),
                     ),
                   ],
                 ),
@@ -50,7 +51,7 @@ class Settings extends StatelessWidget {
                   children: [
                     ListTile(
                       title: Text('About'),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -60,13 +61,14 @@ class Settings extends StatelessWidget {
                     ),
                     Divider(height: 1, color: Colors.grey[300]),
                     ListTile(
-                      title: Text('Privacy Policy'),
-                      trailing: Icon(Icons.arrow_forward_ios),
-                    ),
-                    Divider(height: 1, color: Colors.grey[300]),
-                    ListTile(
-                      title: Text('Terms of Service'),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      title: Text('Open Data'),
+                      trailing: Icon(CupertinoIcons.forward),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Info()),
+                        );
+                      },
                     ),
                   ],
                 ),

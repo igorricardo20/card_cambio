@@ -117,8 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Historical',
             ),
             NavigationDestination(
-              icon: Icon(CupertinoIcons.settings),
-              selectedIcon: Icon(CupertinoIcons.settings_solid),
+              icon: Icon(CupertinoIcons.gear_alt),
+              selectedIcon: Icon(CupertinoIcons.gear_alt_fill),
               label: 'Settings',
             ),
           ],
