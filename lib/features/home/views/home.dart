@@ -35,16 +35,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final isWideScreen = MediaQuery.sizeOf(context).width > 600;
     
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
 
     return Scaffold(
-      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: isWideScreen 
         ? Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            color: Colors.grey[50],
+            color: Theme.of(context).scaffoldBackgroundColor,
             child: SafeArea(
               top: false,
               bottom: false,
@@ -73,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelType: NavigationRailLabelType.all,
                 elevation: 1,
                 minWidth: 200,
-                backgroundColor: Colors.grey[50],
-                indicatorColor: Colors.amber[100],
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                indicatorColor: isDarkMode ? Colors.green : Colors.lightGreen[200],
                 )
             ),
           ),
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       )
       : Scaffold(
         body: Container(
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: SafeArea(
             top: false,
             bottom: false,
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: changeDestination,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           indicatorColor: Colors.transparent,
           shadowColor: Colors.grey[50],
           indicatorShape: ShapeBorder.lerp(CircleBorder(), CircleBorder(), 1),

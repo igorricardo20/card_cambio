@@ -9,9 +9,9 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
         child: Center(
@@ -26,7 +26,7 @@ class About extends StatelessWidget {
                     children: [
                       Text(
                         'About This App',
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       SizedBox(height: 10),
                       Text(
@@ -42,7 +42,7 @@ class About extends StatelessWidget {
                     children: [
                       Text(
                         'About Us',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       SizedBox(height: 10),
                       Text.rich(

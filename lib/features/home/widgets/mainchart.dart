@@ -55,7 +55,7 @@ class MainChartState extends State<MainChart> {
         ),
         Card(
           clipBehavior: Clip.hardEdge,
-          color: Colors.grey[100],
+          color: Theme.of(context).cardColor,
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
@@ -71,7 +71,7 @@ class MainChartState extends State<MainChart> {
                   symbol: 'R\$ ', // Add your currency symbol
                   decimalDigits: 2, // Always show 2 decimal places
                 ),
-                majorGridLines: const MajorGridLines(color: Colors.grey, width: 0.5),
+                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.5),
               ),
               onActualRangeChanged: (ActualRangeChangedArgs args) {
                 if (args.orientation == AxisOrientation.vertical) {
@@ -114,7 +114,7 @@ class MainChartState extends State<MainChart> {
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.amber[100] : Colors.grey[100],
+        color: isSelected ? Theme.of(context).primaryColorLight : Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

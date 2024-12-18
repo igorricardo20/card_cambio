@@ -7,6 +7,7 @@ import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 
 
 
@@ -18,6 +19,7 @@ class Dashboard extends StatelessWidget {
 
     final provider = Provider.of<RateProvider>(context);
     final rates = provider.rates;
+    final shimmerColors = Theme.of(context).extension<ShimmerColors>()!;
 
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
@@ -26,7 +28,7 @@ class Dashboard extends StatelessWidget {
           constraints: BoxConstraints(maxWidth: 600),
           child: provider.hasFetchedEverything
               ? _getMainListView(rates, context)
-              : _buildShimmer(),
+              : _buildShimmer(shimmerColors),
         ),
       ),
     );
@@ -35,9 +37,10 @@ class Dashboard extends StatelessWidget {
   ListView _getMainListView(Map<String, List<Rate>> rates, BuildContext context) {
     final recentRates = getRecentRates(rates);
     final rateList = sortRatesByValue(recentRates);
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
 
     // Assign positions based on the sorted order
-    final bankCards = _getBankCards(rateList);
+    final bankCards = _getBankCards(rateList, isDark);
 
     bankCards.add(BankCard(
       type: 'more banks soon',
@@ -50,8 +53,8 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Ranking', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-                    Text('Credit card usage rates by bank'),
+                    Text('Ranking', style: Theme.of(context).textTheme.headlineSmall),
+                    Text('Credit card usage rates by bank', style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
               ),
@@ -70,7 +73,7 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Over time', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    Text('Over time', style: Theme.of(context).textTheme.titleSmall),
                   ],
                 ),
               ),
@@ -108,7 +111,7 @@ class Dashboard extends StatelessWidget {
     ];
   }
 
-  List<BankCard> _getBankCards(List<MapEntry<String, Rate>> rateList) {
+  List<BankCard> _getBankCards(List<MapEntry<String, Rate>> rateList, bool isDark) {
     final Map<String, String> bankLogos = {
       'nubank': 'nubank_logo.png',
       'itau': 'itau_logo.png',
@@ -131,13 +134,19 @@ class Dashboard extends StatelessWidget {
 
       switch (position) {
         case 1:
-          color = Color.fromARGB(255, 255, 176, 7);;
+          color = isDark
+              ? Color.fromARGB(255, 255, 215, 0)
+              : Color.fromARGB(255, 255, 176, 7);
           trophyPosition = '1st';
         case 2:
-          color = Color.fromARGB(255, 85, 85, 85);
+          color = isDark
+              ? Color.fromARGB(255, 169, 169, 169)
+              : Color.fromARGB(255, 85, 85, 85);
           trophyPosition = '2nd';
         case 3:
-          color = Color.fromARGB(255, 121, 60, 60);
+          color = isDark
+              ? Color.fromARGB(255, 205, 127, 50)
+              : Color.fromARGB(255, 121, 60, 60);
           trophyPosition = '3rd';
         default:
           color = Colors.transparent;
@@ -154,10 +163,10 @@ class Dashboard extends StatelessWidget {
     }).toList();
   }
 
-  Widget _buildShimmer() {
+  Widget _buildShimmer(ShimmerColors shimmerColors) {
   return Shimmer.fromColors(
-    baseColor: Colors.grey[300]!,
-    highlightColor: Colors.grey[100]!,
+    baseColor: shimmerColors.baseColor,
+    highlightColor: shimmerColors.highlightColor,
     child: ListView(
       children: [
         Padding(

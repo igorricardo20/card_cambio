@@ -9,9 +9,9 @@ class Info extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
         child: Center(
@@ -24,9 +24,9 @@ class Info extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Open Data', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                      Text('Open Data', style: Theme.of(context).textTheme.headlineSmall),
                       SizedBox(height: 20),
-                      Text('Definition', style: TextStyle(fontSize: 20)),
+                      Text('Definition', style: Theme.of(context).textTheme.titleSmall),
                       SizedBox(height: 10),
                       Text('Open data in Brazil helps promoting transparency and innovation by making government data freely available to the public. The government and various institutions provide a wide range of datasets across different areas.')
                     ],

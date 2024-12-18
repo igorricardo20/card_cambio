@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeProvider, child) {
           return MaterialApp(
             title: 'CardCambio',
-            theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+            theme: themeProvider.themeData,
             home: const MyHomePage(title: 'CardCambio'),
           );
         },

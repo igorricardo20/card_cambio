@@ -1,4 +1,5 @@
 import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +22,9 @@ class _HistoricalState extends State<Historical> {
   @override
   Widget build(BuildContext context) {
     final rateProvider = Provider.of<RateProvider>(context);
+    final shimmerColors = Theme.of(context).extension<ShimmerColors>()!;
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+
     return Padding(
       padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
       child: Center(
@@ -44,7 +48,7 @@ class _HistoricalState extends State<Historical> {
                       child: Row(
                         children: [
                           Card(
-                            color: Colors.grey[100],
+                            color: Theme.of(context).cardColor,
                             elevation: 0,
                             child: Center(
                               child: Padding(
@@ -52,14 +56,14 @@ class _HistoricalState extends State<Historical> {
                                 child: DropdownMenu<String>(
                                   width: 124,
                                   initialSelection: 'nubank',
-                                  textStyle: TextStyle(color: Colors.black, fontSize: 13),
+                                  textStyle: TextStyle(color: isDark ? Colors.white : Colors.black, fontSize: 13),
                                   inputDecorationTheme: InputDecorationTheme(
                                     border: InputBorder.none,
                                     filled: false,
                                     constraints: BoxConstraints(maxHeight: 35),
                                   ),
                                   menuStyle: MenuStyle(
-                                    backgroundColor: WidgetStateProperty.all(Colors.white),
+                                    backgroundColor: WidgetStateProperty.all(isDark ? Colors.black : Colors.white),
                                   ),
                                   dropdownMenuEntries: [
                                     DropdownMenuEntry(value: 'nubank', label: 'NuBank'),
@@ -78,14 +82,14 @@ class _HistoricalState extends State<Historical> {
                           SizedBox(width: 6),
                           Card(
                             elevation: 0,
-                            color: Colors.grey[100],
+                            color: Theme.of(context).cardColor,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                               child: Row(
                                 children: [
                                   IconButton(
                                     icon: Icon(CupertinoIcons.calendar_today),
-                                    color: showCalendar ? Colors.blue : Colors.grey,
+                                    color: showCalendar ? Theme.of(context).primaryColor : Colors.grey,
                                     onPressed: () {
                                       setState(() {
                                         showCalendar = true;
@@ -94,7 +98,7 @@ class _HistoricalState extends State<Historical> {
                                   ),
                                   IconButton(
                                     icon: Icon(CupertinoIcons.square_list),
-                                    color: !showCalendar ? Colors.blue : Colors.grey,
+                                    color: !showCalendar ? Theme.of(context).primaryColor : Colors.grey,
                                     onPressed: () {
                                       setState(() {
                                         showCalendar = false;
@@ -120,8 +124,8 @@ class _HistoricalState extends State<Historical> {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
                             return Shimmer.fromColors(
-                              baseColor: Colors.grey[50]!,
-                              highlightColor: Colors.grey[200]!,
+                              baseColor: shimmerColors.baseColor,
+                              highlightColor: shimmerColors.highlightColor,
                               child: CalendarViewPlaceholder(),
                             );
                           } else if (snapshot.hasError) {
@@ -141,8 +145,8 @@ class _HistoricalState extends State<Historical> {
                             rowsPerPage: 8,
                           )
                         : Shimmer.fromColors(
-                            baseColor: Colors.grey[50]!,
-                            highlightColor: Colors.grey[200]!,
+                            baseColor: shimmerColors.baseColor,
+                            highlightColor: shimmerColors.highlightColor,
                             child: PaginatedDataTable(
                               columns: const <DataColumn>[
                                 DataColumn(label: Text('Column 1')),

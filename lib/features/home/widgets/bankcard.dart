@@ -1,5 +1,7 @@
 import 'package:card_cambio/features/home/widgets/trophy.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BankCard extends StatelessWidget {
   const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.type='bank'});
@@ -29,8 +31,8 @@ class BankCard extends StatelessWidget {
             child: Card(
               clipBehavior: Clip.hardEdge,
               elevation: 0,
-              color: Colors.grey[100],
-              child: isBank ? _getCardBody(logo, name, value.toStringAsFixed(2), color) : _getSeeMoreBanks()
+              color: Theme.of(context).cardColor,
+              child: isBank ? _getCardBody(context, logo, name, value.toStringAsFixed(2), color) : _getSeeMoreBanks(context)
             ),
           ),
         ),
@@ -38,7 +40,7 @@ class BankCard extends StatelessWidget {
     );
   }
 
-  InkWell _getCardBody(String logo, String name, String value, Color color) {
+  InkWell _getCardBody(BuildContext context, String logo, String name, String value, Color color) {
     return InkWell(
       splashColor: Colors.blue.withAlpha(30),
       onTap: () {},
@@ -56,7 +58,7 @@ class BankCard extends StatelessWidget {
                     children: <Widget>[
                       SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
                       SizedBox(height: 10),
-                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Colors.grey[800], fontWeight: FontWeight.w700)),
+                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w700)),
                     ]
                   )
                 ),
@@ -68,19 +70,32 @@ class BankCard extends StatelessWidget {
     );
   }
 
-  InkWell _getSeeMoreBanks() {
-  return InkWell(
-    splashColor: Colors.blue.withAlpha(30),
-    onTap: () {},
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        // Text('See more', style: TextStyle(fontSize: 16, color: Colors.grey[700])),
-        Text('more banks', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
-        Text('coming soon', style: TextStyle(fontSize: 14, color: Colors.grey[700])),
-      ],
-    ),
-  );
+  InkWell _getSeeMoreBanks(BuildContext context) {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+    
+    return InkWell(
+      splashColor: Colors.blue.withAlpha(30),
+      onTap: () {},
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'more banks', 
+            style: TextStyle(
+              fontSize: 14, 
+              color: isDark ? Colors.white : Colors.grey[700]
+            )
+          ),
+          Text(
+            'coming soon', 
+            style: TextStyle(
+              fontSize: 14, 
+              color: isDark ? Colors.white : Colors.grey[700]
+            )
+          ),
+        ],
+      ),
+    );
   }
 }

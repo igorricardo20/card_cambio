@@ -1,6 +1,8 @@
 import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 // New CalendarView widget
@@ -11,6 +13,8 @@ class CalendarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+
     return TableCalendar(
       firstDay: DateTime.utc(2024, 1, 1),
       lastDay: DateTime.utc(2026, 12, 31),
@@ -33,7 +37,7 @@ class CalendarView extends StatelessWidget {
               ),
               Text(
                 rate.taxaConversao != 0.0 ? 'R\$ ${rate.taxaConversao.toStringAsFixed(2)}' : '',
-                style: TextStyle(color: Colors.black, fontSize: 11),
+                style: TextStyle(color: isDark ? Colors.white : Colors.black, fontSize: 11),
               ),
             ],
           );

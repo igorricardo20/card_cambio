@@ -26,7 +26,7 @@ class Settings extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Card(
-                color: Colors.grey[100],
+                color: Theme.of(context).cardColor,
                 elevation: 0,
                 child: Column(
                   children: [
@@ -39,7 +39,7 @@ class Settings extends StatelessWidget {
                         },
                       ),
                     ),
-                    Divider(height: 1, color: Colors.grey[300]),
+                    Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
                       title: Text('Language'),
                       trailing: Icon(CupertinoIcons.forward),
@@ -49,7 +49,7 @@ class Settings extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Card(
-                color: Colors.grey[100],
+                color: Theme.of(context).cardColor,
                 elevation: 0,
                 child: Column(
                   children: [
@@ -63,7 +63,7 @@ class Settings extends StatelessWidget {
                         );
                       },
                     ),
-                    Divider(height: 1, color: Colors.grey[300]),
+                    Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
                       title: Text('Open Data'),
                       trailing: Icon(CupertinoIcons.forward),
