@@ -68,8 +68,8 @@ class MainChartState extends State<MainChart> {
               primaryYAxis: NumericAxis(
                 isVisible: true,
                 numberFormat: NumberFormat.currency(
-                  symbol: 'R\$ ', // Add your currency symbol
-                  decimalDigits: 2, // Always show 2 decimal places
+                  symbol: 'R\$ ',
+                  decimalDigits: 2,
                 ),
                 majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.5),
               ),
