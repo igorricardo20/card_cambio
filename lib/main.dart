@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 import 'providers/rate_provider.dart';
 import 'providers/theme_provider.dart';
@@ -28,21 +29,19 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => RateProvider()..fetchAllRates()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => LocaleProvider()),
       ],
-      child: ChangeNotifierProvider(
-        create: (_) => LocaleProvider(),
-        child: Consumer2<ThemeProvider, LocaleProvider>(
-          builder: (context, themeProvider, localeProvider, child) {
-            return MaterialApp(
-              title: 'CartaoExpert',
-              theme: themeProvider.themeData,
-              home: const MyHomePage(title: 'CartaoExpert'),
-              localizationsDelegates: AppLocalizations.localizationsDelegates,
-              supportedLocales: AppLocalizations.supportedLocales,
-              locale: localeProvider.locale,
-            );
-          },
-        ),
+      child: Consumer2<ThemeProvider, LocaleProvider>(
+        builder: (context, themeProvider, localeProvider, child) {
+          return MaterialApp(
+            title: 'CartaoExpert',
+            theme: themeProvider.themeData,
+            home: const MyHomePage(title: 'CartaoExpert'),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: localeProvider.locale,
+          );
+        },
       ),
     );
   }
