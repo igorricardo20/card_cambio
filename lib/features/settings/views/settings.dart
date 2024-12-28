@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
+import 'package:card_cambio/features/settings/views/languages.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -20,7 +22,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Settings', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.settings, style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -31,7 +33,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text('Dark mode'),
+                      title: Text(AppLocalizations.of(context)!.dark_mode),
                       trailing: CupertinoSwitch(
                         value: context.watch<ThemeProvider>().isDarkMode,
                         onChanged: (value) {
@@ -41,8 +43,14 @@ class Settings extends StatelessWidget {
                     ),
                     Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
-                      title: Text('Language'),
+                      title: Text(AppLocalizations.of(context)!.language),
                       trailing: Icon(CupertinoIcons.forward),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Languages()),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -54,7 +62,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text('About'),
+                      title: Text(AppLocalizations.of(context)!.about),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(
@@ -65,7 +73,7 @@ class Settings extends StatelessWidget {
                     ),
                     Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
-                      title: Text('Open Data'),
+                      title: Text(AppLocalizations.of(context)!.open_data),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(

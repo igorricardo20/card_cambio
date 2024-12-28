@@ -1,4 +1,5 @@
 import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:card_cambio/providers/locale_provider.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,8 +15,10 @@ class CalendarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+    final locale = Provider.of<LocaleProvider>(context).locale.languageCode;
 
     return TableCalendar(
+      locale: locale,
       firstDay: DateTime.utc(2024, 1, 1),
       lastDay: DateTime.utc(2026, 12, 31),
       focusedDay: DateTime.now(),
@@ -51,7 +54,10 @@ class CalendarView extends StatelessWidget {
 class CalendarViewPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final locale = Provider.of<LocaleProvider>(context).locale.languageCode;
+
     return TableCalendar(
+      locale: locale,
       firstDay: DateTime.utc(2024, 1, 1),
       lastDay: DateTime.utc(2026, 12, 31),
       focusedDay: DateTime.now(),

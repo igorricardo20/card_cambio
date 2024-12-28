@@ -8,6 +8,7 @@ import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -53,7 +54,7 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Ranking', style: Theme.of(context).textTheme.headlineSmall),
+                    Text(AppLocalizations.of(context)!.ranking, style: Theme.of(context).textTheme.headlineSmall),
                     Text('Credit card usage rates by bank', style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),

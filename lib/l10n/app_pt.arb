@@ -1,0 +1,26 @@
+{
+  "ranking": "Ranking",
+  "@ranking": {
+    "description": "O ranking das instituições com base nas suas taxas de câmbio para cartões de crédito"
+  },
+  "title": "CartaoExpert",
+  "settings": "Configurações",
+  "dark_mode": "Modo escuro",
+  "language": "Idioma",
+  "about": "Sobre",
+  "open_data": "Dados abertos",
+  "languages": "Idiomas",
+  "english": "Inglês",
+  "spanish": "Espanhol",
+  "portuguese": "Português",
+  "dutch": "Holandês",
+  "historical": "Histórico",
+  "historical_data": "Dados Históricos",
+  "monday": "Segunda-feira",
+  "tuesday": "Terça-feira",
+  "wednesday": "Quarta-feira",
+  "thursday": "Quinta-feira",
+  "friday": "Sexta-feira",
+  "saturday": "Sábado",
+  "sunday": "Domingo"
+}

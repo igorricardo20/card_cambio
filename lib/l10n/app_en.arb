@@ -1,0 +1,26 @@
+{
+  "ranking": "Ranking",
+  "@ranking": {
+    "description": "The ranking of institutions based on their exchange rates for credit cards"
+  },
+  "title": "CartaoExpert",
+  "settings": "Settings",
+  "dark_mode": "Dark mode",
+  "language": "Language",
+  "about": "About",
+  "open_data": "Open Data",
+  "languages": "Languages",
+  "english": "English",
+  "spanish": "Spanish",
+  "portuguese": "Portuguese",
+  "dutch": "Dutch",
+  "historical": "Historical",
+  "historical_data": "Historical Data",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday"
+}

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/features/historical/widgets/calendarview.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Historical extends StatefulWidget {
   const Historical({super.key});
@@ -39,8 +40,8 @@ class _HistoricalState extends State<Historical> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Historical', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-                    Text('Credit card usage rates over time'),
+                    Text(AppLocalizations.of(context)!.historical, style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.historical_data),
                     SizedBox(height: 20),
                     SizedBox(
                       width: 300,

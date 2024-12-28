@@ -1,0 +1,19 @@
+{
+  "title": "CartaoExpert",
+  "settings": "Instellingen",
+  "dark_mode": "Donkere modus",
+  "language": "Taal",
+  "about": "Over",
+  "open_data": "Open Data",
+  "languages": "Talen",
+  "english": "Engels",
+  "spanish": "Spaans",
+  "portuguese": "Portugees",
+  "dutch": "Nederlands",
+  "ranking": "Ranglijst",
+  "historical": "Historisch",
+  "historical_data": "Historische Gegevens",
+  "@ranking": {
+    "description": "De ranglijst van instellingen op basis van hun wisselkoersen voor creditcards"
+  }
+}

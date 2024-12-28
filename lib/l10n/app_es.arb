@@ -1,0 +1,26 @@
+{
+  "ranking": "Clasificación",
+  "@ranking": {
+    "description": "La clasificación de las instituciones según sus tasas de cambio para tarjetas de crédito"
+  },
+  "title": "CartaoExpert",
+  "settings": "Configuraciones",
+  "dark_mode": "Modo oscuro",
+  "language": "Idioma",
+  "about": "Acerca de",
+  "open_data": "Datos abiertos",
+  "languages": "Idiomas",
+  "english": "Inglés",
+  "spanish": "Español",
+  "portuguese": "Portugués",
+  "dutch": "Holandés",
+  "historical": "Histórico",
+  "historical_data": "Datos Históricos",
+  "monday": "Lunes",
+  "tuesday": "Martes",
+  "wednesday": "Miércoles",
+  "thursday": "Jueves",
+  "friday": "Viernes",
+  "saturday": "Sábado",
+  "sunday": "Domingo"
+}
