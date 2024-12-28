@@ -4,6 +4,8 @@ import 'package:card_cambio/providers/locale_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Languages extends StatelessWidget {
+  final List<String> languageCodes = ['en', 'nl', 'es', 'pt'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,71 +34,7 @@ class Languages extends StatelessWidget {
                       color: Theme.of(context).cardColor,
                       elevation: 0,
                       child: Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              AppLocalizations.of(context)!.english,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: context.watch<LocaleProvider>().locale.languageCode == 'en'
-                                ? Icon(Icons.check, color: Theme.of(context).primaryColor)
-                                : null,
-                            onTap: () {
-                              Navigator.pop(context);
-                              context.read<LocaleProvider>().setLocale(Locale('en'));
-                            },
-                          ),
-                          Divider(height: 1, color: Theme.of(context).dividerColor),
-                          ListTile(
-                            title: Text(
-                              AppLocalizations.of(context)!.dutch,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: context.watch<LocaleProvider>().locale.languageCode == 'nl'
-                                ? Icon(Icons.check, color: Theme.of(context).primaryColor)
-                                : null,
-                            onTap: () {
-                              Navigator.pop(context);
-                              context.read<LocaleProvider>().setLocale(Locale('nl'));
-                            },
-                          ),
-                          Divider(height: 1, color: Theme.of(context).dividerColor),
-                          ListTile(
-                            title: Text(
-                              AppLocalizations.of(context)!.spanish,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: context.watch<LocaleProvider>().locale.languageCode == 'es'
-                                ? Icon(Icons.check, color: Theme.of(context).primaryColor)
-                                : null,
-                            onTap: () {
-                              Navigator.pop(context);
-                              context.read<LocaleProvider>().setLocale(Locale('es'));
-                            },
-                          ),
-                          Divider(height: 1, color: Theme.of(context).dividerColor),
-                          ListTile(
-                            title: Text(
-                              AppLocalizations.of(context)!.portuguese,
-                              style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            trailing: context.watch<LocaleProvider>().locale.languageCode == 'pt'
-                                ? Icon(Icons.check, color: Theme.of(context).primaryColor)
-                                : null,
-                            onTap: () {
-                              Navigator.pop(context);
-                              context.read<LocaleProvider>().setLocale(Locale('pt'));
-                            },
-                          ),
-                        ],
+                        children: languageCodes.map((code) => _buildLanguageTile(context, code)).toList(),
                       ),
                     ),
                   ],
@@ -107,5 +45,44 @@ class Languages extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildLanguageTile(BuildContext context, String code) {
+    bool isLast = languageCodes.last == code;
+    return Column(
+      children: [
+        ListTile(
+          title: Text(
+            _getLocalizedString(context, code),
+            style: TextStyle(
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          trailing: context.watch<LocaleProvider>().locale.languageCode == code
+              ? Icon(Icons.check, color: Theme.of(context).primaryColor)
+              : null,
+          onTap: () {
+            Navigator.pop(context);
+            context.read<LocaleProvider>().setLocale(Locale(code));
+          },
+        ),
+        if (!isLast) Divider(height: 1, color: Theme.of(context).dividerColor),
+      ],
+    );
+  }
+
+  String _getLocalizedString(BuildContext context, String code) {
+    switch (code) {
+      case 'en':
+        return AppLocalizations.of(context)!.english;
+      case 'nl':
+        return AppLocalizations.of(context)!.dutch;
+      case 'es':
+        return AppLocalizations.of(context)!.spanish;
+      case 'pt':
+        return AppLocalizations.of(context)!.portuguese;
+      default:
+        return '';
+    }
   }
 }
