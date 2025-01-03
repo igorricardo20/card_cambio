@@ -89,6 +89,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  dots_indicator:
+    dependency: "direct main"
+    description:
+      name: dots_indicator
+      sha256: "58b6a365744aa62aa1b70c4ea29e5106fbe064f5edaf7e9652e9b856edbfd9bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -309,6 +317,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  onboarding:
+    dependency: "direct main"
+    description:
+      name: onboarding
+      sha256: bda49643bea9cb05a5da79f3314a2042f454ca76a61235c35e8fa0b7d6ec56e8
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
   path:
     dependency: transitive
     description:

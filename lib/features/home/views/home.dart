@@ -1,12 +1,13 @@
 import 'package:card_cambio/features/historical/views/historical.dart';
 import 'package:card_cambio/features/home/views/dashboard.dart';
 import 'package:card_cambio/features/settings/views/settings.dart';
+import 'package:card_cambio/features/onboarding/views/onboarding.dart'; // Add this import
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:shared_preferences/shared_preferences.dart'; // Add this import
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -19,17 +20,46 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  bool _showOnboarding = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkFirstRun();
+  }
+
+  Future<void> _checkFirstRun() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstRun = prefs.getBool('isFirstRun') ?? true;
+    if (isFirstRun) {
+      setState(() {
+        _showOnboarding = true;
+      });
+      await prefs.setBool('isFirstRun', false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (_showOnboarding) {
+      return Onboarding(onFinish: () {
+        setState(() {
+          _showOnboarding = false;
+        });
+      });
+    }
+
     Widget page;
     switch (_selectedIndex) {
       case 0:
         page = Dashboard();
+        break; // Add break statements
       case 1:
         page = Historical();
+        break; // Add break statements
       case 2: 
         page = Settings();
+        break; // Add break statements
       default:
         throw UnimplementedError('Invalid index');
     }

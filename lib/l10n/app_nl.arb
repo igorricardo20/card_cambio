@@ -59,6 +59,26 @@
   "@credit_card_usage_rates": {
     "description": "Titel voor de sectie met creditcardgebruikstarieven per bank"
   },
+  "credit_card_usage_rates_description": "Leer meer over de verschillende tarieven die banken toepassen voor internationale aankopen met uw creditcard.",
+  "@credit_card_usage_rates_description": {
+    "description": "Beschrijving van de sectie over creditcardgebruikstarieven per bank"
+  },
+  "cheapest_bank_rankings": "Ranglijst van goedkoopste banken",
+  "@cheapest_bank_rankings": {
+    "description": "Titel van de sectie over de ranglijst van goedkoopste banken"
+  },
+  "cheapest_bank_rankings_description": "Bekijk de ranglijst van banken met de goedkoopste creditcardtarieven.",
+  "@cheapest_bank_rankings_description": {
+    "description": "Beschrijving van de sectie over de ranglijst van goedkoopste banken"
+  },
+  "historical_comparisons": "Historische vergelijkingen",
+  "@historical_comparisons": {
+    "description": "Titel van de sectie over historische vergelijkingen"
+  },
+  "historical_comparisons_description": "Vergelijk tarieven historisch om weloverwogen beslissingen te nemen.",
+  "@historical_comparisons_description": {
+    "description": "Beschrijving van de sectie over historische vergelijkingen"
+  },
   "over_time": "In de loop van de tijd",
   "@over_time": {
     "description": "Label voor gegevens in de loop van de tijd"

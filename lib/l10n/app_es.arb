@@ -59,6 +59,26 @@
   "@credit_card_usage_rates": {
     "description": "Título de la sección que muestra las tasas de uso de tarjetas de crédito por banco"
   },
+  "credit_card_usage_rates_description": "Aprenda sobre las diferentes tasas aplicadas por los bancos para compras internacionales usando su tarjeta de crédito.",
+  "@credit_card_usage_rates_description": {
+    "description": "Descripción de la sección sobre tasas de uso de tarjetas de crédito por banco"
+  },
+  "cheapest_bank_rankings": "Clasificación de los bancos más baratos",
+  "@cheapest_bank_rankings": {
+    "description": "Título de la sección sobre la clasificación de los bancos más baratos"
+  },
+  "cheapest_bank_rankings_description": "Vea la clasificación de los bancos con las tasas de tarjetas de crédito más baratas.",
+  "@cheapest_bank_rankings_description": {
+    "description": "Descripción de la sección sobre la clasificación de los bancos más baratos"
+  },
+  "historical_comparisons": "Comparaciones históricas",
+  "@historical_comparisons": {
+    "description": "Título de la sección sobre comparaciones históricas"
+  },
+  "historical_comparisons_description": "Compare tasas históricamente para tomar decisiones informadas.",
+  "@historical_comparisons_description": {
+    "description": "Descripción de la sección sobre comparaciones históricas"
+  },
   "over_time": "Con el tiempo",
   "@over_time": {
     "description": "Etiqueta para datos con el tiempo"

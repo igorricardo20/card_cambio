@@ -59,6 +59,10 @@
   "@credit_card_usage_rates": {
     "description": "Title for the section showing credit card usage rates by bank"
   },
+  "credit_card_usage_rates_description": "Learn about the different rates applied by banks for international purchases using your credit card.",
+  "@credit_card_usage_rates_description": {
+    "description": "Description for the section showing credit card usage rates by bank"
+  },
   "over_time": "Over time",
   "@over_time": {
     "description": "Label for data over time"
@@ -174,5 +178,21 @@
   "at": "At ",
   "@at": {
     "description": "Text that precedes the company name"
+  },
+  "cheapest_bank_rankings": "Cheapest Bank Rankings",
+  "@cheapest_bank_rankings": {
+    "description": "Title for the section showing the rankings of banks with the cheapest credit card rates"
+  },
+  "cheapest_bank_rankings_description": "See the rankings of banks with the cheapest credit card rates.",
+  "@cheapest_bank_rankings_description": {
+    "description": "Description for the section showing the rankings of banks with the cheapest credit card rates"
+  },
+  "historical_comparisons": "Historical Comparisons",
+  "@historical_comparisons": {
+    "description": "Title for the section showing historical comparisons"
+  },
+  "historical_comparisons_description": "Compare rates historically to make informed decisions.",
+  "@historical_comparisons_description": {
+    "description": "Description for the section showing historical comparisons"
   }
 }
