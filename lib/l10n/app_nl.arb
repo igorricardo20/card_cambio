@@ -166,5 +166,9 @@
   "at": "Bij ",
   "@at": {
     "description": "Tekst die voorafgaat aan de bedrijfsnaam"
+  },
+  "get_started": "Beginnen",
+  "@get_started": {
+    "description": "Tekst voor de beginnen knop"
   }
 }

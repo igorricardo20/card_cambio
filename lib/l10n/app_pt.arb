@@ -194,5 +194,9 @@
   "at": "Na ",
   "@at": {
     "description": "Texto que precede o nome da empresa"
+  },
+  "get_started": "Começar",
+  "@get_started": {
+    "description": "Texto para o botão de começar"
   }
 }

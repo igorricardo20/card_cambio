@@ -194,5 +194,9 @@
   "historical_comparisons_description": "Compare rates historically to make informed decisions.",
   "@historical_comparisons_description": {
     "description": "Description for the section showing historical comparisons"
+  },
+  "get_started": "Get Started",
+  "@get_started": {
+    "description": "Text for the get started button"
   }
 }
