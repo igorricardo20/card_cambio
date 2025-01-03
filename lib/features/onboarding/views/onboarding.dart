@@ -59,9 +59,22 @@ class OnboardingState extends State<Onboarding> {
                   ),
                 ),
                 if (_currentIndex == 2)
-                  ElevatedButton(
-                    onPressed: widget.onFinish,
-                    child: Text('Finish'),
+                  Card(
+                    elevation: 0,
+                    color: Theme.of(context).primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: InkWell(
+                      onTap: widget.onFinish,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                        child: Text(
+                          AppLocalizations.of(context)!.get_started,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
                   ),
               ],
             ),
