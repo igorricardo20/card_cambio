@@ -2,6 +2,7 @@ import 'package:card_cambio/features/home/widgets/trophy.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BankCard extends StatelessWidget {
   const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.type='bank'});
@@ -81,16 +82,16 @@ class BankCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            'more banks', 
+            AppLocalizations.of(context)!.more_banks, 
             style: TextStyle(
-              fontSize: 14, 
+              fontSize: 12, 
               color: isDark ? Colors.white : Colors.grey[700]
             )
           ),
           Text(
-            'coming soon', 
+            AppLocalizations.of(context)!.coming_soon, 
             style: TextStyle(
-              fontSize: 14, 
+              fontSize: 12, 
               color: isDark ? Colors.white : Colors.grey[700]
             )
           ),

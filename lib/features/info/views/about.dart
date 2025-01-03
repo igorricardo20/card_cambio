@@ -3,12 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
 import 'package:flutter_svg/svg.dart'; // Import for gradient support
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import localization
 
 class About extends StatelessWidget {
   const About({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!; // Access localization
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -25,13 +28,12 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'About This App',
+                      localizations.about_this_app,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'This app is a showcase of what we do best: building fast, reliable, and visually stunning software. '
-                      'It serves as an example of the quality and creativity we bring to every project and how we turn ideas into impactful digital experiences.',
+                      localizations.about_this_app_description,
                       style: TextStyle(fontSize: 16, height: 1.5),
                     ),
                   ],
@@ -41,13 +43,13 @@ class About extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'About Us',
+                      localizations.about_us,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                     SizedBox(height: 10),
                     Text.rich(
                       TextSpan(
-                        text: 'At ',
+                        text: localizations.at,
                         style: TextStyle(fontSize: 16, height: 1.5),
                         children: <TextSpan>[
                           TextSpan(
@@ -55,10 +57,7 @@ class About extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextSpan(
-                            text: ', we believe technology is more than just code – it’s about crafting experiences that connect people and businesses. '
-                                'We are a software house dedicated to developing super fast, reliable, and visually compelling solutions to our clients.\n\n'
-                                'We quickly turn concepts into products that drive success. Our mission is to simplify complexity while delivering applications with impeccable design.\n\n'
-                                'Get in touch! We’d love to hear from you and discuss your goals.',
+                            text: localizations.about_us_description,
                           ),
                         ],
                       ),
@@ -73,7 +72,7 @@ class About extends StatelessWidget {
                     SizedBox(height: 5),
                     RichText(
                       text: TextSpan(
-                        text: 'Visit our Website',
+                        text: localizations.visit_website,
                         style: TextStyle(color: Colors.blue, fontSize: 14),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => launchUrlString('https://www.rockpeach.io/'),

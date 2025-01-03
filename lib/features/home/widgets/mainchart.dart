@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainChart extends StatefulWidget {
   final Map<String, List<Rate>> rates;
@@ -45,11 +46,11 @@ class MainChartState extends State<MainChart> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _buildToggleButton('1 week', 8),
+              _buildToggleButton(AppLocalizations.of(context)!.one_week, 8),
               const SizedBox(width: 8),
-              _buildToggleButton('2 weeks', 16),
+              _buildToggleButton(AppLocalizations.of(context)!.two_weeks, 16),
               const SizedBox(width: 8),
-              _buildToggleButton('Max.', 60),
+              _buildToggleButton(AppLocalizations.of(context)!.max, 60),
             ],
           ),
         ),
@@ -62,7 +63,7 @@ class MainChartState extends State<MainChart> {
             child: SfCartesianChart(
               primaryXAxis: DateTimeAxis(
                 majorGridLines: const MajorGridLines(width: 0),
-                dateFormat: DateFormat.MMMd(),
+                dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
                 intervalType: DateTimeIntervalType.days,
               ),
               primaryYAxis: NumericAxis(
@@ -72,6 +73,7 @@ class MainChartState extends State<MainChart> {
                   decimalDigits: 2,
                 ),
                 majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.5),
+                interval: 0.1,
               ),
               onActualRangeChanged: (ActualRangeChangedArgs args) {
                 if (args.orientation == AxisOrientation.vertical) {
@@ -80,10 +82,13 @@ class MainChartState extends State<MainChart> {
 
                   double range = max - min;
                   if (range > 0) {
-                    // Decide how many steps you want
-                    // For example, 5 steps between min and max
                     double interval = range / 5;
                     args.visibleInterval = interval;
+
+                    // Ensure the maximum value is included
+                    if (max % interval != 0) {
+                      args.visibleMax = max + (interval - (max % interval));
+                    }
                   }
                 }
               },

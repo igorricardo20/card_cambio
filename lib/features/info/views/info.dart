@@ -1,12 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import localization
 
 class Info extends StatelessWidget {
   const Info({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!; // Access localization
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -24,26 +27,26 @@ class Info extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Open Data', style: Theme.of(context).textTheme.headlineSmall),
+                      Text(localizations.open_data, style: Theme.of(context).textTheme.headlineSmall),
                       SizedBox(height: 20),
-                      Text('Definition', style: Theme.of(context).textTheme.titleSmall),
+                      Text(localizations.definition, style: Theme.of(context).textTheme.titleSmall),
                       SizedBox(height: 10),
-                      Text('Open data in Brazil helps promoting transparency and innovation by making government data freely available to the public. The government and various institutions provide a wide range of datasets across different areas.')
+                      Text(localizations.open_data_definition),
                     ],
                   ),
                   SizedBox(height: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
-                      Text('Government Initiatives', style: TextStyle(fontSize: 20)),
+                      Text(localizations.government_initiatives, style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      Text('The platform where the Brazilian government publishes open data is called Portal Brasileiro de Dados Abertos (Brazilian Open Data Portal). It includes datasets from various ministries and agencies, covering topics like health, education, economy, environment, and more.'),
+                      Text(localizations.government_initiatives_description),
                       SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Visit the Brazilian Open Data Portal',
+                              text: localizations.visit_brazilian_open_data_portal,
                               style: TextStyle(color: Colors.blue, fontSize: 14),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => launchUrlString('https://dados.gov.br/'),
@@ -52,15 +55,15 @@ class Info extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 30),
-                      Text('Central Bank', style: TextStyle(fontSize: 20)),
+                      Text(localizations.central_bank, style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      Text('The Central Bank of Brazil also provides open data through its open data portal. The data includes information on the country\'s financial system, foreign exchange, and more.'),
+                      Text(localizations.central_bank_description),
                       SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Visit the Central Bank of Brazil Open Data Portal',
+                              text: localizations.visit_central_bank_open_data_portal,
                               style: TextStyle(color: Colors.blue, fontSize: 14),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => launchUrlString('https://dadosabertos.bcb.gov.br/'),

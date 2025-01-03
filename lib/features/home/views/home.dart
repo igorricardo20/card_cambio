@@ -5,6 +5,7 @@ import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -56,17 +57,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.house),
                     selectedIcon: Icon(CupertinoIcons.house_fill),
-                    label: Text('Home'),
+                    label: Text(AppLocalizations.of(context)!.home),
                   ),
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.clock),
                     selectedIcon: Icon(CupertinoIcons.clock_fill),
-                    label: Text('Historical'),
+                    label: Text(AppLocalizations.of(context)!.historical),
                   ),
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.settings),
                     selectedIcon: Icon(CupertinoIcons.settings_solid),
-                    label: Text('Settings'),
+                    label: Text(AppLocalizations.of(context)!.settings),
                   ),
                 ], 
                 selectedIndex: _selectedIndex,
@@ -108,17 +109,17 @@ class _MyHomePageState extends State<MyHomePage> {
             NavigationDestination(
               icon: Icon(CupertinoIcons.house),
               selectedIcon: Icon(CupertinoIcons.house_fill),
-              label: 'Home',
+              label: AppLocalizations.of(context)!.home,
             ),
             NavigationDestination(
               icon: Icon(CupertinoIcons.clock),
               selectedIcon: Icon(CupertinoIcons.clock_fill),
-              label: 'Historical',
+              label: AppLocalizations.of(context)!.historical,
             ),
             NavigationDestination(
               icon: Icon(CupertinoIcons.gear_alt),
               selectedIcon: Icon(CupertinoIcons.gear_alt_fill),
-              label: 'Settings',
+              label: AppLocalizations.of(context)!.settings,
             ),
           ],
           selectedIndex: _selectedIndex,
@@ -128,6 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   changeDestination(int index) {
+    if (_selectedIndex == index) return; // Prevent redirecting to the same page
     setState(() {
       _selectedIndex = index;
     });

@@ -44,7 +44,7 @@ class Dashboard extends StatelessWidget {
     final bankCards = _getBankCards(rateList, isDark);
 
     bankCards.add(BankCard(
-      type: 'more banks soon',
+      type: AppLocalizations.of(context)!.more_banks_soon,
     ));
     
     return ListView(
@@ -55,7 +55,7 @@ class Dashboard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(AppLocalizations.of(context)!.ranking, style: Theme.of(context).textTheme.headlineSmall),
-                    Text('Credit card usage rates by bank', style: Theme.of(context).textTheme.bodyMedium),
+                    Text(AppLocalizations.of(context)!.credit_card_usage_rates, style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
               ),
@@ -74,7 +74,7 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Over time', style: Theme.of(context).textTheme.titleSmall),
+                    Text(AppLocalizations.of(context)!.over_time, style: Theme.of(context).textTheme.titleSmall),
                   ],
                 ),
               ),

@@ -1,19 +1,150 @@
 {
-  "title": "CartaoExpert",
-  "settings": "Instellingen",
-  "dark_mode": "Donkere modus",
-  "language": "Taal",
-  "about": "Over",
-  "open_data": "Open Data",
-  "languages": "Talen",
-  "english": "Engels",
-  "spanish": "Spaans",
-  "portuguese": "Portugees",
-  "dutch": "Nederlands",
   "ranking": "Ranglijst",
-  "historical": "Historisch",
-  "historical_data": "Historische Gegevens",
   "@ranking": {
     "description": "De ranglijst van instellingen op basis van hun wisselkoersen voor creditcards"
+  },
+  "title": "CartaoExpert",
+  "@title": {
+    "description": "De titel van de applicatie"
+  },
+  "settings": "Instellingen",
+  "@settings": {
+    "description": "Instellingen optie in het menu"
+  },
+  "dark_mode": "Donkere modus",
+  "@dark_mode": {
+    "description": "Optie om donkere modus in te schakelen"
+  },
+  "language": "Taal",
+  "@language": {
+    "description": "Optie om de taal te wijzigen"
+  },
+  "about": "Over",
+  "@about": {
+    "description": "Titel van de over sectie"
+  },
+  "open_data": "Open Data",
+  "@open_data": {
+    "description": "Titel van de open data sectie"
+  },
+  "languages": "Talen",
+  "@languages": {
+    "description": "Titel van de talen sectie"
+  },
+  "english": "Engels",
+  "@english": {
+    "description": "Engelse taaloptie"
+  },
+  "spanish": "Spaans",
+  "@spanish": {
+    "description": "Spaanse taaloptie"
+  },
+  "portuguese": "Portugees",
+  "@portuguese": {
+    "description": "Portugese taaloptie"
+  },
+  "dutch": "Nederlands",
+  "@dutch": {
+    "description": "Nederlandse taaloptie"
+  },
+  "historical": "Historisch",
+  "@historical": {
+    "description": "Titel van de historische sectie"
+  },
+  "historical_data": "Historische Gegevens",
+  "@historical_data": {
+    "description": "Titel van de historische gegevens sectie"
+  },
+  "credit_card_usage_rates": "Creditcardgebruikstarieven per bank",
+  "@credit_card_usage_rates": {
+    "description": "Titel voor de sectie met creditcardgebruikstarieven per bank"
+  },
+  "over_time": "In de loop van de tijd",
+  "@over_time": {
+    "description": "Label voor gegevens in de loop van de tijd"
+  },
+  "home": "Startpagina",
+  "@home": {
+    "description": "Titel van de startpagina sectie"
+  },
+  "more_banks": "meer banken",
+  "@more_banks": {
+    "description": "Label dat aangeeft dat er meer banken zijn"
+  },
+  "more_banks_soon": "meer banken binnenkort",
+  "@more_banks_soon": {
+    "description": "Label dat aangeeft dat er binnenkort meer banken worden toegevoegd"
+  },
+  "coming_soon": "binnenkort beschikbaar",
+  "@coming_soon": {
+    "description": "Label dat aangeeft dat een functie binnenkort beschikbaar is"
+  },
+  "one_week": "1 week",
+  "@one_week": {
+    "description": "Label voor een duur van een week"
+  },
+  "two_weeks": "2 weken",
+  "@two_weeks": {
+    "description": "Label voor een duur van twee weken"
+  },
+  "max": "Max.",
+  "@max": {
+    "description": "Label voor de maximale waarde"
+  },
+  "about_this_app": "Over deze app",
+  "@about_this_app": {
+    "description": "Titel voor de sectie over de app"
+  },
+  "about_this_app_description": "Deze app is een showcase van wat we het beste doen: het bouwen van snelle, betrouwbare en visueel verbluffende software. Het dient als een voorbeeld van de kwaliteit en creativiteit die we in elk project brengen en hoe we ideeën omzetten in impactvolle digitale ervaringen.",
+  "@about_this_app_description": {
+    "description": "Beschrijving voor de sectie over de app"
+  },
+  "about_us": "Over ons",
+  "@about_us": {
+    "description": "Titel voor de sectie over het bedrijf"
+  },
+  "about_us_description": " geloven we dat technologie meer is dan alleen code – het gaat om het creëren van ervaringen die mensen en bedrijven verbinden. We zijn een softwarehuis dat zich toelegt op het ontwikkelen van supersnelle, betrouwbare en visueel aantrekkelijke oplossingen voor onze klanten. We zetten concepten snel om in producten die succes stimuleren. Onze missie is om complexiteit te vereenvoudigen terwijl we applicaties met een onberispelijk ontwerp leveren. Neem contact met ons op! We horen graag van je en bespreken graag je doelen.",
+  "@about_us_description": {
+    "description": "Beschrijving voor de sectie over het bedrijf"
+  },
+  "visit_website": "Bezoek onze website",
+  "@visit_website": {
+    "description": "Tekst voor de link om de website van het bedrijf te bezoeken"
+  },
+  "definition": "Definitie",
+  "@definition": {
+    "description": "Titel voor de definitie sectie"
+  },
+  "open_data_definition": "Open data in Brazilië helpt transparantie en innovatie te bevorderen door overheidsgegevens gratis beschikbaar te stellen aan het publiek. De overheid en verschillende instellingen bieden een breed scala aan datasets op verschillende gebieden.",
+  "@open_data_definition": {
+    "description": "Beschrijving voor de definitie van open data"
+  },
+  "government_initiatives": "Overheidsinitiatieven",
+  "@government_initiatives": {
+    "description": "Titel voor de sectie overheidsinitiatieven"
+  },
+  "government_initiatives_description": "Het platform waar de Braziliaanse overheid open data publiceert, heet Portal Brasileiro de Dados Abertos. Het bevat datasets van verschillende ministeries en agentschappen, met onderwerpen zoals gezondheid, onderwijs, economie, milieu en meer.",
+  "@government_initiatives_description": {
+    "description": "Beschrijving voor de sectie overheidsinitiatieven"
+  },
+  "visit_brazilian_open_data_portal": "Bezoek het Braziliaanse Open Data Portaal",
+  "@visit_brazilian_open_data_portal": {
+    "description": "Tekst voor de link om het Braziliaanse Open Data Portaal te bezoeken"
+  },
+  "central_bank": "Centrale Bank",
+  "@central_bank": {
+    "description": "Titel voor de sectie van de Centrale Bank"
+  },
+  "central_bank_description": "De Centrale Bank van Brazilië biedt ook open data via zijn open data portaal. De gegevens omvatten informatie over het financiële systeem van het land, de wisselkoers en meer.",
+  "@central_bank_description": {
+    "description": "Beschrijving voor de sectie van de Centrale Bank"
+  },
+  "visit_central_bank_open_data_portal": "Bezoek het Open Data Portaal van de Centrale Bank van Brazilië",
+  "@visit_central_bank_open_data_portal": {
+    "description": "Tekst voor de link om het Open Data Portaal van de Centrale Bank van Brazilië te bezoeken"
+  },
+  "at": "Bij ",
+  "@at": {
+    "description": "Tekst die voorafgaat aan de bedrijfsnaam"
   }
 }

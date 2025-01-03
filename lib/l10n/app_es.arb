@@ -4,23 +4,175 @@
     "description": "La clasificación de las instituciones según sus tasas de cambio para tarjetas de crédito"
   },
   "title": "CartaoExpert",
+  "@title": {
+    "description": "El título de la aplicación"
+  },
   "settings": "Configuraciones",
+  "@settings": {
+    "description": "Opción de configuraciones en el menú"
+  },
   "dark_mode": "Modo oscuro",
+  "@dark_mode": {
+    "description": "Opción para habilitar el modo oscuro"
+  },
   "language": "Idioma",
+  "@language": {
+    "description": "Opción para cambiar el idioma"
+  },
   "about": "Acerca de",
+  "@about": {
+    "description": "Título de la sección acerca de"
+  },
   "open_data": "Datos abiertos",
+  "@open_data": {
+    "description": "Título de la sección de datos abiertos"
+  },
   "languages": "Idiomas",
+  "@languages": {
+    "description": "Título de la sección de idiomas"
+  },
   "english": "Inglés",
+  "@english": {
+    "description": "Opción de idioma inglés"
+  },
   "spanish": "Español",
+  "@spanish": {
+    "description": "Opción de idioma español"
+  },
   "portuguese": "Portugués",
+  "@portuguese": {
+    "description": "Opción de idioma portugués"
+  },
   "dutch": "Holandés",
+  "@dutch": {
+    "description": "Opción de idioma holandés"
+  },
   "historical": "Histórico",
+  "@historical": {
+    "description": "Título de la sección histórica"
+  },
   "historical_data": "Datos Históricos",
+  "@historical_data": {
+    "description": "Título de la sección de datos históricos"
+  },
+  "credit_card_usage_rates": "Tasas de uso de tarjetas de crédito por banco",
+  "@credit_card_usage_rates": {
+    "description": "Título de la sección que muestra las tasas de uso de tarjetas de crédito por banco"
+  },
+  "over_time": "Con el tiempo",
+  "@over_time": {
+    "description": "Etiqueta para datos con el tiempo"
+  },
+  "home": "Inicio",
+  "@home": {
+    "description": "Título de la sección de inicio"
+  },
   "monday": "Lunes",
+  "@monday": {
+    "description": "Lunes"
+  },
   "tuesday": "Martes",
+  "@tuesday": {
+    "description": "Martes"
+  },
   "wednesday": "Miércoles",
+  "@wednesday": {
+    "description": "Miércoles"
+  },
   "thursday": "Jueves",
+  "@thursday": {
+    "description": "Jueves"
+  },
   "friday": "Viernes",
+  "@friday": {
+    "description": "Viernes"
+  },
   "saturday": "Sábado",
-  "sunday": "Domingo"
+  "@saturday": {
+    "description": "Sábado"
+  },
+  "sunday": "Domingo",
+  "@sunday": {
+    "description": "Domingo"
+  },
+  "more_banks": "más bancos",
+  "@more_banks": {
+    "description": "Etiqueta que indica más bancos"
+  },
+  "more_banks_soon": "más bancos próximamente",
+  "@more_banks_soon": {
+    "description": "Etiqueta que indica que se agregarán más bancos próximamente"
+  },
+  "coming_soon": "próximamente",
+  "@coming_soon": {
+    "description": "Etiqueta que indica que una función está próxima a llegar"
+  },
+  "one_week": "1 semana",
+  "@one_week": {
+    "description": "Etiqueta para una duración de una semana"
+  },
+  "two_weeks": "2 semanas",
+  "@two_weeks": {
+    "description": "Etiqueta para una duración de dos semanas"
+  },
+  "max": "Máx.",
+  "@max": {
+    "description": "Etiqueta para el valor máximo"
+  },
+  "about_this_app": "Sobre esta aplicación",
+  "@about_this_app": {
+    "description": "Título para la sección sobre la aplicación"
+  },
+  "about_this_app_description": "Esta aplicación es una muestra de lo que hacemos mejor: construir software rápido, confiable y visualmente impresionante. Sirve como un ejemplo de la calidad y creatividad que aportamos a cada proyecto y cómo convertimos ideas en experiencias digitales impactantes.",
+  "@about_this_app_description": {
+    "description": "Descripción para la sección sobre la aplicación"
+  },
+  "about_us": "Sobre nosotros",
+  "@about_us": {
+    "description": "Título para la sección sobre la empresa"
+  },
+  "about_us_description": ", creemos que la tecnología es más que solo código: se trata de crear experiencias que conecten a las personas y las empresas. Somos una casa de software dedicada a desarrollar soluciones súper rápidas, confiables y visualmente atractivas para nuestros clientes. Convertimos rápidamente conceptos en productos que impulsan el éxito. Nuestra misión es simplificar la complejidad mientras entregamos aplicaciones con un diseño impecable. ¡Ponte en contacto! Nos encantaría saber de ti y discutir tus objetivos.",
+  "@about_us_description": {
+    "description": "Descripción para la sección sobre la empresa"
+  },
+  "visit_website": "Visita nuestro sitio web",
+  "@visit_website": {
+    "description": "Texto para el enlace para visitar el sitio web de la empresa"
+  },
+  "definition": "Definición",
+  "@definition": {
+    "description": "Título para la sección de definición"
+  },
+  "open_data_definition": "Los datos abiertos en Brasil ayudan a promover la transparencia y la innovación al hacer que los datos del gobierno estén disponibles gratuitamente para el público. El gobierno y varias instituciones proporcionan una amplia gama de conjuntos de datos en diferentes áreas.",
+  "@open_data_definition": {
+    "description": "Descripción para la definición de datos abiertos"
+  },
+  "government_initiatives": "Iniciativas gubernamentales",
+  "@government_initiatives": {
+    "description": "Título para la sección de iniciativas gubernamentales"
+  },
+  "government_initiatives_description": "La plataforma donde el gobierno brasileño publica datos abiertos se llama Portal Brasileiro de Dados Abertos. Incluye conjuntos de datos de varios ministerios y agencias, que cubren temas como salud, educación, economía, medio ambiente y más.",
+  "@government_initiatives_description": {
+    "description": "Descripción para la sección de iniciativas gubernamentales"
+  },
+  "visit_brazilian_open_data_portal": "Visita el Portal Brasileño de Datos Abertos",
+  "@visit_brazilian_open_data_portal": {
+    "description": "Texto para el enlace para visitar el Portal Brasileño de Datos Abertos"
+  },
+  "central_bank": "Banco Central",
+  "@central_bank": {
+    "description": "Título para la sección del Banco Central"
+  },
+  "central_bank_description": "El Banco Central de Brasil también proporciona datos abiertos a través de su portal de datos abiertos. Los datos incluyen información sobre el sistema financiero del país, el tipo de cambio y más.",
+  "@central_bank_description": {
+    "description": "Descripción para la sección del Banco Central"
+  },
+  "visit_central_bank_open_data_portal": "Visita el Portal de Datos Abiertos del Banco Central de Brasil",
+  "@visit_central_bank_open_data_portal": {
+    "description": "Texto para el enlace para visitar el Portal de Datos Abiertos del Banco Central de Brasil"
+  },
+  "at": "En ",
+  "@at": {
+    "description": "Texto que precede el nombre de la empresa"
+  }
 }

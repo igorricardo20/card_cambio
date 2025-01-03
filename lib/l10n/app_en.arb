@@ -4,23 +4,175 @@
     "description": "The ranking of institutions based on their exchange rates for credit cards"
   },
   "title": "CartaoExpert",
+  "@title": {
+    "description": "The title of the application"
+  },
   "settings": "Settings",
+  "@settings": {
+    "description": "Settings option in the menu"
+  },
   "dark_mode": "Dark mode",
+  "@dark_mode": {
+    "description": "Option to enable dark mode"
+  },
   "language": "Language",
+  "@language": {
+    "description": "Option to change the language"
+  },
   "about": "About",
+  "@about": {
+    "description": "About section title"
+  },
   "open_data": "Open Data",
+  "@open_data": {
+    "description": "Open data section title"
+  },
   "languages": "Languages",
+  "@languages": {
+    "description": "Languages section title"
+  },
   "english": "English",
+  "@english": {
+    "description": "English language option"
+  },
   "spanish": "Spanish",
+  "@spanish": {
+    "description": "Spanish language option"
+  },
   "portuguese": "Portuguese",
+  "@portuguese": {
+    "description": "Portuguese language option"
+  },
   "dutch": "Dutch",
+  "@dutch": {
+    "description": "Dutch language option"
+  },
   "historical": "Historical",
+  "@historical": {
+    "description": "Historical section title"
+  },
   "historical_data": "Historical Data",
+  "@historical_data": {
+    "description": "Historical data section title"
+  },
+  "credit_card_usage_rates": "Credit card usage rates by bank",
+  "@credit_card_usage_rates": {
+    "description": "Title for the section showing credit card usage rates by bank"
+  },
+  "over_time": "Over time",
+  "@over_time": {
+    "description": "Label for data over time"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home section title"
+  },
   "monday": "Monday",
+  "@monday": {
+    "description": "Monday"
+  },
   "tuesday": "Tuesday",
+  "@tuesday": {
+    "description": "Tuesday"
+  },
   "wednesday": "Wednesday",
+  "@wednesday": {
+    "description": "Wednesday"
+  },
   "thursday": "Thursday",
+  "@thursday": {
+    "description": "Thursday"
+  },
   "friday": "Friday",
+  "@friday": {
+    "description": "Friday"
+  },
   "saturday": "Saturday",
-  "sunday": "Sunday"
+  "@saturday": {
+    "description": "Saturday"
+  },
+  "sunday": "Sunday",
+  "@sunday": {
+    "description": "Sunday"
+  },
+  "more_banks": "more banks",
+  "@more_banks": {
+    "description": "Label indicating more banks"
+  },
+  "more_banks_soon": "more banks soon",
+  "@more_banks_soon": {
+    "description": "Label indicating more banks will be added soon"
+  },
+  "coming_soon": "coming soon",
+  "@coming_soon": {
+    "description": "Label indicating a feature is coming soon"
+  },
+  "one_week": "1 week",
+  "@one_week": {
+    "description": "Label for a duration of one week"
+  },
+  "two_weeks": "2 weeks",
+  "@two_weeks": {
+    "description": "Label for a duration of two weeks"
+  },
+  "max": "Max.",
+  "@max": {
+    "description": "Label for the maximum value"
+  },
+  "about_this_app": "About This App",
+  "@about_this_app": {
+    "description": "Title for the about section describing the app"
+  },
+  "about_this_app_description": "This app is a showcase of what we do best: building fast, reliable, and visually stunning software. It serves as an example of the quality and creativity we bring to every project and how we turn ideas into impactful digital experiences.",
+  "@about_this_app_description": {
+    "description": "Description for the about section describing the app"
+  },
+  "about_us": "About Us",
+  "@about_us": {
+    "description": "Title for the about section describing the company"
+  },
+  "about_us_description": ", we believe technology is more than just code – it’s about crafting experiences that connect people and businesses. We are a software house dedicated to developing super fast, reliable, and visually compelling solutions to our clients. We quickly turn concepts into products that drive success. Our mission is to simplify complexity while delivering applications with impeccable design. Get in touch! We’d love to hear from you and discuss your goals.",
+  "@about_us_description": {
+    "description": "Description for the about section describing the company"
+  },
+  "visit_website": "Visit our Website",
+  "@visit_website": {
+    "description": "Text for the link to visit the company's website"
+  },
+  "definition": "Definition",
+  "@definition": {
+    "description": "Title for the definition section"
+  },
+  "open_data_definition": "Open data in Brazil helps promoting transparency and innovation by making government data freely available to the public. The government and various institutions provide a wide range of datasets across different areas.",
+  "@open_data_definition": {
+    "description": "Description for the open data definition"
+  },
+  "government_initiatives": "Government Initiatives",
+  "@government_initiatives": {
+    "description": "Title for the government initiatives section"
+  },
+  "government_initiatives_description": "The platform where the Brazilian government publishes open data is called Portal Brasileiro de Dados Abertos (Brazilian Open Data Portal). It includes datasets from various ministries and agencies, covering topics like health, education, economy, environment, and more.",
+  "@government_initiatives_description": {
+    "description": "Description for the government initiatives section"
+  },
+  "visit_brazilian_open_data_portal": "Visit the Brazilian Open Data Portal",
+  "@visit_brazilian_open_data_portal": {
+    "description": "Text for the link to visit the Brazilian Open Data Portal"
+  },
+  "central_bank": "Central Bank",
+  "@central_bank": {
+    "description": "Title for the central bank section"
+  },
+  "central_bank_description": "The Central Bank of Brazil also provides open data through its open data portal. The data includes information on the country's financial system, foreign exchange, and more.",
+  "@central_bank_description": {
+    "description": "Description for the central bank section"
+  },
+  "visit_central_bank_open_data_portal": "Visit the Central Bank of Brazil Open Data Portal",
+  "@visit_central_bank_open_data_portal": {
+    "description": "Text for the link to visit the Central Bank of Brazil Open Data Portal"
+  },
+  "at": "At ",
+  "@at": {
+    "description": "Text that precedes the company name"
+  }
 }
