@@ -127,14 +127,6 @@
   "@coming_soon": {
     "description": "Etiqueta que indica que una función está próxima a llegar"
   },
-  "one_week": "1 semana",
-  "@one_week": {
-    "description": "Etiqueta para una duración de una semana"
-  },
-  "two_weeks": "2 semanas",
-  "@two_weeks": {
-    "description": "Etiqueta para una duración de dos semanas"
-  },
   "max": "Máx.",
   "@max": {
     "description": "Etiqueta para el valor máximo"
@@ -198,5 +190,13 @@
   "get_started": "Empezar",
   "@get_started": {
     "description": "Texto para el botón de empezar"
+  },
+  "period_1": "2 semanas",
+  "@period_1": {
+    "description": "Etiqueta para una duración de dos semanas"
+  },
+  "period_2": "El mes pasado",
+  "@period_2": {
+    "description": "Etiqueta para una duración del mes pasado"
   }
 }

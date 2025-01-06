@@ -17,34 +17,72 @@ class OnboardingState extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isLargeScreen = MediaQuery.of(context).size.width > 600;
+
     return Scaffold(
       body: Stack(
         children: [
-          PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-            children: [
-              OnboardingPage(
-                title: AppLocalizations.of(context)!.credit_card_usage_rates,
-                description: AppLocalizations.of(context)!.credit_card_usage_rates_description,
-                image: Icons.credit_card,
+          if (isLargeScreen)
+            GestureDetector(
+              onHorizontalDragUpdate: (details) {
+                if (details.delta.dx > 10) {
+                  _pageController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+                } else if (details.delta.dx < -10) {
+                  _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+                }
+              },
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                children: [
+                  OnboardingPage(
+                    title: AppLocalizations.of(context)!.credit_card_usage_rates,
+                    description: AppLocalizations.of(context)!.credit_card_usage_rates_description,
+                    image: Icons.credit_card,
+                  ),
+                  OnboardingPage(
+                    title: AppLocalizations.of(context)!.cheapest_bank_rankings,
+                    description: AppLocalizations.of(context)!.cheapest_bank_rankings_description,
+                    image: Icons.bar_chart,
+                  ),
+                  OnboardingPage(
+                    title: AppLocalizations.of(context)!.historical_comparisons,
+                    description: AppLocalizations.of(context)!.historical_comparisons_description,
+                    image: Icons.history,
+                  ),
+                ],
               ),
-              OnboardingPage(
-                title: AppLocalizations.of(context)!.cheapest_bank_rankings,
-                description: AppLocalizations.of(context)!.cheapest_bank_rankings_description,
-                image: Icons.bar_chart,
-              ),
-              OnboardingPage(
-                title: AppLocalizations.of(context)!.historical_comparisons,
-                description: AppLocalizations.of(context)!.historical_comparisons_description,
-                image: Icons.history,
-              ),
-            ],
-          ),
+            )
+          else
+            PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              children: [
+                OnboardingPage(
+                  title: AppLocalizations.of(context)!.credit_card_usage_rates,
+                  description: AppLocalizations.of(context)!.credit_card_usage_rates_description,
+                  image: Icons.credit_card,
+                ),
+                OnboardingPage(
+                  title: AppLocalizations.of(context)!.cheapest_bank_rankings,
+                  description: AppLocalizations.of(context)!.cheapest_bank_rankings_description,
+                  image: Icons.bar_chart,
+                ),
+                OnboardingPage(
+                  title: AppLocalizations.of(context)!.historical_comparisons,
+                  description: AppLocalizations.of(context)!.historical_comparisons_description,
+                  image: Icons.history,
+                ),
+              ],
+            ),
           Positioned(
             bottom: 20,
             left: 0,

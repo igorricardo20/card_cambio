@@ -99,17 +99,17 @@
   "@coming_soon": {
     "description": "Label dat aangeeft dat een functie binnenkort beschikbaar is"
   },
-  "one_week": "1 week",
-  "@one_week": {
-    "description": "Label voor een duur van een week"
-  },
-  "two_weeks": "2 weken",
-  "@two_weeks": {
-    "description": "Label voor een duur van twee weken"
-  },
   "max": "Max.",
   "@max": {
     "description": "Label voor de maximale waarde"
+  },
+  "period_1": "2 weken",
+  "@period_1": {
+    "description": "Label voor een duur van twee weken"
+  },
+  "period_2": "Vorige maand",
+  "@period_2": {
+    "description": "Label voor een duur van vorige maand"
   },
   "about_this_app": "Over deze app",
   "@about_this_app": {

@@ -127,17 +127,17 @@
   "@coming_soon": {
     "description": "Rótulo indicando que um recurso está chegando em breve"
   },
-  "one_week": "1 semana",
-  "@one_week": {
-    "description": "Rótulo para uma duração de uma semana"
-  },
-  "two_weeks": "2 semanas",
-  "@two_weeks": {
-    "description": "Rótulo para uma duração de duas semanas"
-  },
   "max": "Máx.",
   "@max": {
     "description": "Rótulo para o valor máximo"
+  },
+  "period_1": "2 semanas",
+  "@period_1": {
+    "description": "Rótulo para uma duração de duas semanas"
+  },
+  "period_2": "Mês passado",
+  "@period_2": {
+    "description": "Rótulo para uma duração do mês passado"
   },
   "about_this_app": "Sobre este aplicativo",
   "@about_this_app": {

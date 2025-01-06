@@ -17,7 +17,7 @@ class MainChart extends StatefulWidget {
 }
 
 class MainChartState extends State<MainChart> {
-  int selectedDays = 8;
+  int selectedDays = 16;
   bool showAnimation = true;
 
   @override
@@ -46,9 +46,9 @@ class MainChartState extends State<MainChart> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _buildToggleButton(AppLocalizations.of(context)!.one_week, 8),
+              _buildToggleButton(AppLocalizations.of(context)!.period_1, 16),
               const SizedBox(width: 8),
-              _buildToggleButton(AppLocalizations.of(context)!.two_weeks, 16),
+              _buildToggleButton(AppLocalizations.of(context)!.period_2, 30),
               const SizedBox(width: 8),
               _buildToggleButton(AppLocalizations.of(context)!.max, 60),
             ],
@@ -61,10 +61,14 @@ class MainChartState extends State<MainChart> {
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
             child: SfCartesianChart(
+              borderWidth: 0,
+              borderColor: Colors.transparent,
               primaryXAxis: DateTimeAxis(
                 majorGridLines: const MajorGridLines(width: 0),
+                borderWidth: 0,
+                borderColor: Colors.transparent,
                 dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
-                intervalType: DateTimeIntervalType.days,
+                intervalType: DateTimeIntervalType.auto,
               ),
               primaryYAxis: NumericAxis(
                 isVisible: true,
@@ -72,7 +76,9 @@ class MainChartState extends State<MainChart> {
                   symbol: 'R\$ ',
                   decimalDigits: 2,
                 ),
-                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.5),
+                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
+                borderWidth: 0,
+                borderColor: Colors.transparent,
                 interval: 0.1,
               ),
               onActualRangeChanged: (ActualRangeChangedArgs args) {
@@ -92,13 +98,27 @@ class MainChartState extends State<MainChart> {
                   }
                 }
               },
-              tooltipBehavior: TooltipBehavior(enable: true),
               legend: Legend(
                 isVisible: true,
                 position: LegendPosition.bottom,
                 overflowMode: LegendItemOverflowMode.scroll,
               ),
               series: _getSeries(widget.rates),
+              tooltipBehavior: TooltipBehavior(enable: false),
+              trackballBehavior: TrackballBehavior(
+                enable: true,
+                activationMode: ActivationMode.singleTap,
+                tooltipSettings: const InteractiveTooltip(
+                  enable: true,
+                  color: Colors.white,
+                  textStyle: TextStyle(color: Colors.black),
+                ),
+                tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
+                markerSettings: const TrackballMarkerSettings(
+                  markerVisibility: TrackballVisibilityMode.visible,
+                  borderWidth: 2,
+                ),
+              ),
             ),
           ),
         ),
@@ -140,6 +160,7 @@ class MainChartState extends State<MainChart> {
     }
 
     final DateTime rangeStart = DateTime.now().subtract(Duration(days: selectedDays));
+    final DateTime rangeEnd = DateTime.now().subtract(const Duration(days: 1));
 
     final Map<String, Color> bankColors = {
       'nubank': Colors.purple,
@@ -151,14 +172,18 @@ class MainChartState extends State<MainChart> {
       final bankName = entry.key;
       final rateList = entry.value;
 
+      // Adjust rangeStart for Itau
+      final DateTime adjustedRangeStart = bankName == 'itau' ? rangeStart.add(const Duration(days: 1)) : rangeStart;
+
       final filteredData = rateList.where((rate) {
         final dateTime = DateTime.parse(rate.taxaDivulgacaoDataHora);
-        return dateTime.isAfter(rangeStart);
+        return dateTime.isAfter(adjustedRangeStart) && dateTime.isBefore(rangeEnd);
       }).toList();
 
       final chartData = filteredData.map((rate) {
         final dateTime = DateTime.parse(rate.taxaDivulgacaoDataHora);
-        return ChartData(dateTime, rate.taxaConversao);
+        final dayLevelDate = DateTime(dateTime.year, dateTime.month, dateTime.day);
+        return ChartData(dayLevelDate, rate.taxaConversao);
       }).toList();
 
       final Color seriesColor = bankColors[bankName] ?? Colors.grey; // Fallback to grey
@@ -170,13 +195,10 @@ class MainChartState extends State<MainChart> {
         yValueMapper: (ChartData data, _) => data.y,
         color: seriesColor,
         width: 2,
-        enableTooltip: true,
         animationDuration: showAnimation ? 1000 : 0,
         markerSettings: MarkerSettings(
-          isVisible: selectedDays > 0 && selectedDays <= 8,
-          color: seriesColor,
+          isVisible: false,
         ),
-        // markerSettings: const MarkerSettings(isVisible: true),
         dataLabelSettings: const DataLabelSettings(isVisible: false),
       );
     }).toList();

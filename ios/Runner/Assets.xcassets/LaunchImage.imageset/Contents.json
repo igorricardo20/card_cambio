@@ -1,17 +1,83 @@
 {
   "images" : [
     {
-      "filename" : "256px.png",
+      "filename" : "icon 1.png 19-17-14-133.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "512px.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 6.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icon 1.png 19-17-14-133 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "1024px.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 4.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 7.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icon 1.png 19-17-14-133 2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 5.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "icon 1.png 19-17-14-133 8.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

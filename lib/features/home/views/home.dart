@@ -88,16 +88,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icon(CupertinoIcons.house),
                     selectedIcon: Icon(CupertinoIcons.house_fill),
                     label: Text(AppLocalizations.of(context)!.home),
+                    padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.clock),
                     selectedIcon: Icon(CupertinoIcons.clock_fill),
                     label: Text(AppLocalizations.of(context)!.historical),
+                    padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
                   NavigationRailDestination(
                     icon: Icon(CupertinoIcons.settings),
                     selectedIcon: Icon(CupertinoIcons.settings_solid),
                     label: Text(AppLocalizations.of(context)!.settings),
+                    padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
                 ], 
                 selectedIndex: _selectedIndex,

@@ -111,14 +111,6 @@
   "@coming_soon": {
     "description": "Label indicating a feature is coming soon"
   },
-  "one_week": "1 week",
-  "@one_week": {
-    "description": "Label for a duration of one week"
-  },
-  "two_weeks": "2 weeks",
-  "@two_weeks": {
-    "description": "Label for a duration of two weeks"
-  },
   "max": "Max.",
   "@max": {
     "description": "Label for the maximum value"
@@ -198,5 +190,13 @@
   "get_started": "Get Started",
   "@get_started": {
     "description": "Text for the get started button"
+  },
+  "period_1": "2 weeks",
+  "@period_1": {
+    "description": "Label for a duration of two weeks"
+  },
+  "period_2": "Last month",
+  "@period_2": {
+    "description": "Label for a duration of the last month"
   }
 }
