@@ -60,7 +60,7 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 140,
+                height: 160,
                 child: ListView(
                   cacheExtent: 1000,
                   physics: BouncingScrollPhysics(),
@@ -120,9 +120,15 @@ class Dashboard extends StatelessWidget {
     };
 
     final Map<String, String> bankNames = {
-      'nubank': 'NuBank',
+      'nubank': 'Nubank',
       'itau': 'Itaú',
       'c6': 'C6 Bank',
+    };
+
+    final Map<String, Color> bankColors = {
+      'nubank': Colors.purple,
+      'itau': Colors.orange,
+      'c6': Colors.black,
     };
 
     return rateList.asMap().entries.map((entry) {
@@ -130,27 +136,27 @@ class Dashboard extends StatelessWidget {
       final bankName = entry.value.key;
       final rate = entry.value.value;
 
-      Color color;
       String trophyPosition;
+      Color trophyColor;
 
       switch (position) {
         case 1:
-          color = isDark
+          trophyColor = isDark
               ? Color.fromARGB(255, 255, 215, 0)
               : Color.fromARGB(255, 255, 176, 7);
           trophyPosition = '1st';
         case 2:
-          color = isDark
+          trophyColor = isDark
               ? Color.fromARGB(255, 169, 169, 169)
               : Color.fromARGB(255, 85, 85, 85);
           trophyPosition = '2nd';
         case 3:
-          color = isDark
+          trophyColor = isDark
               ? Color.fromARGB(255, 205, 127, 50)
               : Color.fromARGB(255, 121, 60, 60);
           trophyPosition = '3rd';
         default:
-          color = Colors.transparent;
+          trophyColor = Colors.transparent;
           trophyPosition = '${position}th';
       }
 
@@ -158,8 +164,9 @@ class Dashboard extends StatelessWidget {
         value: rate.taxaConversao,
         name: bankNames[bankName]!,
         logo: bankLogos[bankName]!,
-        color: color,
+        color: bankColors[bankName]!,
         trophyPosition: trophyPosition,
+        trophyColor: trophyColor,
       );
     }).toList();
   }

@@ -61,12 +61,8 @@ class MainChartState extends State<MainChart> {
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
             child: SfCartesianChart(
-              borderWidth: 0,
-              borderColor: Colors.transparent,
               primaryXAxis: DateTimeAxis(
                 majorGridLines: const MajorGridLines(width: 0),
-                borderWidth: 0,
-                borderColor: Colors.transparent,
                 dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
                 intervalType: DateTimeIntervalType.auto,
               ),
@@ -77,8 +73,6 @@ class MainChartState extends State<MainChart> {
                   decimalDigits: 2,
                 ),
                 majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
-                borderWidth: 0,
-                borderColor: Colors.transparent,
                 interval: 0.1,
               ),
               onActualRangeChanged: (ActualRangeChangedArgs args) {
@@ -107,11 +101,14 @@ class MainChartState extends State<MainChart> {
               tooltipBehavior: TooltipBehavior(enable: false),
               trackballBehavior: TrackballBehavior(
                 enable: true,
+                tooltipAlignment: ChartAlignment.near,
                 activationMode: ActivationMode.singleTap,
-                tooltipSettings: const InteractiveTooltip(
+                tooltipSettings: InteractiveTooltip(
                   enable: true,
-                  color: Colors.white,
-                  textStyle: TextStyle(color: Colors.black),
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
+                  textStyle: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
+                  ),
                 ),
                 tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
                 markerSettings: const TrackballMarkerSettings(

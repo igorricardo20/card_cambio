@@ -22,7 +22,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.settings, style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.settings, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),

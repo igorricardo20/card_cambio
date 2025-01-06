@@ -5,13 +5,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BankCard extends StatelessWidget {
-  const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.type='bank'});
+  const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.trophyColor=Colors.black, this.type='bank'});
 
   final double value;
   final String name;
   final String logo;
   final Color color;
   final String trophyPosition;
+  final Color trophyColor;
   final String type;
 
   @override
@@ -23,12 +24,12 @@ class BankCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        hasTrohpy ? Trophy(text: trophyPosition, color: color) : Container(),
+        hasTrohpy ? Trophy(text: trophyPosition, color: trophyColor) : Container(),
         Padding(
           padding: const EdgeInsets.only(right: 2.0),
           child: SizedBox(
-            width: 150,
-            height: 100,
+            width: 120,
+            height: 120,
             child: Card(
               clipBehavior: Clip.hardEdge,
               elevation: 0,
@@ -49,21 +50,28 @@ class BankCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15,top: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
-                      SizedBox(height: 10),
-                      Text('R\$ $value', style: TextStyle(fontSize: 14, color: Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w700)),
+                      // SizedBox(height: 40, child: Image.asset('assets/images/$logo', width: 40)),
+                      // SizedBox(height: 10),
+                      Text(name, style: TextStyle(fontSize: 13, color: Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w300)),
+                      Text('R\$ $value', style: TextStyle(fontSize: 20, color: Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w700)),
+                      SizedBox(height: 12),
+                      Container(
+                        height: 6,
+                        width: 82,
+                        color: color,
+                      ),
                     ]
-                  )
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ]
@@ -88,12 +96,15 @@ class BankCard extends StatelessWidget {
               color: isDark ? Colors.white : Colors.grey[700]
             )
           ),
-          Text(
-            AppLocalizations.of(context)!.coming_soon, 
-            style: TextStyle(
-              fontSize: 12, 
-              color: isDark ? Colors.white : Colors.grey[700]
-            )
+          Center(
+            child: Text(
+              AppLocalizations.of(context)!.coming_soon, 
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12, 
+                color: isDark ? Colors.white : Colors.grey[700]
+              )
+            ),
           ),
         ],
       ),

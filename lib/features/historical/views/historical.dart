@@ -40,7 +40,7 @@ class _HistoricalState extends State<Historical> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.historical, style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.historical, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                     Text(AppLocalizations.of(context)!.historical_data),
                     SizedBox(height: 20),
                     SizedBox(
