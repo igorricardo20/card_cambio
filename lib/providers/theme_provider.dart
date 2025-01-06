@@ -47,6 +47,7 @@ class ThemeProvider extends ChangeNotifier {
         headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         titleSmall: TextStyle(fontSize: 17),
         bodyMedium: TextStyle(color: _isDarkMode ? Colors.white : Colors.black),
+        bodySmall: TextStyle(fontSize: 14),
       ),
       iconTheme: IconThemeData(color: _isDarkMode ? Colors.white : Colors.black),
       extensions: [

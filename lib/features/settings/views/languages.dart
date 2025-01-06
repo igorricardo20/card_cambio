@@ -54,9 +54,7 @@ class Languages extends StatelessWidget {
         ListTile(
           title: Text(
             _getLocalizedString(context, code),
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-            ),
+            style: Theme.of(context).textTheme.bodySmall, // Use new text style
           ),
           trailing: context.watch<LocaleProvider>().locale.languageCode == code
               ? Icon(Icons.check, color: Theme.of(context).primaryColor)

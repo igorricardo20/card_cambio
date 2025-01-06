@@ -34,7 +34,7 @@ class About extends StatelessWidget {
                     SizedBox(height: 10),
                     Text(
                       localizations.about_this_app_description,
-                      style: TextStyle(fontSize: 16, height: 1.5),
+                      style: Theme.of(context).textTheme.bodySmall, // Use new text style
                     ),
                   ],
                 ),
@@ -50,7 +50,7 @@ class About extends StatelessWidget {
                     Text.rich(
                       TextSpan(
                         text: localizations.at,
-                        style: TextStyle(fontSize: 16, height: 1.5),
+                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
                         children: <TextSpan>[
                           TextSpan(
                             text: 'Rockpeach',

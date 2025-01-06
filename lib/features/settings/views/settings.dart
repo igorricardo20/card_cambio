@@ -33,7 +33,10 @@ class Settings extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(AppLocalizations.of(context)!.dark_mode),
+                      title: Text(
+                        AppLocalizations.of(context)!.dark_mode,
+                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                      ),
                       trailing: CupertinoSwitch(
                         value: context.watch<ThemeProvider>().isDarkMode,
                         onChanged: (value) {
@@ -43,7 +46,10 @@ class Settings extends StatelessWidget {
                     ),
                     Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
-                      title: Text(AppLocalizations.of(context)!.language),
+                      title: Text(
+                        AppLocalizations.of(context)!.language,
+                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                      ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(
@@ -62,7 +68,10 @@ class Settings extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(AppLocalizations.of(context)!.about),
+                      title: Text(
+                        AppLocalizations.of(context)!.about,
+                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                      ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(
@@ -73,7 +82,10 @@ class Settings extends StatelessWidget {
                     ),
                     Divider(height: 1, color: Theme.of(context).dividerColor),
                     ListTile(
-                      title: Text(AppLocalizations.of(context)!.open_data),
+                      title: Text(
+                        AppLocalizations.of(context)!.open_data,
+                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                      ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
                         Navigator.push(

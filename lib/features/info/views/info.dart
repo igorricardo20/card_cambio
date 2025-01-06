@@ -31,7 +31,7 @@ class Info extends StatelessWidget {
                       SizedBox(height: 20),
                       Text(localizations.definition, style: Theme.of(context).textTheme.titleSmall),
                       SizedBox(height: 10),
-                      Text(localizations.open_data_definition),
+                      Text(localizations.open_data_definition, style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                   SizedBox(height: 20),
@@ -40,7 +40,7 @@ class Info extends StatelessWidget {
                     children: [
                       Text(localizations.government_initiatives, style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      Text(localizations.government_initiatives_description),
+                      Text(localizations.government_initiatives_description, style: Theme.of(context).textTheme.bodySmall),
                       SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
@@ -57,7 +57,7 @@ class Info extends StatelessWidget {
                       SizedBox(height: 30),
                       Text(localizations.central_bank, style: TextStyle(fontSize: 20)),
                       SizedBox(height: 10),
-                      Text(localizations.central_bank_description),
+                      Text(localizations.central_bank_description, style: Theme.of(context).textTheme.bodySmall),
                       SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
