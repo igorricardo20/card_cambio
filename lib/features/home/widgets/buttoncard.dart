@@ -20,7 +20,6 @@ class ButtonCard extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(4.0),
               child: Image(
                 image: AssetImage(assetPath),
                 fit: BoxFit.fill,
