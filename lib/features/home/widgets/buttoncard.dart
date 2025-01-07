@@ -52,7 +52,6 @@ class FadeIn extends StatefulWidget {
   const FadeIn({required this.child});
 
   @override
-  // ignore: library_private_types_in_public_api
   _FadeInState createState() => _FadeInState();
 }
 

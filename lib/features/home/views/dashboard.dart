@@ -98,7 +98,7 @@ class Dashboard extends StatelessWidget {
               SizedBox(height: 10),
               ButtonCard(
                 text: AppLocalizations.of(context)!.calculate_your_purchase,
-                assetPath: '/images/cards/coin-card.png',
+                assetPath: '/images/coin-card.png',
               ),
               SizedBox(height: 30),
             ],
