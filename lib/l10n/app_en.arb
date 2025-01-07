@@ -198,5 +198,7 @@
   "period_2": "Last month",
   "@period_2": {
     "description": "Label for a duration of the last month"
-  }
+  },
+  "simulate": "Simulate",
+  "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE"
 }

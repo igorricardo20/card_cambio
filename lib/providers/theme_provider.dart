@@ -45,7 +45,8 @@ class ThemeProvider extends ChangeNotifier {
       scaffoldBackgroundColor: _isDarkMode ? Colors.black : Colors.white,
       textTheme: TextTheme(
         headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        titleSmall: TextStyle(fontSize: 17),
+        titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         bodyMedium: TextStyle(color: _isDarkMode ? Colors.white : Colors.black),
         bodySmall: TextStyle(fontSize: 14),
       ),

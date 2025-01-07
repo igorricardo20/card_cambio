@@ -170,5 +170,7 @@
   "get_started": "Beginnen",
   "@get_started": {
     "description": "Tekst voor de beginnen knop"
-  }
+  },
+  "simulate": "Simuleren",
+  "calculate_your_purchase": "BEREKEN\nJE AANKOOP"
 }

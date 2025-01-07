@@ -198,5 +198,7 @@
   "period_2": "El mes pasado",
   "@period_2": {
     "description": "Etiqueta para una duración del mes pasado"
-  }
+  },
+  "simulate": "Simular",
+  "calculate_your_purchase": "CALCULA\nTU COMPRA"
 }

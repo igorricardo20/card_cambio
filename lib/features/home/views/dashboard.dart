@@ -9,8 +9,7 @@ import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-
+import 'package:card_cambio/features/home/widgets/buttoncard.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -78,7 +77,7 @@ class Dashboard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
@@ -87,6 +86,21 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.only(left: 6.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(AppLocalizations.of(context)!.simulate, style: Theme.of(context).textTheme.titleSmall),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+              ButtonCard(
+                text: AppLocalizations.of(context)!.calculate_your_purchase,
+                assetPath: '/images/cards/coin-card.png',
+              ),
+              SizedBox(height: 30),
             ],
           );
   }
