@@ -13,33 +13,31 @@ class ButtonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeIn(
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        elevation: 0,
-        child: Stack(
-          children: [
-            ClipRRect(
-              child: Image(
-                image: AssetImage(assetPath),
-                fit: BoxFit.fill,
-              ),
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      elevation: 0,
+      child: Stack(
+        children: [
+          ClipRRect(
+            child: Image(
+              image: AssetImage(assetPath),
+              fit: BoxFit.fill,
             ),
-            Positioned(
-              bottom: 15,
-              left: 15,
-              child: Text(
-                text,
-                style: GoogleFonts.archivoBlack(
-                  textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.white,
-                    backgroundColor: Colors.black54,
-                  ),
+          ),
+          Positioned(
+            bottom: 15,
+            left: 15,
+            child: Text(
+              text,
+              style: GoogleFonts.archivoBlack(
+                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.white,
+                  backgroundColor: Colors.black54,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
