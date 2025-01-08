@@ -13,31 +13,33 @@ class ButtonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      child: Stack(
-        children: [
-          ClipRRect(
-            child: Image(
-              image: AssetImage(assetPath),
-              fit: BoxFit.fill,
+    return FadeIn(
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        elevation: 0,
+        child: Stack(
+          children: [
+            ClipRRect(
+              child: Image.asset(
+                assetPath,
+                fit: BoxFit.fill,
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 15,
-            left: 15,
-            child: Text(
-              text,
-              style: GoogleFonts.archivoBlack(
-                textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Colors.white,
-                  backgroundColor: Colors.black54,
+            Positioned(
+              bottom: 15,
+              left: 15,
+              child: Text(
+                text,
+                style: GoogleFonts.archivoBlack(
+                  textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Colors.white,
+                    backgroundColor: Colors.black54,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -49,6 +51,7 @@ class FadeIn extends StatefulWidget {
   const FadeIn({required this.child});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FadeInState createState() => _FadeInState();
 }
 
