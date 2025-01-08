@@ -200,5 +200,6 @@
     "description": "Label for a duration of the last month"
   },
   "simulate": "Simulate",
-  "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE"
+  "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE",
+  "purchase_calculator_title": "Purchase calculator"
 }

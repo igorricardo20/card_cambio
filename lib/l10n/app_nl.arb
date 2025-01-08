@@ -172,5 +172,6 @@
     "description": "Tekst voor de beginnen knop"
   },
   "simulate": "Simuleren",
-  "calculate_your_purchase": "BEREKEN\nJE AANKOOP"
+  "calculate_your_purchase": "BEREKEN\nJE AANKOOP",
+  "purchase_calculator_title": "Purchase calculator"
 }

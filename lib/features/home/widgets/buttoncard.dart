@@ -4,41 +4,51 @@ import 'package:google_fonts/google_fonts.dart';
 class ButtonCard extends StatelessWidget {
   final String text;
   final String assetPath;
+  final Widget page;
 
   const ButtonCard({
     super.key,
     required this.text,
     required this.assetPath,
+    required this.page,
   });
 
   @override
   Widget build(BuildContext context) {
     return FadeIn(
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        elevation: 0,
-        child: Stack(
-          children: [
-            ClipRRect(
-              child: Image.asset(
-                assetPath,
-                fit: BoxFit.fill,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },
+        child: Card(
+          clipBehavior: Clip.hardEdge,
+          elevation: 0,
+          child: Stack(
+            children: [
+              ClipRRect(
+                child: Image.asset(
+                  assetPath,
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            Positioned(
-              bottom: 15,
-              left: 15,
-              child: Text(
-                text,
-                style: GoogleFonts.archivoBlack(
-                  textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.white,
-                    backgroundColor: Colors.black54,
+              Positioned(
+                bottom: 15,
+                left: 15,
+                child: Text(
+                  text,
+                  style: GoogleFonts.archivoBlack(
+                    textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Colors.white,
+                      backgroundColor: Colors.black54,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

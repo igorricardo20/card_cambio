@@ -10,6 +10,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:card_cambio/features/home/widgets/buttoncard.dart';
+import 'package:card_cambio/features/home/views/simulate.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -96,10 +97,10 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              SizedBox(height: 30, child: Image.asset('assets/images/coin-card.png', width: 30,)),
               ButtonCard(
                 text: AppLocalizations.of(context)!.calculate_your_purchase,
                 assetPath: "assets/images/coin-card.png",
+                page: Simulate(),
               ),
               SizedBox(height: 30),
             ],

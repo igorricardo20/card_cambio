@@ -200,5 +200,6 @@
     "description": "Etiqueta para una duración del mes pasado"
   },
   "simulate": "Simular",
-  "calculate_your_purchase": "CALCULA\nTU COMPRA"
+  "calculate_your_purchase": "CALCULA\nTU COMPRA",
+  "purchase_calculator_title": "Simulador de compras"
 }

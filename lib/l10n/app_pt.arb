@@ -55,7 +55,7 @@
   "@historical_data": {
     "description": "Título da seção de dados históricos"
   },
-  "credit_card_usage_rates": "Taxas de uso de cartão de crédito por banco",
+  "credit_card_usage_rates": "Taxas de conversão para cartões de crédito",
   "@credit_card_usage_rates": {
     "description": "Título da seção mostrando as taxas de uso de cartão de crédito por banco"
   },
@@ -200,5 +200,6 @@
     "description": "Texto para o botão de começar"
   },
   "simulate": "Simular",
-  "calculate_your_purchase": "CALCULE SUA COMPRA"
+  "calculate_your_purchase": "CALCULE SUA COMPRA",
+  "purchase_calculator_title": "Simulador de compras"
 }
