@@ -201,5 +201,6 @@
   },
   "simulate": "Simulate",
   "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE",
-  "purchase_calculator_title": "Purchase calculator"
+  "purchase_calculator_title": "Purchase calculator",
+  "you_would_pay": "You would pay"
 }

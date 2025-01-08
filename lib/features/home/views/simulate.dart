@@ -4,7 +4,7 @@ import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class Simulate extends StatelessWidget {
   const Simulate({super.key});
@@ -15,6 +15,7 @@ class Simulate extends StatelessWidget {
     final rates = provider.rates;
     final rateList = sortRatesByValue(getRecentRates(rates));
     final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+    final moneyController = MoneyMaskedTextController();
 
     return Scaffold(
       appBar: AppBar(
@@ -40,21 +41,24 @@ class Simulate extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
+                          controller: moneyController,
                           decoration: InputDecoration(
                             labelText: 'Purchase Value',
                             prefixIcon: Icon(Icons.attach_money),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
                             ),
                             filled: true,
                             fillColor: isDark ? Colors.grey[700] : Colors.white,
                           ),
+                          style: TextStyle(fontSize: 18),
                         ),
                         SizedBox(height: 30),
                         Divider(height: 1, color: Theme.of(context).dividerColor),
                         SizedBox(height: 20),
                         Text(
-                          'Results',
+                          AppLocalizations.of(context)!.you_would_pay,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(height: 10),
@@ -141,8 +145,12 @@ class _BankTileState extends State<BankTile> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: widget.isDark ? Colors.grey[700] : Colors.white,
+      color: Colors.transparent,
       elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(color: Colors.grey[400]!),
+      ),
       child: Column(
         children: [
           ListTile(

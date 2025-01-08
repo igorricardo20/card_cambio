@@ -145,7 +145,7 @@
   },
   "about_this_app_description": "Este aplicativo é uma vitrine do que fazemos de melhor: construir software de forma rápida, confiável e visualmente impressionante. Ele serve como um exemplo da qualidade e criatividade que trazemos para cada projeto e como transformamos as ideias em experiências digitais.",
   "@about_this_app_description": {
-    "description": "Descrição para a seção sobre o aplicativo"
+    "description": "Descrição para a se��ão sobre o aplicativo"
   },
   "about_us": "Sobre nós",
   "@about_us": {
@@ -201,5 +201,6 @@
   },
   "simulate": "Simular",
   "calculate_your_purchase": "CALCULE SUA COMPRA",
-  "purchase_calculator_title": "Simulador de compras"
+  "purchase_calculator_title": "Simulador de compras",
+  "you_would_pay": "Você pagaria"
 }

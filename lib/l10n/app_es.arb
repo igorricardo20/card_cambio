@@ -201,5 +201,6 @@
   },
   "simulate": "Simular",
   "calculate_your_purchase": "CALCULA\nTU COMPRA",
-  "purchase_calculator_title": "Simulador de compras"
+  "purchase_calculator_title": "Simulador de compras",
+  "you_would_pay": "Usted pagaría"
 }

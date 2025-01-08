@@ -173,5 +173,6 @@
   },
   "simulate": "Simuleren",
   "calculate_your_purchase": "BEREKEN\nJE AANKOOP",
-  "purchase_calculator_title": "Purchase calculator"
+  "purchase_calculator_title": "Purchase calculator",
+  "you_would_pay": "Je zou betalen"
 }
