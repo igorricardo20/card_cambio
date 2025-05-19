@@ -77,35 +77,51 @@ class _SimulateState extends State<Simulate> {
                         Stack(
                           alignment: Alignment.centerRight,
                           children: [
-                            TextField(
-                              controller: moneyController,
-                              keyboardType: TextInputType.number,
-                              autofocus: true,
-                              textInputAction: TextInputAction.done,
-                              decoration: InputDecoration(
-                                // hintText: AppLocalizations.of(context)?.purchase_value ?? 'Enter amount',
-                                prefixIcon: const Icon(Icons.attach_money, color: Colors.grey),
-                                filled: true,
-                                fillColor: isDark ? Colors.grey[800] : Colors.grey[50],
-                                contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: BorderSide.none,
-                                ),
-                                suffixIcon: moneyController.text.isNotEmpty
-                                    ? IconButton(
-                                        icon: const Icon(Icons.clear, size: 20),
-                                        onPressed: () {
-                                          setState(() {
-                                            moneyController.text = '';
-                                            moneyController.updateValue(0); // Ensure value is reset
-                                          });
-                                        },
-                                      )
-                                    : null,
-                              ),
-                              style: const TextStyle(fontSize: 18),
-                              onSubmitted: (_) => FocusScope.of(context).unfocus(),
+                            Builder(
+                              builder: (context) {
+                                // Determine if BB is the first (best) bank in the sorted list
+                                final isBB = rateList.isNotEmpty && rateList.first.key == 'bb';
+                                return TextField(
+                                  controller: moneyController,
+                                  keyboardType: TextInputType.number,
+                                  autofocus: true,
+                                  textInputAction: TextInputAction.done,
+                                  decoration: InputDecoration(
+                                    prefixIcon: const Icon(Icons.attach_money, color: Colors.grey),
+                                    filled: true,
+                                    fillColor: isDark
+                                        ? Colors.grey[900] // Much darker for contrast in dark mode
+                                        : (isBB
+                                            ? const Color(0xFFFFF7D1) // Lighter yellow for BB input in light mode
+                                            : Colors.grey[50]),
+                                    contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    suffixIcon: moneyController.text.isNotEmpty
+                                        ? IconButton(
+                                            icon: const Icon(Icons.clear, size: 20),
+                                            onPressed: () {
+                                              setState(() {
+                                                moneyController.text = '';
+                                                moneyController.updateValue(0);
+                                              });
+                                            },
+                                          )
+                                        : null,
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: isDark
+                                        ? Colors.white
+                                        : (isBB
+                                            ? const Color(0xFF5C4715) // Dark gold for BB input text
+                                            : Colors.black),
+                                  ),
+                                  onSubmitted: (_) => FocusScope.of(context).unfocus(),
+                                );
+                              },
                             ),
                           ],
                         ),

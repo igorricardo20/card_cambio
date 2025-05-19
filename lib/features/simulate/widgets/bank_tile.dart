@@ -73,9 +73,9 @@ class BankTile extends StatelessWidget {
                                   builder: (context, value, child) {
                                     final bool isAnimationDone = value == finalValue;
                                     final bool isZero = value == 0.0;
-                                    final Color targetColor = isBest && isAnimationDone && !isZero
-                                        ? const Color(0xFF2EAD5B)
-                                        : const Color(0xFF5C4715);
+                                    final Color valueColor = isBest && isAnimationDone && !isZero
+                                        ? (isDark ? const Color(0xFF4BE07B) : const Color(0xFF2EAD5B)) // Brighter green for dark mode
+                                        : (isDark ? const Color(0xFFD1B97A) : const Color(0xFF5C4715)); // Lighter gold for dark mode
                                     return Padding(
                                       padding: const EdgeInsets.only(right: 8.0),
                                       child: AnimatedDefaultTextStyle(
@@ -84,7 +84,7 @@ class BankTile extends StatelessWidget {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 16,
-                                          color: targetColor,
+                                          color: valueColor,
                                           letterSpacing: 0.1,
                                         ),
                                         child: Text(
@@ -131,17 +131,20 @@ class _InfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4), // Slightly smaller for mobile
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: theme.brightness == Brightness.dark
             ? color.withOpacity(0.10)
-            : color.withOpacity(0.08),
-        borderRadius: BorderRadius.circular(8), // Slightly smaller for mobile
+            : color.withOpacity(0.16), // More visible, softer background for light mode
+        borderRadius: BorderRadius.circular(8),
+        border: theme.brightness == Brightness.light
+            ? Border.all(color: color.withOpacity(0.18), width: 0.7)
+            : null, // Subtle border for light mode
       ),
       child: Text(
         '$label: $value',
         style: TextStyle(
-          fontSize: 10.5, // Smaller font size for mobile
+          fontSize: 10.5,
           color: color,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.1,
