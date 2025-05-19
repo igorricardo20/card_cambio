@@ -75,7 +75,7 @@ class About extends StatelessWidget {
                         text: localizations.visit_website,
                         style: TextStyle(color: Colors.blue, fontSize: 14),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => launchUrlString('https://www.rockpeach.io/'),
+                          ..onTap = () => launchUrlString('https://rockpeach.io/'),
                       ),
                     ),
                     SizedBox(height: 5),
