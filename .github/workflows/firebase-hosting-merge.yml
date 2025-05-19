@@ -23,7 +23,8 @@ jobs:
         run: | 
           flutter config --enable-web
           flutter pub get
-          flutter build web --web-renderer canvaskit --release
+          flutter pub outdated
+          flutter build web --release
         working-directory: ./
 
       # Deploy to Firebase Hosting
