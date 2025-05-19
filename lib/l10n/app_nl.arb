@@ -174,5 +174,13 @@
   "simulate": "Simuleren",
   "calculate_your_purchase": "BEREKEN\nJE AANKOOP",
   "purchase_calculator_title": "Purchase calculator",
-  "you_would_pay": "Je zou betalen"
+  "you_would_pay": "Je zou betalen",
+  "purchase_value": "Aankoopwaarde",
+  "@purchase_value": {
+    "description": "Label voor het aankoopwaardeveld in de simulator/calculator."
+  },
+  "purchase_value_hint": "Voer de waarde in die u wilt simuleren",
+  "@purchase_value_hint": {
+    "description": "Hinttekst onder het aankoopwaardeveld in de simulator/calculator."
+  }
 }

@@ -202,5 +202,13 @@
   "simulate": "Simular",
   "calculate_your_purchase": "CALCULE SUA COMPRA",
   "purchase_calculator_title": "Simulador de compras",
-  "you_would_pay": "Você pagaria"
+  "you_would_pay": "Você pagaria",
+  "purchase_value": "Valor da compra",
+  "@purchase_value": {
+    "description": "Rótulo para o campo de valor da compra no simulador/calculadora."
+  },
+  "purchase_value_hint": "Digite o valor que deseja simular",
+  "@purchase_value_hint": {
+    "description": "Texto de dica abaixo do campo de valor da compra no simulador/calculadora."
+  }
 }

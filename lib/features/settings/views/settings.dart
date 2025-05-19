@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:card_cambio/features/settings/views/languages.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -22,7 +22,7 @@ class Settings extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.settings, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.settings, style: Theme.of(context).textTheme.headlineSmall),
                   ],
                 ),
               ),

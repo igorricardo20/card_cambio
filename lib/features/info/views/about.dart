@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg package
 import 'package:flutter_svg/svg.dart'; // Import for gradient support
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import localization
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class About extends StatelessWidget {
   const About({super.key});

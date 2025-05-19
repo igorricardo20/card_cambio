@@ -1,0 +1,209 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:card_cambio/providers/rate_provider.dart';
+import 'package:card_cambio/providers/theme_provider.dart';
+import 'package:card_cambio/utils/rate_utils.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import '../widgets/bank_tile.dart';
+
+class Simulate extends StatefulWidget {
+  const Simulate({super.key});
+
+  @override
+  State<Simulate> createState() => _SimulateState();
+}
+
+class _SimulateState extends State<Simulate> {
+  late MoneyMaskedTextController moneyController;
+
+  @override
+  void initState() {
+    super.initState();
+    moneyController = MoneyMaskedTextController();
+    moneyController.addListener(_onValueChanged);
+  }
+
+  @override
+  void dispose() {
+    moneyController.removeListener(_onValueChanged);
+    moneyController.dispose();
+    super.dispose();
+  }
+
+  void _onValueChanged() {
+    setState(() {}); // Triggers rebuild for real-time update
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<RateProvider>(context);
+    final rates = provider.rates;
+    final rateList = sortRatesByValue(getRecentRates(rates));
+    final isDark = Provider.of<ThemeProvider>(context).isDarkMode;
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: ListView(
+              children: [
+                Text(AppLocalizations.of(context)!.purchase_calculator_title, style: Theme.of(context).textTheme.headlineSmall),
+                const SizedBox(height: 20),
+                Card(
+                  clipBehavior: Clip.hardEdge,
+                  color: Theme.of(context).cardColor,
+                  elevation: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 30.0, bottom: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Improved input section
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Text(
+                            AppLocalizations.of(context)?.purchase_value ?? 'Purchase Value',
+                            style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            TextField(
+                              controller: moneyController,
+                              keyboardType: TextInputType.number,
+                              autofocus: true,
+                              textInputAction: TextInputAction.done,
+                              decoration: InputDecoration(
+                                // hintText: AppLocalizations.of(context)?.purchase_value ?? 'Enter amount',
+                                prefixIcon: const Icon(Icons.attach_money, color: Colors.grey),
+                                filled: true,
+                                fillColor: isDark ? Colors.grey[800] : Colors.grey[50],
+                                contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  borderSide: BorderSide.none,
+                                ),
+                                suffixIcon: moneyController.text.isNotEmpty
+                                    ? IconButton(
+                                        icon: const Icon(Icons.clear, size: 20),
+                                        onPressed: () {
+                                          setState(() {
+                                            moneyController.text = '';
+                                            moneyController.updateValue(0); // Ensure value is reset
+                                          });
+                                        },
+                                      )
+                                    : null,
+                              ),
+                              style: const TextStyle(fontSize: 18),
+                              onSubmitted: (_) => FocusScope.of(context).unfocus(),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6.0, left: 2.0, bottom: 10.0),
+                          child: Text(
+                            AppLocalizations.of(context)?.purchase_value_hint ?? 'Enter the value you want to simulate',
+                            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        Divider(height: 1, color: Theme.of(context).dividerColor),
+                        const SizedBox(height: 20),
+                        Text(
+                          AppLocalizations.of(context)!.you_would_pay,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 10),
+                        ...rateList.asMap().entries.map((entry) {
+                          final rate = entry.value.value;
+                          final bankName = entry.value.key;
+                          final bankInfo = getBankInfo(bankName, isDark);
+                          final inputValue = moneyController.text.isEmpty ? 0.0 : moneyController.numberValue;
+
+                          double spread;
+                          double iof;
+                          switch (bankName) {
+                            case 'nubank':
+                              spread = 4.0;
+                              iof = 4.38;
+                              break;
+                            case 'itau':
+                              spread = 5.5;
+                              iof = 4.38;
+                              break;
+                            case 'c6':
+                              spread = 2.5;
+                              iof = 4.38;
+                              break;
+                            case 'bb':
+                              spread = 5.0;
+                              iof = 4.38;
+                              break;
+                            default:
+                              spread = 4.0;
+                              iof = 4.38;
+                          }
+
+                          final double ptax = rate.taxaConversao;
+                          final double spreadValue = ptax * (spread / 100);
+                          final double totalRate = ptax + spreadValue;
+                          final double valueWithRate = inputValue * totalRate;
+                          final double valueWithIof = valueWithRate * (1 + iof / 100);
+
+                          return BankTile(
+                            name: bankInfo['name']!,
+                            finalValue: valueWithIof,
+                            ptaxRate: ptax,
+                            bankSpread: spread,
+                            iof: iof,
+                            color: bankInfo['color'] as Color,
+                            isDark: isDark,
+                            isBest: entry.key == 0, // Highlight the first result
+                          );
+                        }).toList(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Map<String, dynamic> getBankInfo(String bankName, bool isDark) {
+  final Map<String, String> bankNames = {
+    'nubank': 'Nubank',
+    'itau': 'Itaú',
+    'c6': 'C6 Bank',
+    'bb': 'Banco do Brasil',
+  };
+
+  final Map<String, Color> bankColors = {
+    'nubank': Colors.purple,
+    'itau': Colors.orange,
+    'c6': Colors.black,
+    'bb': Color(0xFFFFCC29),
+  };
+
+  final String fallbackName = bankName.isNotEmpty ? bankName : 'Unknown';
+  final Color fallbackColor = isDark ? Colors.white : Colors.black;
+
+  return {
+    'name': bankNames[bankName] ?? fallbackName,
+    'color': bankColors[bankName] ?? fallbackColor,
+  };
+}

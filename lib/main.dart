@@ -6,7 +6,7 @@ import 'firebase_options.dart';
 import 'providers/rate_provider.dart';
 import 'providers/theme_provider.dart';
 import 'features/home/views/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 import 'providers/locale_provider.dart';
 
 void main() async {

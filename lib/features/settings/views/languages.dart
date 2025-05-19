@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/locale_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class Languages extends StatelessWidget {
   final List<String> languageCodes = ['en', 'nl', 'es', 'pt'];

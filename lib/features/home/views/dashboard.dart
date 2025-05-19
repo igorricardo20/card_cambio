@@ -8,9 +8,9 @@ import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 import 'package:card_cambio/features/home/widgets/buttoncard.dart';
-import 'package:card_cambio/features/home/views/simulate.dart';
+import 'package:card_cambio/features/simulate/views/simulate.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -242,9 +242,12 @@ class Dashboard extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Container(
-                      height: 150.0,
-                      color: Colors.white,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14), // Add rounded corners
+                      child: Container(
+                        height: 150.0,
+                        color: Colors.white,
+                      ),
                     ),
                   );
                 },

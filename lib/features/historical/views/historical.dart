@@ -1,4 +1,5 @@
 import 'package:card_cambio/features/home/model/rate.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/rate_provider.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/features/historical/widgets/calendarview.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Historical extends StatefulWidget {
   const Historical({super.key});
@@ -40,7 +40,7 @@ class _HistoricalState extends State<Historical> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.historical, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                    Text(AppLocalizations.of(context)!.historical, style: Theme.of(context).textTheme.headlineSmall),
                     Text(AppLocalizations.of(context)!.historical_data),
                     SizedBox(height: 20),
                     SizedBox(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class Onboarding extends StatefulWidget {
   final VoidCallback onFinish;
@@ -91,7 +91,7 @@ class OnboardingState extends State<Onboarding> {
               children: [
                 DotsIndicator(
                   dotsCount: 3,
-                  position: _currentIndex,
+                  position: _currentIndex.toDouble(),
                   decorator: DotsDecorator(
                     activeColor: Theme.of(context).primaryColor,
                   ),

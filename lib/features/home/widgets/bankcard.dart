@@ -2,7 +2,7 @@ import 'package:card_cambio/features/home/widgets/trophy.dart';
 import 'package:card_cambio/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class BankCard extends StatelessWidget {
   const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.trophyColor=Colors.black, this.type='bank'});

@@ -202,5 +202,13 @@
   "simulate": "Simulate",
   "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE",
   "purchase_calculator_title": "Purchase calculator",
-  "you_would_pay": "You would pay"
+  "you_would_pay": "You would pay",
+  "purchase_value": "Purchase Value",
+  "@purchase_value": {
+    "description": "Label for the purchase value input in the simulator/calculator."
+  },
+  "purchase_value_hint": "Enter the value you want to simulate",
+  "@purchase_value_hint": {
+    "description": "Hint text below the purchase value input in the simulator/calculator."
+  }
 }

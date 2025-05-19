@@ -39,16 +39,16 @@ dependencies:
   flutter_animate: ^4.5.0
   intl: any
   shimmer: ^3.0.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
   provider: ^6.1.2
-  syncfusion_flutter_charts: ^27.2.2
+  syncfusion_flutter_charts: ^29.1.40
   table_calendar: ^3.1.2
   shared_preferences: ^2.3.3
   flutter_svg: ^2.0.16
   flutter_localizations:
     sdk: flutter
   onboarding: ^4.0.2
-  dots_indicator: ^3.0.0
+  dots_indicator: ^4.0.1
   google_fonts: ^6.2.1
   flutter_masked_text2: ^0.9.1
 
@@ -61,7 +61,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 flutter_launcher_icons:
   android: "launcher_icon"

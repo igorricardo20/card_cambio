@@ -44,9 +44,9 @@ class ThemeProvider extends ChangeNotifier {
       dividerColor: _isDarkMode ? Colors.grey[700] : Colors.grey[300], // Darker divider color for dark mode
       scaffoldBackgroundColor: _isDarkMode ? Colors.black : Colors.white,
       textTheme: TextTheme(
-        headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        headlineSmall: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
         bodyMedium: TextStyle(color: _isDarkMode ? Colors.white : Colors.black),
         bodySmall: TextStyle(fontSize: 14),
       ),

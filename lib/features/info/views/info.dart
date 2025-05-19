@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import localization
+import 'package:card_cambio/l10n/app_localizations.dart';
 
 class Info extends StatelessWidget {
   const Info({super.key});
