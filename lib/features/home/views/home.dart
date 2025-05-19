@@ -67,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final isWideScreen = MediaQuery.sizeOf(context).width > 600;
     
     final isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
+    final iconColor = isDarkMode ? Colors.white : Colors.black;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -85,20 +86,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 groupAlignment: -0.95,
                 destinations: [
                   NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.house),
-                    selectedIcon: Icon(CupertinoIcons.house_fill),
+                    icon: Icon(CupertinoIcons.house, color: iconColor),
+                    selectedIcon: Icon(CupertinoIcons.house_fill, color: iconColor),
                     label: Text(AppLocalizations.of(context)!.home),
                     padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
                   NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.clock),
-                    selectedIcon: Icon(CupertinoIcons.clock_fill),
+                    icon: Icon(CupertinoIcons.clock, color: iconColor),
+                    selectedIcon: Icon(CupertinoIcons.clock_fill, color: iconColor),
                     label: Text(AppLocalizations.of(context)!.historical),
                     padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
                   NavigationRailDestination(
-                    icon: Icon(CupertinoIcons.settings),
-                    selectedIcon: Icon(CupertinoIcons.settings_solid),
+                    icon: Icon(CupertinoIcons.settings, color: iconColor),
+                    selectedIcon: Icon(CupertinoIcons.settings_solid, color: iconColor),
                     label: Text(AppLocalizations.of(context)!.settings),
                     padding: EdgeInsets.symmetric(vertical: 4.0), // Add padding
                   ),
@@ -140,18 +141,18 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 60,
           destinations: [
             NavigationDestination(
-              icon: Icon(CupertinoIcons.house),
-              selectedIcon: Icon(CupertinoIcons.house_fill),
+              icon: Icon(CupertinoIcons.house, color: iconColor),
+              selectedIcon: Icon(CupertinoIcons.house_fill, color: iconColor),
               label: AppLocalizations.of(context)!.home,
             ),
             NavigationDestination(
-              icon: Icon(CupertinoIcons.clock),
-              selectedIcon: Icon(CupertinoIcons.clock_fill),
+              icon: Icon(CupertinoIcons.clock, color: iconColor),
+              selectedIcon: Icon(CupertinoIcons.clock_fill, color: iconColor),
               label: AppLocalizations.of(context)!.historical,
             ),
             NavigationDestination(
-              icon: Icon(CupertinoIcons.gear_alt),
-              selectedIcon: Icon(CupertinoIcons.gear_alt_fill),
+              icon: Icon(CupertinoIcons.gear_alt, color: iconColor),
+              selectedIcon: Icon(CupertinoIcons.gear_alt_fill, color: iconColor),
               label: AppLocalizations.of(context)!.settings,
             ),
           ],

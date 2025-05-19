@@ -74,7 +74,24 @@ class Dashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppLocalizations.of(context)!.over_time, style: Theme.of(context).textTheme.titleSmall),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(AppLocalizations.of(context)!.over_time, style: Theme.of(context).textTheme.titleSmall),
+                        SizedBox(width: 10),
+                        Icon(Icons.emoji_events, size: 13, color: Colors.amber),
+                        SizedBox(width: 6),
+                        Text(
+                          'Top 3 only',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 9.6,
+                            color: Colors.amber[800],
+                            letterSpacing: 0.2,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -82,8 +99,12 @@ class Dashboard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 3.0),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: 408),
-                  child: MainChart(rates: rates),
+                  constraints: BoxConstraints(maxWidth: 1200, maxHeight: 411),
+                  child: MainChart(
+                    rates: Map.fromEntries(
+                      rateList.take(3).map((entry) => MapEntry(entry.key, rates[entry.key]!)),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
@@ -133,18 +154,21 @@ class Dashboard extends StatelessWidget {
       'nubank': 'nubank_logo.png',
       'itau': 'itau_logo.png',
       'c6': 'c6_logo.png',
+      'bb': 'itau_logo.png', // TEMP: Use itau_logo.png as placeholder for Banco do Brasil
     };
 
     final Map<String, String> bankNames = {
       'nubank': 'Nubank',
       'itau': 'Itaú',
       'c6': 'C6 Bank',
+      'bb': 'Banco do Brasil',
     };
 
     final Map<String, Color> bankColors = {
       'nubank': Colors.purple,
       'itau': Colors.orange,
       'c6': Colors.black,
+      'bb': Color(0xFFFFCC29),
     };
 
     return rateList.asMap().entries.map((entry) {
@@ -183,6 +207,7 @@ class Dashboard extends StatelessWidget {
         color: bankColors[bankName]!,
         trophyPosition: trophyPosition,
         trophyColor: trophyColor,
+        // Optionally, you can pass a width or size parameter if BankCard supports it
       );
     }).toList();
   }

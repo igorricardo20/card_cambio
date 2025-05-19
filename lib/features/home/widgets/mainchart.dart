@@ -42,7 +42,7 @@ class MainChartState extends State<MainChart> {
       children: [
         // Toggle Buttons
         Padding(
-          padding: const EdgeInsets.only(left: 3, bottom: 10),
+          padding: const EdgeInsets.only(left: 3, bottom: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -58,65 +58,70 @@ class MainChartState extends State<MainChart> {
           clipBehavior: Clip.hardEdge,
           color: Theme.of(context).cardColor,
           elevation: 0,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
-            child: SfCartesianChart(
-              primaryXAxis: DateTimeAxis(
-                majorGridLines: const MajorGridLines(width: 0),
-                dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
-                intervalType: DateTimeIntervalType.auto,
-              ),
-              primaryYAxis: NumericAxis(
-                isVisible: true,
-                numberFormat: NumberFormat.currency(
-                  symbol: 'R\$ ',
-                  decimalDigits: 2,
-                ),
-                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
-                interval: 0.1,
-              ),
-              onActualRangeChanged: (ActualRangeChangedArgs args) {
-                if (args.orientation == AxisOrientation.vertical) {
-                  double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
-                  double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
+                child: SfCartesianChart(
+                  primaryXAxis: DateTimeAxis(
+                    majorGridLines: const MajorGridLines(width: 0),
+                    dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
+                    intervalType: DateTimeIntervalType.auto,
+                  ),
+                  primaryYAxis: NumericAxis(
+                    isVisible: true,
+                    numberFormat: NumberFormat.currency(
+                      symbol: 'R\$ ',
+                      decimalDigits: 2,
+                    ),
+                    majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
+                    interval: 0.1,
+                  ),
+                  onActualRangeChanged: (ActualRangeChangedArgs args) {
+                    if (args.orientation == AxisOrientation.vertical) {
+                      double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
+                      double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
 
-                  double range = max - min;
-                  if (range > 0) {
-                    double interval = range / 5;
-                    args.visibleInterval = interval;
+                      double range = max - min;
+                      if (range > 0) {
+                        double interval = range / 5;
+                        args.visibleInterval = interval;
 
-                    // Ensure the maximum value is included
-                    if (max % interval != 0) {
-                      args.visibleMax = max + (interval - (max % interval));
+                        // Ensure the maximum value is included
+                        if (max % interval != 0) {
+                          args.visibleMax = max + (interval - (max % interval));
+                        }
+                      }
                     }
-                  }
-                }
-              },
-              legend: Legend(
-                isVisible: true,
-                position: LegendPosition.bottom,
-                overflowMode: LegendItemOverflowMode.scroll,
-              ),
-              series: _getSeries(widget.rates),
-              tooltipBehavior: TooltipBehavior(enable: false),
-              trackballBehavior: TrackballBehavior(
-                enable: true,
-                tooltipAlignment: ChartAlignment.near,
-                activationMode: ActivationMode.singleTap,
-                tooltipSettings: InteractiveTooltip(
-                  enable: true,
-                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
-                  textStyle: TextStyle(
-                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
+                  },
+                  legend: Legend(
+                    isVisible: true,
+                    position: LegendPosition.bottom,
+                    overflowMode: LegendItemOverflowMode.scroll,
+                  ),
+                  series: _getSeries(widget.rates),
+                  tooltipBehavior: TooltipBehavior(enable: false),
+                  trackballBehavior: TrackballBehavior(
+                    enable: true,
+                    tooltipAlignment: ChartAlignment.near,
+                    activationMode: ActivationMode.singleTap,
+                    tooltipSettings: InteractiveTooltip(
+                      enable: true,
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
+                      textStyle: TextStyle(
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
+                    markerSettings: const TrackballMarkerSettings(
+                      markerVisibility: TrackballVisibilityMode.visible,
+                      borderWidth: 2,
+                    ),
                   ),
                 ),
-                tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
-                markerSettings: const TrackballMarkerSettings(
-                  markerVisibility: TrackballVisibilityMode.visible,
-                  borderWidth: 2,
-                ),
               ),
-            ),
+            ],
           ),
         ),
       ],
@@ -124,32 +129,63 @@ class MainChartState extends State<MainChart> {
   }
 
   Widget _buildToggleButton(String label, int days) {
-  final bool isSelected = selectedDays == days;
-  return GestureDetector(
-    onTap: () {
-      if (!isSelected) {
-        setState(() {
-          selectedDays = days;
-        });
-      }
-    },
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: isSelected ? Theme.of(context).primaryColorLight : Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 13,
-          color: isSelected ? Colors.grey[800] : Colors.grey[500],
-          fontWeight: FontWeight.w700, // Medium weight for better readability
+    final bool isSelected = selectedDays == days;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final Color selectedColor = isDark ? Colors.white : Colors.black;
+    final Color unselectedTextColor = Colors.grey[600]!;
+    final Color unselectedBgColor = Theme.of(context).cardColor;
+    return GestureDetector(
+      onTap: () {
+        if (!isSelected) {
+          setState(() {
+            selectedDays = days;
+          });
+        }
+      },
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 220),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 7),
+        foregroundDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(
+            color: Colors.transparent,
+            width: 2.2,
+          ),
+        ),
+        decoration: BoxDecoration(
+          color: isSelected ? selectedColor : unselectedBgColor,
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(
+            color: isSelected ? selectedColor : Colors.transparent,
+            width: 2.2,
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: selectedColor.withOpacity(0.18),
+                    blurRadius: 8,
+                    offset: Offset(0, 2),
+                  ),
+                ]
+              : [],
+        ),
+        child: Row(
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 12.0,
+                color: isSelected ? (isDark ? Colors.black : Colors.white) : unselectedTextColor,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
+                letterSpacing: 0.1,
+              ),
+            ),
+          ],
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   List<SplineSeries<ChartData, DateTime>> _getSeries(Map<String, List<Rate>> rates) {
     if (rates.isEmpty) {
@@ -160,9 +196,10 @@ class MainChartState extends State<MainChart> {
     final DateTime rangeEnd = DateTime.now().subtract(const Duration(days: 1));
 
     final Map<String, Color> bankColors = {
-      'nubank': Colors.purple,
+      'nubank': Color(0xFF820AD1),
       'itau': Colors.orange,
       'c6': Colors.black,
+      'bb': Color(0xFFFFCC29),
     };
 
     return rates.entries.map((entry) {
@@ -183,7 +220,7 @@ class MainChartState extends State<MainChart> {
         return ChartData(dayLevelDate, rate.taxaConversao);
       }).toList();
 
-      final Color seriesColor = bankColors[bankName] ?? Colors.grey; // Fallback to grey
+      final Color seriesColor = bankColors[bankName] ?? Colors.grey; // Use the same color mapping as cards
 
       return SplineSeries<ChartData, DateTime>(
         name: bankName,

@@ -28,7 +28,7 @@ class BankCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 2.0),
           child: SizedBox(
-            width: 120,
+            width: 136,
             height: 120,
             child: Card(
               clipBehavior: Clip.hardEdge,
@@ -65,7 +65,7 @@ class BankCard extends StatelessWidget {
                       SizedBox(height: 12),
                       Container(
                         height: 6,
-                        width: 82,
+                        width: 98,
                         color: color,
                       ),
                     ]

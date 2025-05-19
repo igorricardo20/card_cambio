@@ -37,9 +37,9 @@ class ThemeProvider extends ChangeNotifier {
   ThemeData get themeData {
     return ThemeData(
       brightness: _isDarkMode ? Brightness.dark : Brightness.light,
-      primarySwatch: _isDarkMode ? Colors.green : Colors.lightGreen, // Darker green for light mode
-      primaryColor: _isDarkMode ? Colors.green : Colors.lightGreen[700], // Darker green for light mode
-      primaryColorLight: _isDarkMode ? Colors.green : Colors.lightGreen[200], // Darker green for light mode
+      primarySwatch: _isDarkMode ? Colors.grey : Colors.grey,
+      primaryColor: _isDarkMode ? Colors.white : Colors.black, // Black for light, white for dark
+      primaryColorLight: _isDarkMode ? Color(0xFF4DD0E1) : Color(0xFF90CAF9),
       cardColor: _isDarkMode ? Colors.grey[800] : Colors.grey[100],
       dividerColor: _isDarkMode ? Colors.grey[700] : Colors.grey[300], // Darker divider color for dark mode
       scaffoldBackgroundColor: _isDarkMode ? Colors.black : Colors.white,
@@ -51,6 +51,17 @@ class ThemeProvider extends ChangeNotifier {
         bodySmall: TextStyle(fontSize: 14),
       ),
       iconTheme: IconThemeData(color: _isDarkMode ? Colors.white : Colors.black),
+      colorScheme: ColorScheme(
+        brightness: _isDarkMode ? Brightness.dark : Brightness.light,
+        primary: _isDarkMode ? Color(0xFF26A69A) : Color(0xFF1976D2),
+        onPrimary: Colors.white,
+        secondary: _isDarkMode ? Color(0xFF80CBC4) : Color(0xFF64B5F6),
+        onSecondary: Colors.white,
+        error: Colors.red,
+        onError: Colors.white,
+        surface: _isDarkMode ? Colors.grey[800]! : Colors.white,
+        onSurface: _isDarkMode ? Colors.white : Colors.black,
+      ),
       extensions: [
         ShimmerColors(
           baseColor: _isDarkMode ? Colors.grey[700]! : Colors.grey[50]!,
