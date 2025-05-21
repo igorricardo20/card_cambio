@@ -89,7 +89,7 @@ class _HistoricalState extends State<Historical> {
                           ),
                           SizedBox(width: 8),
                           SizedBox(
-                            width: 100, // Match dropdown width for toggle
+                            width: 114, // Match dropdown width for toggle
                             height: 54,
                             child: Card(
                               elevation: 0,

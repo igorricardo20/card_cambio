@@ -53,13 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
     switch (_selectedIndex) {
       case 0:
         page = Dashboard();
-        break; // Add break statements
       case 1:
         page = Historical();
-        break; // Add break statements
       case 2: 
         page = Settings();
-        break; // Add break statements
       default:
         throw UnimplementedError('Invalid index');
     }
