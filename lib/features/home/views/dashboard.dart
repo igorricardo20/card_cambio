@@ -43,9 +43,9 @@ class Dashboard extends StatelessWidget {
     // Assign positions based on the sorted order
     final bankCards = _getBankCards(rateList, isDark);
 
-    bankCards.add(BankCard(
-      type: AppLocalizations.of(context)!.more_banks_soon,
-    ));
+    // bankCards.add(BankCard(
+    //   type: AppLocalizations.of(context)!.more_banks_soon,
+    // ));
     
     return ListView(
             children: [
@@ -60,7 +60,7 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 160,
+                height: 130,
                 child: ListView(
                   cacheExtent: 1000,
                   physics: BouncingScrollPhysics(),
@@ -155,6 +155,8 @@ class Dashboard extends StatelessWidget {
       'itau': 'itau_logo.png',
       'c6': 'c6_logo.png',
       'bb': 'itau_logo.png', // TEMP: Use itau_logo.png as placeholder for Banco do Brasil
+      'caixa': 'nubank_logo.png', // TEMP: Use nubank_logo.png as placeholder for Caixa
+      'safra': 'nubank_logo.png', // TEMP: Use nubank_logo.png as placeholder for Safra
     };
 
     final Map<String, String> bankNames = {
@@ -162,6 +164,8 @@ class Dashboard extends StatelessWidget {
       'itau': 'Itaú',
       'c6': 'C6 Bank',
       'bb': 'Banco do Brasil',
+      'caixa': 'Caixa',
+      'safra': 'Safra',
     };
 
     final Map<String, Color> bankColors = {
@@ -169,7 +173,16 @@ class Dashboard extends StatelessWidget {
       'itau': Colors.orange,
       'c6': Colors.black,
       'bb': Color(0xFFFFCC29),
+      'caixa': Color(0xFF005CA9), // Caixa blue
+      'safra': Color(0xFF2B2D42), // Safra deep blue
     };
+
+    // --- VALUE COLOR LOGIC ---
+    // Simulate's best: dark green, others: gold. If tie, all lowest get green.
+    final double minValue = rateList.isNotEmpty ? rateList.first.value.taxaConversao : 0.0;
+    final bool allTied = rateList.where((e) => e.value.taxaConversao == minValue).length > 1;
+    final Color bestGreen = isDark ? const Color(0xFF4BE07B) : const Color(0xFF2EAD5B);
+    final Color gold = isDark ? const Color(0xFFD1B97A) : const Color(0xFF5C4715);
 
     return rateList.asMap().entries.map((entry) {
       final position = entry.key + 1;
@@ -200,6 +213,16 @@ class Dashboard extends StatelessWidget {
           trophyPosition = '${position}th';
       }
 
+      // Value color logic
+      Color? valueColor;
+      if (rate.taxaConversao == minValue && minValue > 0) {
+        valueColor = bestGreen;
+      } else if (allTied && minValue > 0) {
+        valueColor = bestGreen;
+      } else {
+        valueColor = gold;
+      }
+
       return BankCard(
         value: rate.taxaConversao,
         name: bankNames[bankName]!,
@@ -207,6 +230,7 @@ class Dashboard extends StatelessWidget {
         color: bankColors[bankName]!,
         trophyPosition: trophyPosition,
         trophyColor: trophyColor,
+        valueColor: valueColor,
         // Optionally, you can pass a width or size parameter if BankCard supports it
       );
     }).toList();

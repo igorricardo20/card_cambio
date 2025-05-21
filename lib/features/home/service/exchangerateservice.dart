@@ -66,6 +66,10 @@ String _getHost(String? value) {
       return 'api-dadosabertos-ws.bb.com.br/dadosabertos/v1/taxasCartoes/itens';
     case 'c6':
       return 'dadosabertos-p.c6bank.info/cartao/taxasCartoes/itens';
+    case 'caixa':
+      return 'api.caixa.gov.br:8443/dadosabertos/taxasCartoes/1.2.0/itens';
+    case 'safra':
+      return 'safra.com.br/dadosabertos/taxascartoes/itens';
     default:
       return 'dadosabertos.nubank.com.br';
   }
@@ -86,7 +90,7 @@ ExchangeRateData _formatBbDatesInExchangeRateData(ExchangeRateData data) {
         if (timeParts.length >= 3) {
           formattedTime = '${timeParts[0]}:${timeParts[1]}:${timeParts[2].split('.')[0]}';
         }
-        final isoString = '${datePart}T${formattedTime}.000Z';
+        final isoString = '${datePart}T$formattedTime.000Z';
         return Rate(
           taxaTipoGasto: rate.taxaTipoGasto,
           taxaData: rate.taxaData,

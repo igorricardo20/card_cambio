@@ -42,86 +42,84 @@ class MainChartState extends State<MainChart> {
       children: [
         // Toggle Buttons
         Padding(
-          padding: const EdgeInsets.only(left: 3, bottom: 8),
+          padding: const EdgeInsets.only(left: 3, bottom: 6, top: 2), // Slightly less bottom, add a little top
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               _buildToggleButton(AppLocalizations.of(context)!.period_1, 16),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6), // Slightly less space
               _buildToggleButton(AppLocalizations.of(context)!.period_2, 30),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               _buildToggleButton(AppLocalizations.of(context)!.max, 60),
             ],
           ),
         ),
         Card(
-          clipBehavior: Clip.hardEdge,
           color: Theme.of(context).cardColor,
           elevation: 0,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 30, bottom: 5),
-                child: SfCartesianChart(
-                  primaryXAxis: DateTimeAxis(
-                    majorGridLines: const MajorGridLines(width: 0),
-                    dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName), // localized month names
-                    intervalType: DateTimeIntervalType.auto,
-                  ),
-                  primaryYAxis: NumericAxis(
-                    isVisible: true,
-                    numberFormat: NumberFormat.currency(
-                      symbol: 'R\$ ',
-                      decimalDigits: 2,
-                    ),
-                    majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
-                    interval: 0.1,
-                  ),
-                  onActualRangeChanged: (ActualRangeChangedArgs args) {
-                    if (args.orientation == AxisOrientation.vertical) {
-                      double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
-                      double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 8), // Add padding for a modern look
+            child: SfCartesianChart(
+              primaryXAxis: DateTimeAxis(
+                majorGridLines: const MajorGridLines(width: 0),
+                dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName),
+                intervalType: DateTimeIntervalType.auto,
+                edgeLabelPlacement: EdgeLabelPlacement.shift, // Prevent x-axis label overflow
+              ),
+              primaryYAxis: NumericAxis(
+                isVisible: true,
+                numberFormat: NumberFormat.currency(
+                  symbol: 'R\$ ',
+                  decimalDigits: 2,
+                ),
+                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
+                interval: 0.1,
+              ),
+              onActualRangeChanged: (ActualRangeChangedArgs args) {
+                if (args.orientation == AxisOrientation.vertical) {
+                  double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
+                  double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
 
-                      double range = max - min;
-                      if (range > 0) {
-                        double interval = range / 5;
-                        args.visibleInterval = interval;
+                  double range = max - min;
+                  if (range > 0) {
+                    double interval = range / 5;
+                    args.visibleInterval = interval;
 
-                        // Ensure the maximum value is included
-                        if (max % interval != 0) {
-                          args.visibleMax = max + (interval - (max % interval));
-                        }
-                      }
+                    // Ensure the maximum value is included
+                    if (max % interval != 0) {
+                      args.visibleMax = max + (interval - (max % interval));
                     }
-                  },
-                  legend: Legend(
-                    isVisible: true,
-                    position: LegendPosition.bottom,
-                    overflowMode: LegendItemOverflowMode.scroll,
-                  ),
-                  series: _getSeries(widget.rates),
-                  tooltipBehavior: TooltipBehavior(enable: false),
-                  trackballBehavior: TrackballBehavior(
-                    enable: true,
-                    tooltipAlignment: ChartAlignment.near,
-                    activationMode: ActivationMode.singleTap,
-                    tooltipSettings: InteractiveTooltip(
-                      enable: true,
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
-                      textStyle: TextStyle(
-                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
-                      ),
-                    ),
-                    tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
-                    markerSettings: const TrackballMarkerSettings(
-                      markerVisibility: TrackballVisibilityMode.visible,
-                      borderWidth: 2,
-                    ),
+                  }
+                }
+              },
+              legend: Legend(
+                isVisible: true,
+                position: LegendPosition.bottom,
+                overflowMode: LegendItemOverflowMode.scroll,
+              ),
+              series: _getSeries(widget.rates),
+              tooltipBehavior: TooltipBehavior(enable: false),
+              trackballBehavior: TrackballBehavior(
+                enable: true,
+                tooltipAlignment: ChartAlignment.near,
+                activationMode: ActivationMode.singleTap,
+                tooltipSettings: InteractiveTooltip(
+                  enable: true,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
+                  textStyle: TextStyle(
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
                   ),
                 ),
+                tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
+                markerSettings: const TrackballMarkerSettings(
+                  markerVisibility: TrackballVisibilityMode.visible,
+                  borderWidth: 2,
+                ),
               ),
-            ],
+            ),
           ),
         ),
       ],
@@ -200,6 +198,8 @@ class MainChartState extends State<MainChart> {
       'itau': Colors.orange,
       'c6': Colors.black,
       'bb': Color(0xFFFFCC29),
+      'caixa': Color(0xFF005CA9), // Caixa blue
+      'safra': Color(0xFF2B2D42), // Safra deep blue
     };
 
     return rates.entries.map((entry) {

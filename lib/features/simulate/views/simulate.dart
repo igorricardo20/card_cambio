@@ -79,8 +79,6 @@ class _SimulateState extends State<Simulate> {
                           children: [
                             Builder(
                               builder: (context) {
-                                // Determine if BB is the first (best) bank in the sorted list
-                                final isBB = rateList.isNotEmpty && rateList.first.key == 'bb';
                                 return TextField(
                                   controller: moneyController,
                                   keyboardType: TextInputType.number,
@@ -91,9 +89,7 @@ class _SimulateState extends State<Simulate> {
                                     filled: true,
                                     fillColor: isDark
                                         ? Colors.grey[900] // Much darker for contrast in dark mode
-                                        : (isBB
-                                            ? const Color(0xFFFFF7D1) // Lighter yellow for BB input in light mode
-                                            : Colors.grey[50]),
+                                        : Colors.grey[50], // Always use default for light mode
                                     contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12.0),
@@ -115,9 +111,7 @@ class _SimulateState extends State<Simulate> {
                                     fontSize: 18,
                                     color: isDark
                                         ? Colors.white
-                                        : (isBB
-                                            ? const Color(0xFF5C4715) // Dark gold for BB input text
-                                            : Colors.black),
+                                        : Colors.black,
                                   ),
                                   onSubmitted: (_) => FocusScope.of(context).unfocus(),
                                 );
@@ -152,19 +146,15 @@ class _SimulateState extends State<Simulate> {
                             case 'nubank':
                               spread = 4.0;
                               iof = 4.38;
-                              break;
                             case 'itau':
                               spread = 5.5;
                               iof = 4.38;
-                              break;
                             case 'c6':
                               spread = 2.5;
                               iof = 4.38;
-                              break;
                             case 'bb':
                               spread = 5.0;
                               iof = 4.38;
-                              break;
                             default:
                               spread = 4.0;
                               iof = 4.38;
@@ -186,7 +176,7 @@ class _SimulateState extends State<Simulate> {
                             isDark: isDark,
                             isBest: entry.key == 0, // Highlight the first result
                           );
-                        }).toList(),
+                        }),
                       ],
                     ),
                   ),
@@ -206,6 +196,7 @@ Map<String, dynamic> getBankInfo(String bankName, bool isDark) {
     'itau': 'Itaú',
     'c6': 'C6 Bank',
     'bb': 'Banco do Brasil',
+    'caixa': 'Caixa',
   };
 
   final Map<String, Color> bankColors = {
@@ -213,6 +204,7 @@ Map<String, dynamic> getBankInfo(String bankName, bool isDark) {
     'itau': Colors.orange,
     'c6': Colors.black,
     'bb': Color(0xFFFFCC29),
+    'caixa': Color(0xFF005CA9), // Caixa blue
   };
 
   final String fallbackName = bankName.isNotEmpty ? bankName : 'Unknown';

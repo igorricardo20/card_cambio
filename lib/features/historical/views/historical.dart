@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:card_cambio/providers/rate_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:card_cambio/features/historical/widgets/calendarview.dart';
+import '../widgets/tableview.dart';
 
 class Historical extends StatefulWidget {
   const Historical({super.key});
@@ -19,6 +19,7 @@ class Historical extends StatefulWidget {
 class _HistoricalState extends State<Historical> {
   String? selectedBank = 'nubank';
   bool showCalendar = true; // New state variable
+  int? _rowsPerPage;
 
   @override
   Widget build(BuildContext context) {
@@ -44,34 +45,40 @@ class _HistoricalState extends State<Historical> {
                     Text(AppLocalizations.of(context)!.historical_data),
                     SizedBox(height: 20),
                     SizedBox(
-                      width: 300,
-                      height: 50,
+                      width: 340, // Slightly wider for better spacing
+                      height: 54,
                       child: Row(
                         children: [
                           Card(
                             color: Theme.of(context).cardColor,
                             elevation: 0,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 10),
-                                child: DropdownMenu<String>(
-                                  width: 124,
-                                  initialSelection: 'nubank',
-                                  textStyle: TextStyle(color: isDark ? Colors.white : Colors.black, fontSize: 13),
-                                  inputDecorationTheme: InputDecorationTheme(
-                                    border: InputBorder.none,
-                                    filled: false,
-                                    constraints: BoxConstraints(maxHeight: 35),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              side: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.18), width: 1),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 2.0),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  value: selectedBank,
+                                  icon: Icon(Icons.keyboard_arrow_down_rounded, color: isDark ? Colors.white : Colors.grey[700]),
+                                  dropdownColor: Theme.of(context).cardColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  style: TextStyle(
+                                    color: isDark ? Colors.white : Colors.black,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500, // Less bold
+                                    letterSpacing: 0.1,
                                   ),
-                                  menuStyle: MenuStyle(
-                                    backgroundColor: WidgetStateProperty.all(isDark ? Colors.black : Colors.white),
-                                  ),
-                                  dropdownMenuEntries: [
-                                    DropdownMenuEntry(value: 'nubank', label: 'NuBank'),
-                                    DropdownMenuEntry(value: 'itau', label: 'Itaú'),
-                                    DropdownMenuEntry(value: 'c6', label: 'C6 Bank'),
+                                  items: [
+                                    DropdownMenuItem(value: 'bb', child: Row(children: [Icon(Icons.account_balance, size: 18, color: isDark ? Colors.grey[200] : Color(0xFFFFCC29)), SizedBox(width: 7), Text('Banco do Brasil', style: TextStyle(fontWeight: FontWeight.w500))],)),
+                                    DropdownMenuItem(value: 'c6', child: Row(children: [Icon(Icons.credit_card, size: 18, color: isDark ? Colors.grey[200] : Colors.black), SizedBox(width: 7), Text('C6 Bank', style: TextStyle(fontWeight: FontWeight.w500))],)),
+                                    DropdownMenuItem(value: 'caixa', child: Row(children: [Icon(Icons.account_balance, size: 18, color: isDark ? Colors.blue[200] : Color(0xFF005CA9)), SizedBox(width: 7), Text('Caixa', style: TextStyle(fontWeight: FontWeight.w500))],)),
+                                    DropdownMenuItem(value: 'itau', child: Row(children: [Icon(Icons.account_balance, size: 18, color: isDark ? Colors.orange[200] : Colors.orange), SizedBox(width: 7), Text('Itaú', style: TextStyle(fontWeight: FontWeight.w500))],)),
+                                    DropdownMenuItem(value: 'nubank', child: Row(children: [Icon(Icons.account_balance_wallet, size: 18, color: isDark ? Color(0xFFB388FF) : Color(0xFF820AD1)), SizedBox(width: 7), Text('NuBank', style: TextStyle(fontWeight: FontWeight.w500))],)),
+                                    DropdownMenuItem(value: 'safra', child: Row(children: [Icon(Icons.account_balance, size: 18, color: isDark ? Colors.grey[300] : Color(0xFF2B2D42)), SizedBox(width: 7), Text('Safra', style: TextStyle(fontWeight: FontWeight.w500))],)),
                                   ],
-                                  onSelected: (value) {
+                                  onChanged: (value) {
                                     setState(() {
                                       selectedBank = value;
                                     });
@@ -80,33 +87,42 @@ class _HistoricalState extends State<Historical> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 6),
-                          Card(
-                            elevation: 0,
-                            color: Theme.of(context).cardColor,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                              child: Row(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(CupertinoIcons.calendar_today),
-                                    color: showCalendar ? Theme.of(context).primaryColor : Colors.grey,
-                                    onPressed: () {
-                                      setState(() {
-                                        showCalendar = true;
-                                      });
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CupertinoIcons.square_list),
-                                    color: !showCalendar ? Theme.of(context).primaryColor : Colors.grey,
-                                    onPressed: () {
-                                      setState(() {
-                                        showCalendar = false;
-                                      });
-                                    },
-                                  ),
-                                ],
+                          SizedBox(width: 8),
+                          SizedBox(
+                            width: 100, // Match dropdown width for toggle
+                            height: 54,
+                            child: Card(
+                              elevation: 0,
+                              color: Theme.of(context).cardColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                side: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.18), width: 1),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(CupertinoIcons.calendar_today),
+                                      color: showCalendar ? Theme.of(context).primaryColor : Colors.grey,
+                                      onPressed: () {
+                                        setState(() {
+                                          showCalendar = true;
+                                        });
+                                      },
+                                    ),
+                                    IconButton(
+                                      icon: Icon(CupertinoIcons.square_list),
+                                      color: !showCalendar ? Theme.of(context).primaryColor : Colors.grey,
+                                      onPressed: () {
+                                        setState(() {
+                                          showCalendar = false;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -130,31 +146,25 @@ class _HistoricalState extends State<Historical> {
                               child: CalendarViewPlaceholder(),
                             );
                           } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
+                            return Text('Error: \\${snapshot.error}');
                           } else {
                             return snapshot.data!;
                           }
                         },
                       )
                     : rateProvider.hasData
-                        ? PaginatedDataTable(
-                            columns: const <DataColumn>[
-                              DataColumn(label: Text('Date')),
-                              DataColumn(label: Text('Rate')),
-                            ],
-                            source: RateDataSource(rateProvider.rates[selectedBank!] ?? []),
-                            rowsPerPage: 8,
-                          )
+                        ? _buildTable(rateProvider.rates[selectedBank!] ?? [], bankColors[selectedBank!] ?? Colors.blue, isDark)
                         : Shimmer.fromColors(
                             baseColor: shimmerColors.baseColor,
                             highlightColor: shimmerColors.highlightColor,
-                            child: PaginatedDataTable(
-                              columns: const <DataColumn>[
-                                DataColumn(label: Text('Column 1')),
-                                DataColumn(label: Text('Column 2')),
-                                DataColumn(label: Text('Column 3')),
-                              ],
-                              source: _DataTableSourceLoading(),
+                            child: Card(
+                              elevation: 0,
+                              margin: const EdgeInsets.only(top: 8, bottom: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                                side: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.13), width: 1),
+                              ),
+                              child: SizedBox(height: 180),
                             ),
                           ),
               ),
@@ -167,78 +177,31 @@ class _HistoricalState extends State<Historical> {
 
   Future<Widget> _buildCalendar(List<Rate> rates) async {
     await Future.delayed(Duration(milliseconds: 250)); // Simulate delay
-    return CalendarView(rates);
-  }
-}
-
-class _DataTableSourceLoading extends DataTableSource {
-  @override
-  DataRow getRow(int index) {
-    return DataRow(cells: [
-      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
-      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
-      DataCell(Container(width: 50, height: 20, color: Colors.grey)),
-    ]);
+    final color = bankColors[selectedBank!] ?? Colors.blue;
+    return CalendarView(rates, highlightColor: color);
   }
 
-  @override
-  bool get isRowCountApproximate => true;
-
-  @override
-  int get rowCount => 10;
-
-  @override
-  int get selectedRowCount => 0;
-}
-
-class RateDataSource extends DataTableSource {
-  final List<Rate> rates;
-  
-  RateDataSource(this.rates);
-  
-  final DateFormat formatter = DateFormat('dd/MM/yyyy');
-
-  @override
-  DataRow? getRow(int index) {
-    if (index >= rates.length) return null;
-    final rate = rates[index];
-
-    return DataRow(
-      cells: [
-        DataCell(
-          AnimatedSwitcher(
-            duration: Duration(milliseconds: 300),
-            transitionBuilder: (child, animation) {
-              return ScaleTransition(scale: animation, child: child);
-            },
-            child: Text(
-              formatter.format(DateTime.parse(rate.taxaDivulgacaoDataHora)),
-              key: ValueKey('date_${rate.taxaDivulgacaoDataHora}'),
-            ),
-          ),
-        ),
-        DataCell(
-          AnimatedSwitcher(
-            duration: Duration(milliseconds: 300),
-            transitionBuilder: (child, animation) {
-              return ScaleTransition(scale: animation, child: child);
-            },
-            child: Text(
-              'R\$ ${rate.taxaConversao.toStringAsFixed(4)}',
-              key: ValueKey('rate_${rate.taxaDivulgacaoDataHora}_${rate.taxaConversao}'),
-            ),
-          ),
-        ),
-      ],
+  Widget _buildTable(List<Rate> rates, Color highlightColor, bool isDark) {
+    return TableView(
+      rates: rates,
+      highlightColor: highlightColor,
+      isDark: isDark,
+      initialRowsPerPage: _rowsPerPage,
     );
   }
-
-  @override
-  bool get isRowCountApproximate => false;
-
-  @override
-  int get rowCount => rates.length;
-
-  @override
-  int get selectedRowCount => 0;
 }
+
+final Map<String, Color> bankColors = {
+  'nubank': Colors.purple,
+  'itau': Colors.orange,
+  'c6': Colors.black,
+  'bb': Color(0xFFFFCC29),
+  'caixa': Color(0xFF005CA9), // Caixa blue
+};
+final Map<String, String> bankNames = {
+  'nubank': 'Nubank',
+  'itau': 'Itaú',
+  'c6': 'C6 Bank',
+  'bb': 'Banco do Brasil',
+  'caixa': 'Caixa',
+};

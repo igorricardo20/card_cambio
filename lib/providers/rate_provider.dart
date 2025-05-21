@@ -7,7 +7,7 @@ class RateProvider with ChangeNotifier {
 
   Map<String, List<Rate>> get rates => _rates;
 
-  List<String> get banks => ['nubank', 'itau', 'c6', 'bb'];
+  List<String> get banks => ['nubank', 'itau', 'c6', 'bb', 'caixa', 'safra'];
 
   Future<void> fetchAllRates() async {
     final futures = banks.map((bank) async {
