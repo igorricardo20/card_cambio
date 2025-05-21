@@ -68,6 +68,7 @@ class MainChartState extends State<MainChart> {
                 dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName),
                 intervalType: DateTimeIntervalType.auto,
                 edgeLabelPlacement: EdgeLabelPlacement.shift, // Prevent x-axis label overflow
+                maximumLabels: 12, // Show up to 12 labels on the x axis
               ),
               primaryYAxis: NumericAxis(
                 isVisible: true,
@@ -76,19 +77,26 @@ class MainChartState extends State<MainChart> {
                   decimalDigits: 2,
                 ),
                 majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
-                interval: 0.1,
+                interval: null, // Let the chart auto-calculate interval
+                maximumLabels: 5, // Always limit number of y-axis labels
+                axisLabelFormatter: (AxisLabelRenderDetails details) {
+                  return ChartAxisLabel(
+                    details.text,
+                    TextStyle(fontSize: 12),
+                  );
+                },
               ),
               onActualRangeChanged: (ActualRangeChangedArgs args) {
                 if (args.orientation == AxisOrientation.vertical) {
                   double min = args.actualMin is num ? args.actualMin.toDouble() : 0;
                   double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
-
                   double range = max - min;
                   if (range > 0) {
-                    double interval = range / 5;
-                    args.visibleInterval = interval;
-
+                    // Let the chart auto-calculate interval, but always limit label count
+                    // No need to set args.visibleInterval
                     // Ensure the maximum value is included
+                    double interval = (range / 4).clamp(0.01, double.infinity); // 5 labels (4 intervals)
+                    args.visibleInterval = interval;
                     if (max % interval != 0) {
                       args.visibleMax = max + (interval - (max % interval));
                     }

@@ -185,4 +185,25 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get purchase_value_hint => 'Voer de waarde in die u wilt simuleren';
+
+  @override
+  String get services_title => 'Diensten';
+
+  @override
+  String get simulate_title => 'Simuleren';
+
+  @override
+  String get alerts_title => 'Meldingen';
+
+  @override
+  String get simulate_description => 'Simuleer valutawisseltransacties.';
+
+  @override
+  String get alerts_description => 'Maak en beheer wisselkoersmeldingen.';
+
+  @override
+  String get more_services_title => 'Meer diensten';
+
+  @override
+  String get more_services_description => 'Binnenkort meer functionaliteiten.';
 }

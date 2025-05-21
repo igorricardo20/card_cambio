@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "ranking": "Ranking",
   "@ranking": {
     "description": "The ranking of institutions based on their exchange rates for credit cards"
@@ -210,5 +211,33 @@
   "purchase_value_hint": "Enter the value you want to simulate",
   "@purchase_value_hint": {
     "description": "Hint text below the purchase value input in the simulator/calculator."
+  },
+  "services_title": "Services",
+  "@services_title": {
+    "description": "Title for the Services section and navigation."
+  },
+  "simulate_title": "Simulate",
+  "@simulate_title": {
+    "description": "Title for the Simulate feature in Services."
+  },
+  "alerts_title": "Alerts",
+  "@alerts_title": {
+    "description": "Title for the Alerts feature in Services."
+  },
+  "simulate_description": "Simulate currency exchange operations.",
+  "@simulate_description": {
+    "description": "Description for the Simulate feature in Services."
+  },
+  "alerts_description": "Create and manage exchange alerts.",
+  "@alerts_description": {
+    "description": "Description for the Alerts feature in Services."
+  },
+  "more_services_title": "More services",
+  "@more_services_title": {
+    "description": "Title for the More Services card in Services."
+  },
+  "more_services_description": "More features coming soon.",
+  "@more_services_description": {
+    "description": "Description for the More Services card in Services."
   }
 }

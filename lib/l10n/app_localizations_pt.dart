@@ -186,4 +186,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get purchase_value_hint => 'Digite o valor que deseja simular';
+
+  @override
+  String get services_title => 'Serviços';
+
+  @override
+  String get simulate_title => 'Simular';
+
+  @override
+  String get alerts_title => 'Alertas';
+
+  @override
+  String get simulate_description => 'Simule operações de câmbio.';
+
+  @override
+  String get alerts_description => 'Crie e gerencie alertas de câmbio.';
+
+  @override
+  String get more_services_title => 'Mais serviços';
+
+  @override
+  String get more_services_description => 'Em breve: mais funcionalidades.';
 }

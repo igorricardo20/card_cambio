@@ -185,4 +185,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get purchase_value_hint => 'Enter the value you want to simulate';
+
+  @override
+  String get services_title => 'Services';
+
+  @override
+  String get simulate_title => 'Simulate';
+
+  @override
+  String get alerts_title => 'Alerts';
+
+  @override
+  String get simulate_description => 'Simulate currency exchange operations.';
+
+  @override
+  String get alerts_description => 'Create and manage exchange alerts.';
+
+  @override
+  String get more_services_title => 'More services';
+
+  @override
+  String get more_services_description => 'More features coming soon.';
 }

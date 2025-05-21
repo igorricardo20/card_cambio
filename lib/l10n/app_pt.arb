@@ -1,4 +1,5 @@
 {
+  "@@locale": "pt",
   "ranking": "Ranking",
   "@ranking": {
     "description": "O ranking das instituições com base nas suas taxas de câmbio para cartões de crédito"
@@ -210,5 +211,33 @@
   "purchase_value_hint": "Digite o valor que deseja simular",
   "@purchase_value_hint": {
     "description": "Texto de dica abaixo do campo de valor da compra no simulador/calculadora."
+  },
+  "services_title": "Serviços",
+  "@services_title": {
+    "description": "Título para a seção e navegação de Serviços."
+  },
+  "simulate_title": "Simular",
+  "@simulate_title": {
+    "description": "Título para o recurso Simular em Serviços."
+  },
+  "alerts_title": "Alertas",
+  "@alerts_title": {
+    "description": "Título para o recurso Alertas em Serviços."
+  },
+  "simulate_description": "Simule operações de câmbio.",
+  "@simulate_description": {
+    "description": "Descrição para o recurso Simular em Serviços."
+  },
+  "alerts_description": "Crie e gerencie alertas de câmbio.",
+  "@alerts_description": {
+    "description": "Descrição para o recurso Alertas em Serviços."
+  },
+  "more_services_title": "Mais serviços",
+  "@more_services_title": {
+    "description": "Título para o cartão Mais serviços em Serviços."
+  },
+  "more_services_description": "Em breve: mais funcionalidades.",
+  "@more_services_description": {
+    "description": "Descrição para o cartão Mais serviços em Serviços."
   }
 }

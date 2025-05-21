@@ -437,6 +437,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter the value you want to simulate'**
   String get purchase_value_hint;
+
+  /// Title for the Services section and navigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get services_title;
+
+  /// Title for the Simulate feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate'**
+  String get simulate_title;
+
+  /// Title for the Alerts feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts'**
+  String get alerts_title;
+
+  /// Description for the Simulate feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate currency exchange operations.'**
+  String get simulate_description;
+
+  /// Description for the Alerts feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Create and manage exchange alerts.'**
+  String get alerts_description;
+
+  /// Title for the More Services card in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'More services'**
+  String get more_services_title;
+
+  /// Description for the More Services card in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'More features coming soon.'**
+  String get more_services_description;
 }
 
 class _AppLocalizationsDelegate
