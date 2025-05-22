@@ -6,6 +6,7 @@ import 'package:card_cambio/utils/rate_utils.dart';
 import 'package:card_cambio/l10n/app_localizations.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import '../widgets/bank_tile.dart';
+import 'package:flutter/services.dart';
 
 class Simulate extends StatefulWidget {
   const Simulate({super.key});
@@ -81,9 +82,20 @@ class _SimulateState extends State<Simulate> {
                               builder: (context) {
                                 return TextField(
                                   controller: moneyController,
-                                  keyboardType: TextInputType.number,
-                                  autofocus: true,
+                                  keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: false), // Better mobile keyboard
+                                  autofocus: false, // Do not focus by default
                                   textInputAction: TextInputAction.done,
+                                  inputFormatters: [
+                                    // Limit to 99_999_999.99
+                                    FilteringTextInputFormatter.allow(RegExp(r'^[0-9,.]*')),
+                                  ],
+                                  onChanged: (value) {
+                                    final parsed = moneyController.numberValue;
+                                    if (parsed > 99999999.99) {
+                                      moneyController.updateValue(99999999.99);
+                                    }
+                                    setState(() {}); // Ensure UI updates for suffixIcon
+                                  },
                                   decoration: InputDecoration(
                                     prefixIcon: const Icon(Icons.attach_money, color: Colors.grey),
                                     filled: true,
@@ -95,7 +107,7 @@ class _SimulateState extends State<Simulate> {
                                       borderRadius: BorderRadius.circular(12.0),
                                       borderSide: BorderSide.none,
                                     ),
-                                    suffixIcon: moneyController.text.isNotEmpty
+                                    suffixIcon: moneyController.numberValue != 0
                                         ? IconButton(
                                             icon: const Icon(Icons.clear, size: 20),
                                             onPressed: () {
@@ -172,9 +184,9 @@ class _SimulateState extends State<Simulate> {
                             ptaxRate: ptax,
                             bankSpread: spread,
                             iof: iof,
-                            color: bankInfo['color'] as Color,
+                            color: bankInfo['color'] as Color, // Pass full opacity color
                             isDark: isDark,
-                            isBest: entry.key == 0, // Highlight the first result
+                            isBest: entry.key == 0,
                           );
                         }),
                       ],

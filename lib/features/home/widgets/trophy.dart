@@ -16,9 +16,9 @@ class Trophy extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.bottomCenter,
-            child: Icon(Icons.emoji_events, size: 20, color: color)
+            child: Icon(Icons.emoji_events, size: 14, color: color)
           ),
-          Text(text, style: TextStyle(fontSize: 14, color: isTransparent ? Colors.grey[700] : color)),
+          Text(text, style: TextStyle(fontSize: 10, color: isTransparent ? Colors.grey[700] : color)),
         ],
       ),
     );

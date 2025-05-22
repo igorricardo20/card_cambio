@@ -224,6 +224,10 @@
   "@alerts_title": {
     "description": "Título para la función Alertas en Servicios."
   },
+  "compare_title": "Comparar",
+  "@compare_title": {
+    "description": "Título para la función Comparar en Servicios."
+  },
   "simulate_description": "Simula operaciones de cambio.",
   "@simulate_description": {
     "description": "Descripción de la sección sobre tasas de uso de tarjetas de crédito por banco"

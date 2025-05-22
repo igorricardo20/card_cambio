@@ -479,6 +479,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More features coming soon.'**
   String get more_services_description;
+
+  /// Title for the Compare feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare'**
+  String get compare_title;
 }
 
 class _AppLocalizationsDelegate

@@ -103,8 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     _SideMenuButton(
                       icon: CupertinoIcons.square_grid_2x2,
                       selectedIcon: CupertinoIcons.square_grid_2x2_fill,
-                      selected: _selectedIndex == 2,
-                      onTap: () => changeDestination(2),
+                      selected: _selectedIndex == 1,
+                      onTap: () => changeDestination(1),
                       tooltip: AppLocalizations.of(context)!.services_title,
                       iconColor: iconColor,
                     ),
@@ -112,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     _SideMenuButton(
                       icon: CupertinoIcons.clock,
                       selectedIcon: CupertinoIcons.clock_fill,
-                      selected: _selectedIndex == 1,
-                      onTap: () => changeDestination(1),
+                      selected: _selectedIndex == 2,
+                      onTap: () => changeDestination(2),
                       tooltip: AppLocalizations.of(context)!.historical,
                       iconColor: iconColor,
                     ),

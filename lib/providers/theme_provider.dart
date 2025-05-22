@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ShimmerColors extends ThemeExtension<ShimmerColors> {
   final Color baseColor;
@@ -35,7 +36,9 @@ class ThemeProvider extends ChangeNotifier {
   bool get isDarkMode => _isDarkMode;
 
   ThemeData get themeData {
+    final baseFont = GoogleFonts.roboto().fontFamily;
     return ThemeData(
+      fontFamily: baseFont,
       brightness: _isDarkMode ? Brightness.dark : Brightness.light,
       primarySwatch: _isDarkMode ? Colors.grey : Colors.grey,
       primaryColor: _isDarkMode ? Colors.white : Colors.black, // Black for light, white for dark
@@ -43,12 +46,8 @@ class ThemeProvider extends ChangeNotifier {
       cardColor: _isDarkMode ? Colors.grey[800] : Colors.grey[100],
       dividerColor: _isDarkMode ? Colors.grey[700] : Colors.grey[300], // Darker divider color for dark mode
       scaffoldBackgroundColor: _isDarkMode ? Colors.black : Colors.white,
-      textTheme: TextTheme(
-        headlineSmall: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-        bodyMedium: TextStyle(color: _isDarkMode ? Colors.white : Colors.black),
-        bodySmall: TextStyle(fontSize: 14),
+      textTheme: GoogleFonts.robotoTextTheme(
+        ThemeData(brightness: _isDarkMode ? Brightness.dark : Brightness.light).textTheme,
       ),
       iconTheme: IconThemeData(color: _isDarkMode ? Colors.white : Colors.black),
       colorScheme: ColorScheme(

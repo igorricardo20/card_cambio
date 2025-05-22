@@ -239,5 +239,9 @@
   "more_services_description": "Em breve: mais funcionalidades.",
   "@more_services_description": {
     "description": "Descrição para o cartão Mais serviços em Serviços."
+  },
+  "compare_title": "Comparar",
+  "@compare_title": {
+    "description": "Título para o recurso Comparar em Serviços."
   }
 }

@@ -207,4 +207,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get more_services_description => 'Em breve: mais funcionalidades.';
+
+  @override
+  String get compare_title => 'Comparar';
 }

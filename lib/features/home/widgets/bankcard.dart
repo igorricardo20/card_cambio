@@ -25,7 +25,13 @@ class BankCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        hasTrohpy ? Trophy(text: trophyPosition, color: trophyColor) : Container(),
+        hasTrohpy
+            ? Trophy(
+                text: trophyPosition,
+                color: trophyColor,
+                // No fontSize/iconSize props, so we must update Trophy widget directly
+              )
+            : Container(),
         Padding(
           padding: const EdgeInsets.only(right: 2.0),
           child: SizedBox(

@@ -239,5 +239,9 @@
   "more_services_description": "More features coming soon.",
   "@more_services_description": {
     "description": "Description for the More Services card in Services."
+  },
+  "compare_title": "Compare",
+  "@compare_title": {
+    "description": "Title for the Compare feature in Services."
   }
 }

@@ -206,4 +206,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get more_services_description => 'Binnenkort meer functionaliteiten.';
+
+  @override
+  String get compare_title => 'Vergelijken';
 }

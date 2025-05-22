@@ -196,6 +196,10 @@
   "@alerts_title": {
     "description": "Titel voor de Meldingen-functie in Diensten"
   },
+  "compare_title": "Vergelijken",
+  "@compare_title": {
+    "description": "Titel voor de Vergelijken-functie in Diensten."
+  },
   "simulate_description": "Simuleer valutawisseltransacties.",
   "@simulate_description": {
     "description": "Beschrijving voor de Simuleren-functie in Diensten."
