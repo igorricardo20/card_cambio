@@ -201,7 +201,7 @@
     "description": "Label for a duration of the last month"
   },
   "simulate": "Simulate",
-  "calculate_your_purchase": "CALCULATE\nYOUR PURCHASE",
+  "calculate_your_purchase": "CALCULATE YOUR\nCREDIT CARD\nPURCHASE",
   "purchase_calculator_title": "Purchase calculator",
   "you_would_pay": "You would pay",
   "purchase_value": "Purchase Value",
@@ -243,5 +243,7 @@
   "compare_title": "Compare",
   "@compare_title": {
     "description": "Title for the Compare feature in Services."
-  }
+  },
+  "faq_help_title": "FAQ / Help",
+  "contact_support_title": "Contact Support"
 }

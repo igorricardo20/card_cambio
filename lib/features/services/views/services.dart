@@ -59,7 +59,7 @@ class ServicesPage extends StatelessWidget {
                     ),
                     VitrineCard(
                       icon: Icons.auto_graph_outlined,
-                      title: 'AI Insights',
+                      title: 'Insights',
                       iconColor: Colors.deepPurple,
                       badge: 'New',
                       glowOnce: true,
@@ -68,12 +68,12 @@ class ServicesPage extends StatelessWidget {
                     ),
                     VitrineCard(
                       icon: Icons.help_outline,
-                      title: 'FAQ / Help',
+                      title: AppLocalizations.of(context)!.faq_help_title,
                       onTap: () {}, // TODO: Implement FAQ/help page
                     ),
                     VitrineCard(
                       icon: Icons.support_agent_outlined,
-                      title: 'Contact Support',
+                      title: AppLocalizations.of(context)!.contact_support_title,
                       onTap: () {}, // TODO: Implement contact support
                     ),
                   ],

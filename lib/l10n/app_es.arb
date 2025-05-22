@@ -201,7 +201,7 @@
     "description": "Etiqueta para una duración del mes pasado"
   },
   "simulate": "Simular",
-  "calculate_your_purchase": "CALCULA\nTU COMPRA",
+  "calculate_your_purchase": "CALCULA TU\nCOMPRA DE\nTARJETA",
   "purchase_calculator_title": "Simulador de compras",
   "you_would_pay": "Usted pagaría",
   "purchase_value": "Valor de la compra",
@@ -243,5 +243,7 @@
   "more_services_description": "Próximamente más funcionalidades.",
   "@more_services_description": {
     "description": "Descripción para la tarjeta Más servicios en Servicios."
-  }
+  },
+  "faq_help_title": "FAQ / Ayuda",
+  "contact_support_title": "Contactar Soporte"
 }

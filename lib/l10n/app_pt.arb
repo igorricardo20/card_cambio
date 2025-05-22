@@ -201,7 +201,7 @@
     "description": "Texto para o botão de começar"
   },
   "simulate": "Simular",
-  "calculate_your_purchase": "CALCULE SUA COMPRA",
+  "calculate_your_purchase": "CALCULE SUA\nCOMPRA DO\nCARTÃO",
   "purchase_calculator_title": "Simulador de compras",
   "you_would_pay": "Você pagaria",
   "purchase_value": "Valor da compra",
@@ -243,5 +243,7 @@
   "compare_title": "Comparar",
   "@compare_title": {
     "description": "Título para o recurso Comparar em Serviços."
-  }
+  },
+  "faq_help_title": "FAQ / Ajuda",
+  "contact_support_title": "Fale com o Suporte"
 }

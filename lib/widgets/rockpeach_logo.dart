@@ -11,14 +11,14 @@ class RockpeachLogo extends StatelessWidget {
   final bool square;
 
   const RockpeachLogo({
-    Key? key,
+    super.key,
     this.height = 30,
     this.width,
     this.alignment = Alignment.centerLeft,
     this.fit = BoxFit.fill,
     this.clickable = true,
     this.square = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -57,10 +57,10 @@ class _TableViewState extends State<TableView> {
               ),
             ),
             dataTableTheme: DataTableThemeData(
-              headingRowColor: MaterialStateProperty.all(Colors.white),
+              headingRowColor: WidgetStateProperty.all(Colors.white),
               headingTextStyle: headingTextStyle,
               dividerThickness: 0.5,
-              dataRowColor: MaterialStateProperty.resolveWith<Color?>((states) => Colors.transparent),
+              dataRowColor: WidgetStateProperty.resolveWith<Color?>((states) => Colors.transparent),
             ),
           ),
           child: PaginatedDataTable(
@@ -104,11 +104,11 @@ class _RatesPaginatedDataSource extends DataTableSource {
     final rate = rates[index];
     final isToday = DateFormat('yyyy-MM-dd').format(DateTime.parse(rate.taxaDivulgacaoDataHora)) == DateFormat('yyyy-MM-dd').format(today);
     return DataRow(
-      color: MaterialStateProperty.resolveWith<Color?>((states) {
+      color: WidgetStateProperty.resolveWith<Color?>((states) {
         if (isToday) {
           return highlightColor.withOpacity(isDark ? 0.22 : 0.16);
         }
-        if (states.contains(MaterialState.hovered)) {
+        if (states.contains(WidgetState.hovered)) {
           return isDark ? Colors.grey[800] : Colors.grey[200];
         }
         return null;

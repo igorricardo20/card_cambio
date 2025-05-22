@@ -18,8 +18,8 @@ class VitrineCard extends StatefulWidget {
     this.badge,
     this.glowOnce = false,
     this.glowMargin = const EdgeInsets.all(6), // Default to previous margin
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<VitrineCard> createState() => _VitrineCardState();

@@ -35,14 +35,14 @@ class ButtonCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 15,
+                top: 20,
                 left: 15,
                 child: Text(
                   text,
                   style: GoogleFonts.archivoBlack(
                     textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.white,
-                      backgroundColor: Colors.black54,
+                      backgroundColor: null, // Remove background
                     ),
                   ),
                 ),

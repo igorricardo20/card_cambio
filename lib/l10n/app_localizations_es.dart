@@ -174,7 +174,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get simulate => 'Simular';
 
   @override
-  String get calculate_your_purchase => 'CALCULA\nTU COMPRA';
+  String get calculate_your_purchase => 'CALCULA TU\nCOMPRA DE\nTARJETA';
 
   @override
   String get purchase_calculator_title => 'Simulador de compras';
@@ -211,4 +211,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get compare_title => 'Comparar';
+
+  @override
+  String get faq_help_title => 'FAQ / Ayuda';
+
+  @override
+  String get contact_support_title => 'Contactar Soporte';
 }

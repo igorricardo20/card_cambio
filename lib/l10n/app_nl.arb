@@ -173,7 +173,7 @@
     "description": "Tekst voor de beginnen knop"
   },
   "simulate": "Simuleren",
-  "calculate_your_purchase": "BEREKEN\nJE AANKOOP",
+  "calculate_your_purchase": "BEREKEN JE\nCREDITCARD\nAANKOOP",
   "purchase_calculator_title": "Purchase calculator",
   "you_would_pay": "Je zou betalen",
   "purchase_value": "Aankoopwaarde",
@@ -215,5 +215,7 @@
   "more_services_description": "Binnenkort meer functionaliteiten.",
   "@more_services_description": {
     "description": "Beschrijving voor de kaart Meer diensten in Diensten."
-  }
+  },
+  "faq_help_title": "FAQ / Help",
+  "contact_support_title": "Contact Support"
 }

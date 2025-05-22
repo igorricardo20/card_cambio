@@ -411,7 +411,7 @@ abstract class AppLocalizations {
   /// No description provided for @calculate_your_purchase.
   ///
   /// In en, this message translates to:
-  /// **'CALCULATE\nYOUR PURCHASE'**
+  /// **'CALCULATE YOUR\nCREDIT CARD\nPURCHASE'**
   String get calculate_your_purchase;
 
   /// No description provided for @purchase_calculator_title.
@@ -485,6 +485,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Compare'**
   String get compare_title;
+
+  /// No description provided for @faq_help_title.
+  ///
+  /// In en, this message translates to:
+  /// **'FAQ / Help'**
+  String get faq_help_title;
+
+  /// No description provided for @contact_support_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support'**
+  String get contact_support_title;
 }
 
 class _AppLocalizationsDelegate

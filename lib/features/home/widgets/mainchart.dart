@@ -61,14 +61,21 @@ class MainChartState extends State<MainChart> {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 8), // Add padding for a modern look
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 24, bottom: 16), // Increased padding for more whitespace
             child: SfCartesianChart(
+              margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              plotAreaBorderWidth: 0, // Remove chart border
+              backgroundColor: Colors.transparent,
               primaryXAxis: DateTimeAxis(
                 majorGridLines: const MajorGridLines(width: 0),
+                axisLine: const AxisLine(width: 0), // Remove x axis line
                 dateFormat: DateFormat.MMMd(AppLocalizations.of(context)!.localeName),
                 intervalType: DateTimeIntervalType.auto,
-                edgeLabelPlacement: EdgeLabelPlacement.shift, // Prevent x-axis label overflow
-                maximumLabels: 12, // Show up to 12 labels on the x axis
+                edgeLabelPlacement: EdgeLabelPlacement.shift,
+                maximumLabels: 4, // Further reduce number of x axis labels
+                labelStyle: const TextStyle(fontSize: 10, color: Colors.grey),
+                tickPosition: TickPosition.inside,
+                majorTickLines: const MajorTickLines(size: 0),
               ),
               primaryYAxis: NumericAxis(
                 isVisible: true,
@@ -76,13 +83,16 @@ class MainChartState extends State<MainChart> {
                   symbol: 'R\$ ',
                   decimalDigits: 2,
                 ),
-                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor, width: 0.0),
-                interval: null, // Let the chart auto-calculate interval
-                maximumLabels: 5, // Always limit number of y-axis labels
+                axisLine: const AxisLine(width: 0), // Remove y axis line
+                majorGridLines: MajorGridLines(color: Theme.of(context).dividerColor.withOpacity(0.08), width: 1),
+                minorGridLines: const MinorGridLines(width: 0),
+                interval: null,
+                maximumLabels: 3, // Further reduce y labels
+                labelStyle: const TextStyle(fontSize: 10, color: Colors.grey),
                 axisLabelFormatter: (AxisLabelRenderDetails details) {
                   return ChartAxisLabel(
                     details.text,
-                    TextStyle(fontSize: 12),
+                    const TextStyle(fontSize: 10, color: Colors.grey),
                   );
                 },
               ),
@@ -92,10 +102,7 @@ class MainChartState extends State<MainChart> {
                   double max = args.actualMax is num ? args.actualMax.toDouble() : 0;
                   double range = max - min;
                   if (range > 0) {
-                    // Let the chart auto-calculate interval, but always limit label count
-                    // No need to set args.visibleInterval
-                    // Ensure the maximum value is included
-                    double interval = (range / 4).clamp(0.01, double.infinity); // 5 labels (4 intervals)
+                    double interval = (range / 4).clamp(0.01, double.infinity); // 5 labels (4 intervals), slightly reduced interval
                     args.visibleInterval = interval;
                     if (max % interval != 0) {
                       args.visibleMax = max + (interval - (max % interval));
@@ -107,6 +114,12 @@ class MainChartState extends State<MainChart> {
                 isVisible: true,
                 position: LegendPosition.bottom,
                 overflowMode: LegendItemOverflowMode.scroll,
+                iconHeight: 10,
+                iconWidth: 10,
+                textStyle: const TextStyle(fontSize: 11, color: Colors.grey),
+                borderWidth: 0,
+                backgroundColor: Colors.transparent,
+                itemPadding: 20,
               ),
               series: _getSeries(widget.rates),
               tooltipBehavior: TooltipBehavior(enable: false),
@@ -116,16 +129,23 @@ class MainChartState extends State<MainChart> {
                 activationMode: ActivationMode.singleTap,
                 tooltipSettings: InteractiveTooltip(
                   enable: true,
-                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[800] : Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
+                  borderWidth: 0,
+                  borderColor: Colors.transparent,
                   textStyle: TextStyle(
                     color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black,
+                    fontSize: 12,
                   ),
+                  borderRadius: 10,
+                  canShowMarker: false,
                 ),
                 tooltipDisplayMode: TrackballDisplayMode.groupAllPoints,
                 markerSettings: const TrackballMarkerSettings(
-                  markerVisibility: TrackballVisibilityMode.visible,
-                  borderWidth: 2,
+                  markerVisibility: TrackballVisibilityMode.hidden,
                 ),
+                lineType: TrackballLineType.vertical,
+                lineColor: Theme.of(context).colorScheme.primary.withOpacity(0.18), // Subtle vertical line
+                lineWidth: 2,
               ),
             ),
           ),

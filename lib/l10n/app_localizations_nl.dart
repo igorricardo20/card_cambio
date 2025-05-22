@@ -172,7 +172,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get simulate => 'Simuleren';
 
   @override
-  String get calculate_your_purchase => 'BEREKEN\nJE AANKOOP';
+  String get calculate_your_purchase => 'BEREKEN JE\nCREDITCARD\nAANKOOP';
 
   @override
   String get purchase_calculator_title => 'Purchase calculator';
@@ -209,4 +209,10 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get compare_title => 'Vergelijken';
+
+  @override
+  String get faq_help_title => 'FAQ / Help';
+
+  @override
+  String get contact_support_title => 'Contact Support';
 }
