@@ -51,6 +51,7 @@ dependencies:
   dots_indicator: ^4.0.1
   google_fonts: ^6.2.1
   flutter_masked_text2: ^0.9.1
+  webview_flutter: ^4.13.0
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +93,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/echarts_template.html
+    - assets/
     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

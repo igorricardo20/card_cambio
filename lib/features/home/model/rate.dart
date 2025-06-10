@@ -30,4 +30,18 @@ class Rate {
       taxaDivulgacaoDataHora: json['taxaDivulgacaoDataHora'],
     );
   }
+
+  Rate copyWith({
+    String? taxaTipoGasto,
+    String? taxaData,
+    double? taxaConversao,
+    String? taxaDivulgacaoDataHora,
+  }) {
+    return Rate(
+      taxaTipoGasto: taxaTipoGasto ?? this.taxaTipoGasto,
+      taxaData: taxaData ?? this.taxaData,
+      taxaConversao: taxaConversao ?? this.taxaConversao,
+      taxaDivulgacaoDataHora: taxaDivulgacaoDataHora ?? this.taxaDivulgacaoDataHora,
+    );
+  }
 }
