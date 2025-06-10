@@ -215,4 +215,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get contact_support_title => 'Contact Support';
+
+  @override
+  String get calculationDisclaimer =>
+      '* Berekeningen zijn gebaseerd op de formules en tarieven die momenteel door elke bank worden gebruikt. Werkelijke aankoopwaarden kunnen afwijken door wijzigingen in het beleid, de kosten of de wisselkoersen van banken. Controleer altijd bij uw bank voordat u een aankoop doet.';
+
+  @override
+  String get spreadDisclaimer =>
+      '** Spreads worden mogelijk niet direct bijgewerkt nadat een bank zijn tarief heeft gewijzigd. Voor banken zoals Safra die hun spread niet bekendmaken, wordt een eerlijke en transparante schatting gebruikt op basis van recente marktgegevens.';
 }

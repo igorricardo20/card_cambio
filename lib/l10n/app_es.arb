@@ -245,5 +245,13 @@
     "description": "Descripción para la tarjeta Más servicios en Servicios."
   },
   "faq_help_title": "FAQ / Ayuda",
-  "contact_support_title": "Contactar Soporte"
+  "contact_support_title": "Contactar Soporte",
+  "calculationDisclaimer": "* Los cálculos se basan en las fórmulas y tasas actualmente utilizadas por cada banco. Los valores reales de la compra pueden variar debido a cambios en las políticas, tarifas o tasas de cambio de los bancos. Siempre confirme con su banco antes de realizar la compra.",
+  "@calculationDisclaimer": {
+    "description": "Aviso mostrado después del cálculo sobre posibles diferencias entre los valores simulados y reales de la compra."
+  },
+  "spreadDisclaimer": "** Los spreads pueden no actualizarse inmediatamente después de que el banco cambie su tasa. Para bancos como Safra que no divulgan su spread, se utiliza una estimación justa y transparente basada en datos recientes del mercado.",
+  "@spreadDisclaimer": {
+    "description": "Aviso sobre retraso en la actualización del spread y bancos que no divulgan el spread."
+  }
 }

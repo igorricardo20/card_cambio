@@ -182,10 +182,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get you_would_pay => 'Você pagaria';
 
   @override
-  String get purchase_value => 'Valor da compra';
+  String get purchase_value => 'Valor da compra internacional';
 
   @override
-  String get purchase_value_hint => 'Digite o valor que deseja simular';
+  String get purchase_value_hint =>
+      'Digite o valor que deseja simular em dólares';
 
   @override
   String get services_title => 'Serviços';
@@ -216,4 +217,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get contact_support_title => 'Fale com o Suporte';
+
+  @override
+  String get calculationDisclaimer =>
+      '* Os cálculos são baseados nas fórmulas e taxas atualmente utilizadas por cada banco. Os valores reais da compra podem variar devido a mudanças nas políticas, tarifas ou taxas de câmbio dos bancos. Sempre confirme com seu banco antes de realizar a compra.';
+
+  @override
+  String get spreadDisclaimer =>
+      '** Os spreads listados são apenas para referência e podem não ser atualizados imediatamente após o banco alterar sua taxa. Para bancos como o Safra que não divulgam o spread, é utilizada uma estimativa justa e transparente baseada em dados recentes de mercado.';
 }

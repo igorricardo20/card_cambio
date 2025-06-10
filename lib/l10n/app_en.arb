@@ -245,5 +245,13 @@
     "description": "Title for the Compare feature in Services."
   },
   "faq_help_title": "FAQ / Help",
-  "contact_support_title": "Contact Support"
+  "contact_support_title": "Contact Support",
+  "calculationDisclaimer": "* Calculations are based on the formulas and rates currently used by each bank. Actual purchase values may differ due to changes in bank policies, fees, or exchange rates. Always confirm with your bank before making a purchase.",
+  "@calculationDisclaimer": {
+    "description": "Disclaimer shown after calculation about possible differences between simulated and real purchase values."
+  },
+  "spreadDisclaimer": "** Spreads may not update immediately after a bank changes its rate. For banks like Safra that do not disclose their spread, a fair and transparent estimate is used based on recent market data.",
+  "@spreadDisclaimer": {
+    "description": "Disclaimer about spread update delays and banks that do not disclose their spread."
+  }
 }

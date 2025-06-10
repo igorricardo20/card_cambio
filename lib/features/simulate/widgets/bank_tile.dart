@@ -27,7 +27,6 @@ class BankTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
@@ -93,23 +92,9 @@ class BankTile extends StatelessWidget {
           padding: const EdgeInsets.only(top: 2.0),
           child: Row(
             children: [
-              _InfoChip(
-                label: 'PTAX',
-                value: ptaxRate,
-                isDark: isDark,
-                dense: true,
-              ),
-              const SizedBox(width: 4),
-              _InfoChip(
+              InfoChip(
                 label: 'Spread',
-                value: bankSpread,
-                isDark: isDark,
-                dense: true,
-              ),
-              const SizedBox(width: 4),
-              _InfoChip(
-                label: 'IOF',
-                value: iof,
+                value: '${bankSpread.toStringAsFixed(2)}%**',
                 isDark: isDark,
                 dense: true,
               ),
@@ -121,13 +106,13 @@ class BankTile extends StatelessWidget {
   }
 }
 
-class _InfoChip extends StatelessWidget {
+class InfoChip extends StatelessWidget {
   final String label;
-  final double value;
+  final String value;
   final bool isDark;
   final bool dense;
 
-  const _InfoChip({
+  const InfoChip({
     required this.label,
     required this.value,
     required this.isDark,
@@ -161,7 +146,7 @@ class _InfoChip extends StatelessWidget {
           ),
           const SizedBox(width: 2),
           Text(
-            value.toStringAsFixed(2),
+            value,
             style: TextStyle(
               fontSize: dense ? 10 : 11,
               color: isDark ? Colors.white : Colors.black,

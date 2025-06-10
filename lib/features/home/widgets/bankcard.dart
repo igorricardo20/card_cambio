@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:card_cambio/l10n/app_localizations.dart';
 
 class BankCard extends StatelessWidget {
-  const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.trophyColor=Colors.black, this.type='bank', this.valueColor});
+  const BankCard({super.key, this.value=0.0, this.name='', this.logo='', this.color=Colors.black, this.trophyPosition='', this.trophyColor=Colors.black, this.type='bank', this.valueColor, this.valuePrefix});
 
   final double value;
   final String name;
@@ -15,6 +15,7 @@ class BankCard extends StatelessWidget {
   final Color trophyColor;
   final String type;
   final Color? valueColor;
+  final Widget? valuePrefix;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class BankCard extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               elevation: 0,
               color: Theme.of(context).cardColor,
-              child: isBank ? _getCardBody(context, logo, name, value.toStringAsFixed(2), color, valueColor: valueColor) : _getSeeMoreBanks(context)
+              child: isBank ? _getCardBody(context, logo, name, value.toStringAsFixed(2), color, valueColor: valueColor, valuePrefix: valuePrefix) : _getSeeMoreBanks(context)
             ),
           ),
         ),
@@ -49,7 +50,7 @@ class BankCard extends StatelessWidget {
     );
   }
 
-  InkWell _getCardBody(BuildContext context, String logo, String name, String value, Color color, {Color? valueColor}) {
+  InkWell _getCardBody(BuildContext context, String logo, String name, String value, Color color, {Color? valueColor, Widget? valuePrefix}) {
     return InkWell(
       splashColor: Colors.blue.withAlpha(30),
       onTap: () {},
@@ -66,7 +67,12 @@ class BankCard extends StatelessWidget {
                 children: <Widget>[
                   Text(name, style: TextStyle(fontSize: 12.5, color: Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w400)),
                   SizedBox(height: 2),
-                  Text('R\$ $value', style: TextStyle(fontSize: 17, color: valueColor ?? Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w700)),
+                  Row(
+                    children: [
+                      Text('R\$ $value', style: TextStyle(fontSize: 17, color: valueColor ?? Theme.of(context).textTheme.bodyMedium?.color, fontWeight: FontWeight.w700)),
+                      if (valuePrefix != null) valuePrefix,
+                    ],
+                  ),
                   SizedBox(height: 7),
                   Container(
                     height: 5,

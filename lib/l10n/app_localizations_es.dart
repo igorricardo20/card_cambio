@@ -217,4 +217,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get contact_support_title => 'Contactar Soporte';
+
+  @override
+  String get calculationDisclaimer =>
+      '* Los cálculos se basan en las fórmulas y tasas actualmente utilizadas por cada banco. Los valores reales de la compra pueden variar debido a cambios en las políticas, tarifas o tasas de cambio de los bancos. Siempre confirme con su banco antes de realizar la compra.';
+
+  @override
+  String get spreadDisclaimer =>
+      '** Los spreads pueden no actualizarse inmediatamente después de que el banco cambie su tasa. Para bancos como Safra que no divulgan su spread, se utiliza una estimación justa y transparente basada en datos recientes del mercado.';
 }

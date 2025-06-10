@@ -3,9 +3,6 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:intl/intl.dart';
 import 'package:card_cambio/l10n/app_localizations.dart';
-import 'dart:convert';
-import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class MainChart extends StatefulWidget {
   final Map<String, List<Rate>> rates;
@@ -208,8 +205,8 @@ class MainChartState extends State<MainChart> {
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.grey[200]
-                                    : Colors.grey[900],
+                                    ? Colors.grey[700]
+                                    : Colors.grey[300],
                                 borderRadius: BorderRadius.circular(22),
                               ),
                             ),
@@ -235,8 +232,8 @@ class MainChartState extends State<MainChart> {
                                           fontSize: 13.0,
                                           color: selectedDays == options[i]['days']
                                               ? (Theme.of(context).brightness == Brightness.dark
-                                                  ? Colors.black
-                                                  : Colors.white)
+                                                  ? Colors.white
+                                                  : Colors.black)
                                               : Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.7),
                                           fontWeight: FontWeight.bold,
                                           letterSpacing: 0.1,

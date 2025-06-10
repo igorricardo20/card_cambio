@@ -217,5 +217,13 @@
     "description": "Beschrijving voor de kaart Meer diensten in Diensten."
   },
   "faq_help_title": "FAQ / Help",
-  "contact_support_title": "Contact Support"
+  "contact_support_title": "Contact Support",
+  "calculationDisclaimer": "* Berekeningen zijn gebaseerd op de formules en tarieven die momenteel door elke bank worden gebruikt. Werkelijke aankoopwaarden kunnen afwijken door wijzigingen in het beleid, de kosten of de wisselkoersen van banken. Controleer altijd bij uw bank voordat u een aankoop doet.",
+  "@calculationDisclaimer": {
+    "description": "Disclaimer die na de berekening wordt getoond over mogelijke verschillen tussen gesimuleerde en werkelijke aankoopwaarden."
+  },
+  "spreadDisclaimer": "** Spreads worden mogelijk niet direct bijgewerkt nadat een bank zijn tarief heeft gewijzigd. Voor banken zoals Safra die hun spread niet bekendmaken, wordt een eerlijke en transparante schatting gebruikt op basis van recente marktgegevens.",
+  "@spreadDisclaimer": {
+    "description": "Disclaimer over vertragingen bij het bijwerken van spreads en banken die hun spread niet bekendmaken."
+  }
 }

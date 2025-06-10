@@ -497,6 +497,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Contact Support'**
   String get contact_support_title;
+
+  /// Disclaimer shown after calculation about possible differences between simulated and real purchase values.
+  ///
+  /// In en, this message translates to:
+  /// **'* Calculations are based on the formulas and rates currently used by each bank. Actual purchase values may differ due to changes in bank policies, fees, or exchange rates. Always confirm with your bank before making a purchase.'**
+  String get calculationDisclaimer;
+
+  /// Disclaimer about spread update delays and banks that do not disclose their spread.
+  ///
+  /// In en, this message translates to:
+  /// **'** Spreads may not update immediately after a bank changes its rate. For banks like Safra that do not disclose their spread, a fair and transparent estimate is used based on recent market data.'**
+  String get spreadDisclaimer;
 }
 
 class _AppLocalizationsDelegate

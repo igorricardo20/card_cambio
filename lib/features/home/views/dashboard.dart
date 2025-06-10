@@ -246,8 +246,19 @@ class Dashboard extends StatelessWidget {
 
       // Value color logic
       Color? valueColor;
+      Widget? valuePrefix;
       if (rate.taxaConversao == minValue && minValue > 0) {
-        valueColor = bestGreen;
+        valueColor = gold;
+        if (position == 1) {
+          valuePrefix = Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: Icon(
+              Icons.arrow_drop_down,
+              color: bestGreen,
+              size: 18,
+            ),
+          );
+        }
       } else if (allTied && minValue > 0) {
         valueColor = bestGreen;
       } else {
@@ -262,6 +273,7 @@ class Dashboard extends StatelessWidget {
         trophyPosition: trophyPosition,
         trophyColor: trophyColor,
         valueColor: valueColor,
+        valuePrefix: valuePrefix,
         // Optionally, you can pass a width or size parameter if BankCard supports it
       );
     }).toList();

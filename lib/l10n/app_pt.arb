@@ -204,11 +204,11 @@
   "calculate_your_purchase": "CALCULE SUA\nCOMPRA DO\nCARTÃO",
   "purchase_calculator_title": "Simulador de compras",
   "you_would_pay": "Você pagaria",
-  "purchase_value": "Valor da compra",
+  "purchase_value": "Valor da compra internacional",
   "@purchase_value": {
     "description": "Rótulo para o campo de valor da compra no simulador/calculadora."
   },
-  "purchase_value_hint": "Digite o valor que deseja simular",
+  "purchase_value_hint": "Digite o valor que deseja simular em dólares",
   "@purchase_value_hint": {
     "description": "Texto de dica abaixo do campo de valor da compra no simulador/calculadora."
   },
@@ -245,5 +245,13 @@
     "description": "Título para o recurso Comparar em Serviços."
   },
   "faq_help_title": "FAQ / Ajuda",
-  "contact_support_title": "Fale com o Suporte"
+  "contact_support_title": "Fale com o Suporte",
+  "calculationDisclaimer": "* Os cálculos são baseados nas fórmulas e taxas atualmente utilizadas por cada banco. Os valores reais da compra podem variar devido a mudanças nas políticas, tarifas ou taxas de câmbio dos bancos. Sempre confirme com seu banco antes de realizar a compra.",
+  "@calculationDisclaimer": {
+    "description": "Aviso exibido após o cálculo sobre possíveis diferenças entre os valores simulados e reais da compra."
+  },
+  "spreadDisclaimer": "** Os spreads listados são apenas para referência e podem não ser atualizados imediatamente após o banco alterar sua taxa. Para bancos como o Safra que não divulgam o spread, é utilizada uma estimativa justa e transparente baseada em dados recentes de mercado.",
+  "@spreadDisclaimer": {
+    "description": "Aviso sobre atraso na atualização do spread e bancos que não divulgam o spread."
+  }
 }
