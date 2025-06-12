@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:card_cambio/features/home/model/rate.dart';
 import 'package:intl/intl.dart';
 import 'package:card_cambio/l10n/app_localizations.dart';
+import 'package:card_cambio/features/compare/views/compare.dart'; // Import Compare page
 
 class MainChart extends StatefulWidget {
   final Map<String, List<Rate>> rates;
+  final double chartHeight;
+  final bool showLegend;
+  final bool showCompareButton;
 
   const MainChart({
     super.key,
     required this.rates,
+    this.chartHeight = 120,
+    this.showLegend = false,
+    this.showCompareButton = true,
   });
 
   @override
@@ -41,7 +49,7 @@ class MainChartState extends State<MainChart> {
       children: [
         // Chart with custom tooltip overlay
         SizedBox(
-          height: 220,
+          height: widget.chartHeight,
           child: Stack(
             children: [
               SfCartesianChart(
@@ -112,7 +120,7 @@ class MainChartState extends State<MainChart> {
                   }
                 },
                 legend: Legend(
-                  isVisible: false,
+                  isVisible: widget.showLegend,
                   position: LegendPosition.top,
                   overflowMode: LegendItemOverflowMode.scroll,
                   iconHeight: 10,
@@ -250,48 +258,52 @@ class MainChartState extends State<MainChart> {
                   },
                 ),
               ),
-              // Compare button (now outside the card, at its side)
-              Padding(
-                padding: const EdgeInsets.only(left: 14, right: 2),
-                child: Material(
-                  color: Theme.of(context).cardColor,
-                  shape: const CircleBorder(),
-                  elevation: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.black.withOpacity(0.08)
-                              : Colors.grey.withOpacity(0.10),
-                          blurRadius: 8,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                      shape: BoxShape.circle,
-                    ),
-                    child: InkWell(
-                      customBorder: const CircleBorder(),
-                      onTap: () {
-                        // TODO: Implement compare action
-                      },
-                      child: SizedBox(
-                        width: 36,
-                        height: 36,
-                        child: Center(
-                          child: Icon(
-                            Icons.compare_arrows,
-                            color: (Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.grey[200] // Lighter grey in dark mode
-                                    : Colors.grey[900]), // Darker grey (not black) in light mode
-                            size: 22,
+              if (widget.showCompareButton)
+                Padding(
+                  padding: const EdgeInsets.only(left: 14, right: 2),
+                  child: Material(
+                    color: Theme.of(context).cardColor,
+                    shape: const CircleBorder(),
+                    elevation: 0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? Colors.black.withOpacity(0.08)
+                                : Colors.grey.withOpacity(0.10),
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                        shape: BoxShape.circle,
+                      ),
+                      child: InkWell(
+                        customBorder: const CircleBorder(),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            CupertinoPageRoute(
+                              builder: (context) => const Compare(),
+                            ),
+                          );
+                        },
+                        child: SizedBox(
+                          width: 36,
+                          height: 36,
+                          child: Center(
+                            child: Icon(
+                              Icons.compare_arrows,
+                              color: (Theme.of(context).brightness == Brightness.dark
+                                      ? Colors.grey[200]
+                                      : Colors.grey[900]),
+                              size: 22,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

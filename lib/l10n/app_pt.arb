@@ -240,10 +240,19 @@
   "@more_services_description": {
     "description": "Descrição para o cartão Mais serviços em Serviços."
   },
-  "compare_title": "Comparar",
+  "compare_title": "Comparar bancos",
   "@compare_title": {
     "description": "Título para o recurso Comparar em Serviços."
   },
+  "compare_subtitle": "Compare as taxas de câmbio entre os bancos.",
+  "@compare_subtitle": {
+    "description": "Subtítulo para o recurso Comparar em Serviços."
+  },
+  "add_bank": "Adicionar banco",
+  "@add_bank": {
+    "description": "Texto para o botão de adicionar banco na comparação."
+  },
+  "compare_add_bank_instruction": "Adicione bancos abaixo para comparar",
   "faq_help_title": "FAQ / Ajuda",
   "contact_support_title": "Fale com o Suporte",
   "calculationDisclaimer": "* Os cálculos são baseados nas fórmulas e taxas atualmente utilizadas por cada banco. Os valores reais da compra podem variar devido a mudanças nas políticas, tarifas ou taxas de câmbio dos bancos. Sempre confirme com seu banco antes de realizar a compra.",

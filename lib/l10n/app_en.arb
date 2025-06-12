@@ -240,10 +240,19 @@
   "@more_services_description": {
     "description": "Description for the More Services card in Services."
   },
-  "compare_title": "Compare",
+  "compare_title": "Compare Banks",
   "@compare_title": {
     "description": "Title for the Compare feature in Services."
   },
+  "compare_subtitle": "Compare exchange rates between banks.",
+  "@compare_subtitle": {
+    "description": "Subtitle for the Compare feature in Services."
+  },
+  "add_bank": "Add bank",
+  "@add_bank": {
+    "description": "Label to add a bank in the Compare feature."
+  },
+  "compare_add_bank_instruction": "Add banks below to compare",
   "faq_help_title": "FAQ / Help",
   "contact_support_title": "Contact Support",
   "calculationDisclaimer": "* Calculations are based on the formulas and rates currently used by each bank. Actual purchase values may differ due to changes in bank policies, fees, or exchange rates. Always confirm with your bank before making a purchase.",

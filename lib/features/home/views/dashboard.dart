@@ -126,11 +126,11 @@ class Dashboard extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 30),
         Padding(
           padding: EdgeInsets.only(left: 3.0),
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 1200, maxHeight: 306),
+            constraints: BoxConstraints(maxWidth: 1200, maxHeight: 206),
             child: MainChart(
               rates: Map.fromEntries(
                 rateList.take(3).map((entry) => MapEntry(entry.key, rates[entry.key]!)),

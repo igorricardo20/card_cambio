@@ -196,9 +196,21 @@
   "@alerts_title": {
     "description": "Titel voor de Meldingen-functie in Diensten"
   },
-  "compare_title": "Vergelijken",
+  "compare_title": "Vergelijk banken",
   "@compare_title": {
     "description": "Titel voor de Vergelijken-functie in Diensten."
+  },
+  "compare_subtitle": "Vergelijk wisselkoersen tussen banken.",
+  "@compare_subtitle": {
+    "description": "Ondertitel voor de Vergelijken-functie in Diensten."
+  },
+  "add_bank": "Bank toevoegen",
+  "@add_bank": {
+    "description": "Label voor de optie om een bank toe te voegen in de Vergelijken-functie."
+  },
+  "compare_add_bank_instruction": "Voeg hieronder banken toe om te vergelijken",
+  "@compare_add_bank_instruction": {
+    "description": "Instructie voor het toevoegen van banken in de Vergelijken-functie."
   },
   "simulate_description": "Simuleer valutawisseltransacties.",
   "@simulate_description": {

@@ -208,7 +208,17 @@ class AppLocalizationsNl extends AppLocalizations {
   String get more_services_description => 'Binnenkort meer functionaliteiten.';
 
   @override
-  String get compare_title => 'Vergelijken';
+  String get compare_title => 'Vergelijk banken';
+
+  @override
+  String get compare_subtitle => 'Vergelijk wisselkoersen tussen banken.';
+
+  @override
+  String get add_bank => 'Bank toevoegen';
+
+  @override
+  String get compare_add_bank_instruction =>
+      'Voeg hieronder banken toe om te vergelijken';
 
   @override
   String get faq_help_title => 'FAQ / Help';

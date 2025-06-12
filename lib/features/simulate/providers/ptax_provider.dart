@@ -16,7 +16,8 @@ class PtaxProvider with ChangeNotifier {
     notifyListeners();
     try {
       final today = DateTime.now();
-      final value = await PtaxService().fetchCurrentPtax(today);
+      final yesterday = DateTime(today.year, today.month, today.day - 1);
+      final value = await PtaxService().fetchCurrentPtax(yesterday);
       _ptax = value;
     } catch (e) {
       _error = e.toString();

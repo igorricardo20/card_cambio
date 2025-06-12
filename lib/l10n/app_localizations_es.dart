@@ -210,7 +210,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get more_services_description => 'Próximamente más funcionalidades.';
 
   @override
-  String get compare_title => 'Comparar';
+  String get compare_title => 'Comparar bancos';
+
+  @override
+  String get compare_subtitle => 'Compara las tasas de cambio entre bancos.';
+
+  @override
+  String get add_bank => 'Agregar banco';
+
+  @override
+  String get compare_add_bank_instruction =>
+      'Agregue bancos abajo para comparar';
 
   @override
   String get faq_help_title => 'FAQ / Ayuda';

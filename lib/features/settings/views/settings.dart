@@ -35,7 +35,7 @@ class Settings extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.dark_mode,
-                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                        style: Theme.of(context).textTheme.titleSmall, // Use new text style
                       ),
                       trailing: CupertinoSwitch(
                         value: context.watch<ThemeProvider>().isDarkMode,
@@ -48,7 +48,7 @@ class Settings extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.language,
-                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                        style: Theme.of(context).textTheme.titleSmall, // Use new text style
                       ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
@@ -70,7 +70,7 @@ class Settings extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.about,
-                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                        style: Theme.of(context).textTheme.titleSmall, // Use new text style
                       ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {
@@ -84,7 +84,7 @@ class Settings extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.open_data,
-                        style: Theme.of(context).textTheme.bodySmall, // Use new text style
+                        style: Theme.of(context).textTheme.titleSmall, // Use new text style
                       ),
                       trailing: Icon(CupertinoIcons.forward),
                       onTap: () {

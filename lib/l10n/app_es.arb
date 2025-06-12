@@ -224,9 +224,21 @@
   "@alerts_title": {
     "description": "Título para la función Alertas en Servicios."
   },
-  "compare_title": "Comparar",
+  "compare_title": "Comparar bancos",
   "@compare_title": {
     "description": "Título para la función Comparar en Servicios."
+  },
+  "compare_subtitle": "Compara las tasas de cambio entre bancos.",
+  "@compare_subtitle": {
+    "description": "Subtítulo para la función Comparar en Servicios."
+  },
+  "add_bank": "Agregar banco",
+  "@add_bank": {
+    "description": "Etiqueta para la opción de agregar un banco en la función Comparar."
+  },
+  "compare_add_bank_instruction": "Agregue bancos abajo para comparar",
+  "@compare_add_bank_instruction": {
+    "description": "Instrucción para la función Comparar en Servicios."
   },
   "simulate_description": "Simula operaciones de cambio.",
   "@simulate_description": {

@@ -483,8 +483,26 @@ abstract class AppLocalizations {
   /// Title for the Compare feature in Services.
   ///
   /// In en, this message translates to:
-  /// **'Compare'**
+  /// **'Compare Banks'**
   String get compare_title;
+
+  /// Subtitle for the Compare feature in Services.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare exchange rates between banks.'**
+  String get compare_subtitle;
+
+  /// Label to add a bank in the Compare feature.
+  ///
+  /// In en, this message translates to:
+  /// **'Add bank'**
+  String get add_bank;
+
+  /// No description provided for @compare_add_bank_instruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Add banks below to compare'**
+  String get compare_add_bank_instruction;
 
   /// No description provided for @faq_help_title.
   ///

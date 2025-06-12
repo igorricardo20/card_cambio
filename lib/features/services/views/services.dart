@@ -1,8 +1,10 @@
+import 'package:card_cambio/features/faq/views/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:card_cambio/l10n/app_localizations.dart';
 import 'package:card_cambio/features/simulate/views/simulate.dart';
 import 'package:card_cambio/features/services/views/vitrine_card.dart';
+import 'package:card_cambio/features/compare/views/compare.dart';
 
 class ServicesPage extends StatelessWidget {
   const ServicesPage({super.key});
@@ -55,7 +57,12 @@ class ServicesPage extends StatelessWidget {
                     VitrineCard(
                       icon: Icons.compare_arrows_outlined,
                       title: AppLocalizations.of(context)!.compare_title,
-                      onTap: () {}, // TODO: Implement currency converter page
+                      onTap: () async {
+                        await Future.delayed(const Duration(milliseconds: 200));
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(builder: (context) => const Compare()),
+                        );
+                      },
                     ),
                     VitrineCard(
                       icon: Icons.auto_graph_outlined,
@@ -69,7 +76,12 @@ class ServicesPage extends StatelessWidget {
                     VitrineCard(
                       icon: Icons.help_outline,
                       title: AppLocalizations.of(context)!.faq_help_title,
-                      onTap: () {}, // TODO: Implement FAQ/help page
+                      onTap: () async {
+                        await Future.delayed(const Duration(milliseconds: 200));
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(builder: (context) => const Faq()),
+                        );
+                      },
                     ),
                     VitrineCard(
                       icon: Icons.support_agent_outlined,
